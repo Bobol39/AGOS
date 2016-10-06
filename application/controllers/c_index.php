@@ -22,4 +22,34 @@ class C_index extends CI_Controller {
 	{
 		$this->load->view('v_index');
 	}
+
+	public function form_valid_connexion(){
+		$this->form_validation->set_rules('login','login','trim|required');
+		$this->form_validation->set_rules('pass','Mot de passe','trim|required');
+		$donnees= array(
+			'login'=>$this->input->post('login'),
+			'pass'=>$this->input->post('pass')
+		);
+		if($this->form_validation->run() == False){
+			$this->load->view('connexion',$donnees);
+		}
+		else {
+			$donnees_session=array();
+			if(($donnees_session=$this->Users_model->verif_connexion($donnees)) != False)// and valide ==1
+			{
+				$this->session->set_userdata($donnees_session);
+				if ($donnees_session['droit'] == 0) {
+					redirect('Users');
+				}else{
+					redirect('Admin');
+				}
+			}
+			else{
+				$donnees['erreur']="mot de passe ou login incorrect";
+				redirect('Welcome');
+
+			}
+		}
+	}
+
 }
