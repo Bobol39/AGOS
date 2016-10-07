@@ -42,3 +42,24 @@
     width: 100%;
     font-size: 22px;
 }
+
+
+#formblock{
+    padding: 10px;
+}
+
+#formblock span{
+    color: #999999;
+    margin-top: 30px;
+    font-size: 23px;
+}
+
+#formblock input {
+    margin-bottom: 20px;
+    height: 45px;
+}
+.btn-fill {
+    height: 45px;
+    width: 150px;
+    float: right;
+}

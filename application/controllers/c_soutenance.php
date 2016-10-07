@@ -31,6 +31,8 @@ class C_soutenance extends CI_Controller
     }
 
     public function index(){
+        $this->load->view('v_header');
+        $this->load->view('v_navbar_notation');
         $this->load->view('v_soutenance');
     }
 
