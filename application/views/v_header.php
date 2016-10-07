@@ -6,8 +6,12 @@
 
     <link href="<?=base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/global.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <script type="text/javascript" src="<?=base_url();?>assets/js/bootstrap.min.js"> </script>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-</head>
+    <script type="text/javascript" src="<?=base_url();?>assets/js/bootstrap.min.js"> </script>
+
+
+
+    </head>

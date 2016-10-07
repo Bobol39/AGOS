@@ -1,31 +1,48 @@
 
 #container_notation{
-    height: 85vh;
+    height: calc(100vh - 80px);
     background-color: #EAEAEA;
-}
-
-#block_notation{
-    height: 59%;
     padding: 0px;
 }
 
-#block_notation table{
+#block_notation{
+    height: 60%;
+    padding: 0px;
+}
+
+#block_notation div {
+    padding: 0;
+}
+
+#tablecolonnes{
     width: 100%;
     height: 100%;
 }
+.tablelignes{
+    height: 100%;
+    width: 100%;
+}
+.tablelignes th {
+    height: 5%;
+}
 
-#block_notation tr{
+#tablecolonnes tr{
     height: 100%;
 }
-#block_notation tr th{
+#tablecolonnes tr th{
     height: 100%;
     text-align: center;
 
 }
-#block_notation tr th:nth-child(odd){
-    background-color: grey;
+#tablecolonnes tr th:nth-child(odd){
+    background-color: lightgray;
 }
 
+.slider-info {
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 #block_textarea{
@@ -35,4 +52,6 @@
 #block_textarea textarea{
     width: 100%;
     height: 100%;
+    border: none;
+    border-top: 1px solid black;
 }

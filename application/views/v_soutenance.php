@@ -1,22 +1,53 @@
 <link href="<?=base_url();?>assets/css/soutenance.css" rel="stylesheet">
-
+<link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
+<script>
+    $( function() {
+        $( "#slider" ).slider();
+    } );
+</script>
 <div class="col-lg-12 col-md-12" id="container_notation">
     <div class="col-lg-12 col-md-12" id="block_notation">
-        <div class="col-lg-3 col-md-3" style="height: 100%"></div>
-        <div class="col-lg-9 col-md-9" style="height: 100%">
-            <table>
-                <tr>
-                    <th valign="top">Insuffisant</th>
-                    <th valign="top">Superficiel</th>
-                    <th valign="top">Moyen</th>
-                    <th valign="top">Maîtrisé</th>
-                    <th valign="top">N.E</th>
-                </tr>
+        <div class="col-lg-3 col-md-3" style="height: 100%; padding-top: 30px;">
+            <table class="tablelignes" style="margin-left: 30px; width: 80%">
+                <tr><th>Potentiel Scientifique</div></th></tr>
+                <tr><th style="text-align: right">Justesse scientifique - Pertinance</th></tr>
+                <tr><th style="text-align: right">Capacité à apprendre - Appropriation</th></tr>
+                <tr><th style="text-align: right">Ouverture - Curiosité</th></tr>
+                <tr><th>Démarche Scientifique</th></tr>
+                <tr><th style="text-align: center">Questionnement - Méthode</th></tr>
+                <tr><th style="text-align: center">Résolution de problèmes</th></tr>
+                <tr><th style="text-align: center">Communication - Présentation - Echange</th></tr>
             </table>
         </div>
-
+        <div class="col-lg-9 col-md-9" style="height: 100%;">
+            <div style="position: absolute; width: 100%; height: 100%">
+                <table id="tablecolonnes">
+                    <tr>
+                        <th valign="top">Insuffisant</th>
+                        <th valign="top">Superficiel</th>
+                        <th valign="top">Moyen</th>
+                        <th valign="top">Maîtrisé</th>
+                        <th valign="top">N.E</th>
+                    </tr>
+                </table>
+            </div>
+            <div style="position: absolute; width: 100%; height: 100%; padding-top: 30px">
+                <table class="tablelignes">
+                    <tr><th></div></th></tr>
+                    <tr><th><div id="slider1" class="slider-info"></div></th></tr>
+                    <tr><th><div id="slider2" class="slider-info"></div></th></tr>
+                    <tr><th><div id="slider3" class="slider-info"></div></th></tr>
+                    <tr><th></th></tr>
+                    <tr><th><div id="slider4" class="slider-info"></div></th></tr>
+                    <tr><th><div id="slider5" class="slider-info"></div></th></tr>
+                    <tr><th><div id="slider6" class="slider-info"></div></th></tr>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="col-lg-12 col-md-12" id="block_textarea">
         <textarea></textarea>
     </div>
 </div>
+
+<script type="text/javascript" src="<?=base_url();?>assets/js/soutenance.js"> </script>
