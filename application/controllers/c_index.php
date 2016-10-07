@@ -20,7 +20,9 @@ class C_index extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->helper('url');
 		$this->load->view('v_index');
+		$this->load->view('v_login');
 	}
 
 	public function form_valid_connexion(){
