@@ -1,0 +1,44 @@
+
+#bodylogin{
+    background: none repeat scroll 0 0 #EAEAEA;
+
+}
+
+
+#containerLogin {
+    color: #999999;
+    font: 100%/1.5em sans-serif;
+    /* margin: 0; */
+    width: 650px;
+    height: 620px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 60px 150px 150px;
+}
+
+#containerLogin img {
+    height: 90px;
+    width: auto;
+}
+
+#blocklogin {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 320px;
+}
+
+#headerblock {
+    width: 100%;
+    height: 64px;
+    background-color: #302828;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+}
+
+#headerblock span {
+    line-height: 64px;
+    color: white ;
+    width: 100%;
+    font-size: 22px;
+}

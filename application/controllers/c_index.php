@@ -20,7 +20,6 @@ class C_index extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->helper('form');
 		$this->load->view('v_index');
 	}
 
@@ -39,6 +38,11 @@ class C_index extends CI_Controller {
 			if(($donnees_session=$this->Users_model->verif_connexion($donnees)) != False)// and valide ==1
 			{
 				$this->session->set_userdata($donnees_session);
+				if ($donnees_session['droit'] == 0) {
+					redirect('Users');
+				}else{
+					redirect('Admin');
+				}
 			}
 			else{
 				$donnees['erreur']="mot de passe ou login incorrect";
