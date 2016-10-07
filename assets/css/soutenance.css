@@ -1,6 +1,38 @@
-#text_aera {
-    position: absolute;
-    top: 50%;
-    width:99%;
-    height:50%;
+
+#container_notation{
+    height: 85vh;
+    background-color: #EAEAEA;
+}
+
+#block_notation{
+    height: 59%;
+    padding: 0px;
+}
+
+#block_notation table{
+    width: 100%;
+    height: 100%;
+}
+
+#block_notation tr{
+    height: 100%;
+}
+#block_notation tr th{
+    height: 100%;
+    text-align: center;
+
+}
+#block_notation tr th:nth-child(odd){
+    background-color: whitesmoke;
+}
+
+
+
+#block_textarea{
+    height: 39%;
+    padding: 0;
+}
+#block_textarea textarea{
+    width: 100%;
+    height: 100%;
 }

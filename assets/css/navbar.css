@@ -1,6 +1,6 @@
 #navbar_notation {
     background-color: #2C82C9;
-    height: 80px;
+    height: 15vh;
 }
 
 .button_navbar_notation{
@@ -14,13 +14,13 @@
 
 .button_navbar_notation span{
     color: white;
-    line-height: 80px;
+    line-height: 15vh;
     font-size: 25px;
     width: 100%;
 }
 #block_titre_soutenance span{
     color: white;
-    line-height: 80px;
+    line-height: 15vh;
     font-size: 20px;
     width: 100%;
 }
@@ -34,7 +34,7 @@
 
 #block_duree span{
     color: lightgrey;
-    line-height: 80px;
+    line-height: 15vh;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;
@@ -51,7 +51,7 @@
 
 #block_chrono span{
     color: lightgrey;
-    line-height: 80px;
+    line-height: 15vh;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;
