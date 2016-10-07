@@ -33,7 +33,7 @@
             </div>
             <div style="position: absolute; width: 100%; height: 100%; padding-top: 30px">
                 <table class="tablelignes">
-                    <tr><th></div></th></tr>
+                    <tr><th></th></tr>
                     <tr><th><div id="slider1" class="slider-info"></div></th></tr>
                     <tr><th><div id="slider2" class="slider-info"></div></th></tr>
                     <tr><th><div id="slider3" class="slider-info"></div></th></tr>
