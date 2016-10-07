@@ -18,6 +18,18 @@ class C_index extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+
+	function __construct()
+	{
+		parent::__construct();
+//		$this->load->database();
+		$this->load->helper(array('form', 'url', 'text', 'string'));
+		$this->load->library(array('session', 'form_validation', 'email'));
+//		$this->load->model('Users_model');
+	}
+
+
 	public function index()
 	{
 		$this->load->helper('url');
