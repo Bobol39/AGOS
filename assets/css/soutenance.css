@@ -23,7 +23,7 @@
 
 }
 #block_notation tr th:nth-child(odd){
-    background-color: whitesmoke;
+    background-color: grey;
 }
 
 
