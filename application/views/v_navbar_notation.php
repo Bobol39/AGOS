@@ -23,7 +23,7 @@
             <button class="btn btn-success btn-fill" id="button_debut">Début</button>
         </div>
         <div class="col-lg-6 col-md-6">
-            <span>--:--</span>
+            <span id="showTimer">--:--</span>
         </div>
     </div>
 </div>
