@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_soutenance extends CI_Controller
+class C_notation extends CI_Controller
 {
 
     /**
@@ -33,7 +33,7 @@ class C_soutenance extends CI_Controller
     public function index(){
         $this->load->view('v_header');
         $this->load->view('v_navbar_notation');
-        $this->load->view('v_soutenance');
+        $this->load->view('v_notation');
     }
 
 }

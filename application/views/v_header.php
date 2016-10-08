@@ -14,8 +14,10 @@
     <script type="text/javascript" src="<?=base_url();?>assets/js/global.js"> </script>
 
     <div id="notification">
-        <h3></h3>
-        <span></span>
+        <div>
+            <h3></h3>
+        </div>
+        <span id="textnotif"></span>
     </div>
 
     </head>

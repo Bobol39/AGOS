@@ -15,13 +15,13 @@
 
 .button_navbar_notation span{
     color: white;
-    line-height: 10vh;
+    line-height: 80px;
     font-size: 25px;
     width: 100%;
 }
 #block_titre_soutenance span{
     color: white;
-    line-height: 10vh;
+    line-height: 80px;
     font-size: 20px;
     width: 100%;
 }
@@ -35,7 +35,7 @@
 
 #block_duree span{
     color: lightgrey;
-    line-height: 10vh;
+    line-height: 80px;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;
@@ -52,7 +52,7 @@
 
 #block_chrono span{
     color: lightgrey;
-    line-height: 10vh;
+    line-height: 80px;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;

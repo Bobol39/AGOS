@@ -12,10 +12,34 @@ body{
     bottom: -150px;
     right:5px;
     z-index: 200;
-    text-align: center;
-    border-top-left-radius: 10px;
+    border-top-left-radius: 5px;
 }
-
+#notification div {
+    border-top-left-radius: 5px;
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    text-align: center;
+    background-size: contain;
+    background-position-x: 10px;
+}
+.notifwarning{
+    background: #F0AD4E url("../img/icon_warning.png") no-repeat;
+}
+.notifinfo{
+    background: #2969B0 url("../img/icon_info.png") no-repeat;
+}
 #notification h3 {
     margin-top: 10px;
+    color: whitesmoke;
+    display: inline-block;
+}
+
+#textnotif {
+    margin-top: 60px;
+    position: absolute;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }

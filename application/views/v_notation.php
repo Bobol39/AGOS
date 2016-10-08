@@ -1,4 +1,4 @@
-<link href="<?=base_url();?>assets/css/soutenance.css" rel="stylesheet">
+<link href="<?=base_url();?>assets/css/notation.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
 <script>
     $( function() {
@@ -71,6 +71,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="<?=base_url();?>assets/js/soutenance.js"> </script>
+<script type="text/javascript" src="<?=base_url();?>assets/js/notation.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>
