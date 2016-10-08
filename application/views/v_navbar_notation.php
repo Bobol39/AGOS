@@ -16,14 +16,17 @@
     </div>
     <div class="col-lg-2 col-md-2" id="block_duree">
         <span>Durée: </span>
-        <span>09:59</span>
+        <span id="showDuree"></span>
     </div>
     <div class="col-lg-2 col-md-2" id="block_chrono">
         <div class="col-lg-6 col-md-6" style="height: 100%; padding: 0px">
             <button class="btn btn-success btn-fill" id="button_debut">Début</button>
         </div>
         <div class="col-lg-6 col-md-6">
-            <span id="showTimer">--:--</span>
+            <span id="showTimer">00:00</span>
         </div>
+    </div>
+    <div class="col-lg-2 col-md-2" id="block_next">
+            <button class="btn btn-success btn-fill" id="button_next">Next</button>
     </div>
 </div>

@@ -1,0 +1,21 @@
+
+
+body{
+    overflow: hidden;
+}
+#notification{
+    width: 300px;
+    height: 150px;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    position:absolute;
+    bottom: -150px;
+    right:5px;
+    z-index: 200;
+    text-align: center;
+    border-top-left-radius: 10px;
+}
+
+#notification h3 {
+    margin-top: 10px;
+}

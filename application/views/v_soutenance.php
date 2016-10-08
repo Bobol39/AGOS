@@ -34,13 +34,34 @@
             <div style="position: absolute; width: 100%; height: 100%; padding-top: 30px">
                 <table class="tablelignes">
                     <tr><th></th></tr>
-                    <tr><th><div id="slider1" class="slider-info"></div></th></tr>
-                    <tr><th><div id="slider2" class="slider-info"></div></th></tr>
-                    <tr><th><div id="slider3" class="slider-info"></div></th></tr>
+                    <tr><th>
+                            <div id="slider1" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" style="display: inline-block"><input type="checkbox" class="ct-green" checked/></div>
+                        </th></tr>
+                    <tr><th>
+                            <div id="slider2" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" >
+                                <input type="checkbox" class="ct-green" checked/>
+                            </div>
+                        </th></tr>
+                    <tr><th>
+                            <div id="slider3" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>"><input type="checkbox" class="ct-green" checked/></div>
+                        </th></tr>
                     <tr><th></th></tr>
-                    <tr><th><div id="slider4" class="slider-info"></div></th></tr>
-                    <tr><th><div id="slider5" class="slider-info"></div></th></tr>
-                    <tr><th><div id="slider6" class="slider-info"></div></th></tr>
+                    <tr><th>
+                            <div id="slider4" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" ><input type="checkbox" class="ct-green" checked/></div>
+                        </th></tr>
+                    <tr><th>
+                            <div id="slider5" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" ><input type="checkbox" class="ct-green" checked/></div>
+                        </th></tr>
+                    <tr><th>
+                            <div id="slider6" class="slider-info"></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" ><input type="checkbox" class="ct-green" checked/></div>
+
+                        </th></tr>
                 </table>
             </div>
         </div>
@@ -51,3 +72,5 @@
 </div>
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/soutenance.js"> </script>
+<script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
+<script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>

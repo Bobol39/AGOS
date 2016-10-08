@@ -3,7 +3,7 @@
  */
 
 var timer,showtimer;
-var sec=0, min=0, hr=0;
+var sec=45, min=19, hr=0;
 
 
 function chronoStart(){
@@ -11,16 +11,28 @@ function chronoStart(){
         sec++;
         if (sec > 59){sec = 0; min++}
         if (min > 59){min = 0; hr++}
-        showtimer.text(("0"+min).slice(-2)+":"+("0"+sec).slice(-2))
+        showtimer.text(("0"+min).slice(-2)+":"+("0"+sec).slice(-2));
+        if (min==20 && sec==0){showNotification("Temps écoulé", "20 minutes sont écoulées, il est temps de terminer la présentation",5000)}
+        if (min >= 20){
+            $("#button_debut").fadeTo(500,0.5,function () {
+                $(this).fadeTo(500,1)
+            })
+        }
     },1000)
 }
 
 function chronoStop(){
     clearInterval(timer);
+    $("#showDuree").text(("0"+min).slice(-2)+":"+("0"+sec).slice(-2));
+    $("#block_chrono").fadeOut(200, function () {
+        $("#button_next").fadeIn();
+    })
 }
 (function() {
+    $("#button_next").hide();
+
     $( ".slider-info" ).slider({
-        value: 70,
+        value: 50,
         orientation: "horizontal",
         range: "min",
         animate: true,
