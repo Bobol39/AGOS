@@ -12,7 +12,7 @@ function chronoStart(){
         if (sec > 59){sec = 0; min++}
         if (min > 59){min = 0; hr++}
         showtimer.text(("0"+min).slice(-2)+":"+("0"+sec).slice(-2));
-        if (min==20 && sec==0){showNotification("Temps écoulé", "20 minutes sont écoulées, il est temps de terminer la présentation","success")}
+        if (min==20 && sec==0){showNotification("Temps écoulé", "20 minutes sont écoulées, il est temps de terminer la présentation","warning")}
         if (min >= 20){
             $("#button_debut").fadeTo(500,0.5,function () {
                 $(this).fadeTo(500,1)
