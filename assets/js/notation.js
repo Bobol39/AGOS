@@ -64,9 +64,9 @@ function chronoStop(){
 
     $(".ct-green").change(function () {
         if (!this.checked){
-            $(this).parents("div").siblings(".slider-info").slider('disable');
+            $(this).parents(".lineblock").find(".slider-info").slider('disable');
         } else {
-            $(this).parents("div").siblings(".slider-info").slider('enable');
+            $(this).parents(".lineblock").find(".slider-info").slider('enable');
         }
     });
 
