@@ -12,7 +12,7 @@ function chronoStart(){
         if (sec > 59){sec = 0; min++}
         if (min > 59){min = 0; hr++}
         showtimer.text(("0"+min).slice(-2)+":"+("0"+sec).slice(-2));
-        if (min==20 && sec==0){showNotification("Temps écoulé", "20 minutes sont écoulées, il est temps de terminer la présentation","info")}
+        if (min==20 && sec==0){showNotification("Temps écoulé", "20 minutes sont écoulées, il est temps de terminer la présentation","success")}
         if (min >= 20){
             $("#button_debut").fadeTo(500,0.5,function () {
                 $(this).fadeTo(500,1)
@@ -30,6 +30,9 @@ function chronoStop(){
 }
 (function() {
     $("#button_next").hide();
+    $("#notification").click(function () {
+        $(this).animate({bottom: -150},500);
+    });
 
     $( ".slider-info" ).slider({
         value: 50,
@@ -56,6 +59,14 @@ function chronoStop(){
         } else {
             $(this).addClass("btn-success").removeClass("btn-danger").text("Début");
             chronoStop();
+        }
+    });
+
+    $(".ct-green").change(function () {
+        if (!this.checked){
+            $(this).parents("div").siblings(".slider-info").slider('disable');
+        } else {
+            $(this).parents("div").siblings(".slider-info").slider('enable');
         }
     });
 

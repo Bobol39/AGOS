@@ -29,6 +29,11 @@ body{
 .notifinfo{
     background: #2969B0 url("../img/icon_info.png") no-repeat;
 }
+
+.notifsuccess{
+    background: #5CB85C url("../img/icon_success.png") no-repeat;
+}
+
 #notification h3 {
     margin-top: 10px;
     color: whitesmoke;

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AGOS</title>
+    <link rel="icon" href="<?=base_url();?>assets/img/favicon.ico">
 
     <link href="<?=base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/global.css" rel="stylesheet">

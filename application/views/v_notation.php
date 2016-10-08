@@ -11,12 +11,12 @@
             <table class="tablelignes" style="margin-left: 30px; width: 80%">
                 <tr><th>Potentiel Scientifique</div></th></tr>
                 <tr><th style="text-align: right">Justesse scientifique - Pertinance</th></tr>
-                <tr><th style="text-align: right">Capacité à apprendre - Appropriation</th></tr>
+                <tr><th style="text-align: right">Capacité à apprendre</th></tr>
                 <tr><th style="text-align: right">Ouverture - Curiosité</th></tr>
                 <tr><th>Démarche Scientifique</th></tr>
                 <tr><th style="text-align: center">Questionnement - Méthode</th></tr>
                 <tr><th style="text-align: center">Résolution de problèmes</th></tr>
-                <tr><th style="text-align: center">Communication - Présentation - Echange</th></tr>
+                <tr><th style="text-align: center">Communication - Présentation</th></tr>
             </table>
         </div>
         <div class="col-lg-9 col-md-9" style="height: 100%;">
