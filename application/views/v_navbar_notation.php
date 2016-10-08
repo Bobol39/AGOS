@@ -1,4 +1,4 @@
-<link href="<?php echo base_url();?>assets/css/navbar.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/navbar_notation.css" rel="stylesheet">
 
 
 <div class="col-lg-12 col-md-12" id="navbar_notation">

@@ -1,7 +1,8 @@
 #navbar_notation {
     background-color: #2C82C9;
-    height: 80px;
+    height: 60px;
     padding: 0px;
+    border-bottom: 3px solid darkgrey;
 }
 
 .button_navbar_notation{
@@ -15,13 +16,13 @@
 
 .button_navbar_notation span{
     color: white;
-    line-height: 80px;
+    line-height: 60px;
     font-size: 25px;
     width: 100%;
 }
 #block_titre_soutenance span{
     color: white;
-    line-height: 80px;
+    line-height:60px;
     font-size: 20px;
     width: 100%;
 }
@@ -35,7 +36,7 @@
 
 #block_duree span{
     color: lightgrey;
-    line-height: 80px;
+    line-height: 60px;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;
@@ -52,7 +53,7 @@
 
 #block_chrono span{
     color: lightgrey;
-    line-height: 80px;
+    line-height: 60px;
     font-size: 20px;
     width: 100%;
     font-weight: bolder;
@@ -61,4 +62,8 @@
 #button_debut, #button_next{
     width: 100%;
     height: 100%;
+}
+
+.ui-widget.ui-widget-content {
+    border: 1px solid black;
 }

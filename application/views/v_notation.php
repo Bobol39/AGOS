@@ -36,7 +36,9 @@
                     <tr><th></th></tr>
                     <tr><th>
                             <div id="slider1" class="slider-info"></div>
-                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" style="display: inline-block"><input type="checkbox" class="ct-green" checked/></div>
+                            <div class="switch" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>" style="display: inline-block">
+                                <input type="checkbox" class="ct-green" checked/>
+                            </div>
                         </th></tr>
                     <tr><th>
                             <div id="slider2" class="slider-info"></div>

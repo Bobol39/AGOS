@@ -1,6 +1,6 @@
 
 #container_notation{
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
     background-color: #EAEAEA;
     padding: 0px;
 }
