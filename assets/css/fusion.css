@@ -1,0 +1,99 @@
+#container_fusion{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    padding: 0px;
+}
+
+#block_sliders, #block_moyennes{
+    height: 50%;
+    padding: 1%;
+}
+
+#block_deliberer, #block_note_finale {
+    height: 50%;
+    background-color: #EAEAEA;
+}
+
+#tablecolonnes{
+    width: 100%;
+    height: 100%;
+}
+#tablecolonnes tr{
+    height: 100%;
+}
+#tablecolonnes tr th{
+    height: 100%;
+    text-align: center;
+    width: 23%;
+}
+#tablecolonnes tr th:last-child{
+    width: 8%;
+}
+
+#tablecolonnes tr th:nth-child(odd){
+    background-color: white;
+}
+
+#tablecolonnes tr th:nth-child(even){
+    background-color: lightgray;
+}
+
+#block_button_deliberer {
+    height: 30%;
+    margin-top: 10%;
+}
+
+#block_button_retour {
+    height: 20%;
+    margin-top: 20%;
+}
+
+#block_button_deliberer button, #block_button_retour button {
+    width: 100%;
+    height: 100%;
+}
+
+.titleline{
+    margin-top: 2px;
+    height: 12%;
+    background-color: lightgray;
+    border-right: none;
+}
+
+
+.container_buttons_moyennes{
+    margin-top: 2px;
+    height: 12%;
+    padding: 0;
+}
+
+.container_buttons_moyennes:last-child{
+    margin-top: 30px;
+}
+
+
+
+.block_button {
+    height: 100%;
+    padding: 0;
+}
+
+.block_button button{
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+}
+
+
+#block_button_note_finale {
+    height: 20%;
+    margin-top: 40%;
+}
+
+#block_button_note_finale button {
+    width: 100%;
+    height: 100%;
+}
+#block_button_note_finale button span{
+    display: block;
+}

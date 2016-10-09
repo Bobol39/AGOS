@@ -1,10 +1,6 @@
 <link href="<?=base_url();?>assets/css/notation.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
-<script>
-    $( function() {
-        $( "#slider" ).slider();
-    } );
-</script>
+
 <div class="col-lg-12 col-md-12" id="container_notation">
     <div class="col-lg-12 col-md-12" id="block_notation">
         <div class="col-lg-3 col-md-3" style="height: 100%; padding: 30px 0 0;">

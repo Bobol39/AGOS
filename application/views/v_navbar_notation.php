@@ -2,6 +2,9 @@
 
 
 <div class="col-lg-12 col-md-12" id="navbar_notation">
+    <div class="col-lg-1 col-md-1 button_navbar_notation">
+        <span>AGOS</span>
+    </div>
     <div class="col-lg-1 col-md-1 button_navbar_notation" id="button_bilan">
         <span>Bilan</span>
     </div>
@@ -11,7 +14,7 @@
     <div class="col-lg-1 col-md-1 button_navbar_notation" id="button_fiche">
         <span>Fiche</span>
     </div>
-    <div class="col-lg-5 col-md-5" id="block_titre_soutenance">
+    <div class="col-lg-4 col-md-4" id="block_titre_soutenance">
         <span>Soutenance à propos de trucs</span>
     </div>
     <div class="col-lg-2 col-md-2" id="block_duree">
@@ -27,6 +30,6 @@
         </div>
     </div>
     <div class="col-lg-2 col-md-2" id="block_next">
-            <button class="btn btn-success btn-fill" id="button_next">Next</button>
+        <a href="<?php echo base_url("index.php/C_fusion")?>"><button class="btn btn-success btn-fill" id="button_next">Next</button></a>
     </div>
 </div>

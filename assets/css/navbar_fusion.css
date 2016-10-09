@@ -1,0 +1,36 @@
+#navbar_fusion {
+    background-color: #2C82C9;
+    height: 60px;
+    padding: 0px;
+}
+
+.button_navbar_fusion{
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.button_navbar_fusion:hover{
+    background-color: #2969B0;
+}
+
+.button_navbar_fusion span{
+    color: white;
+    line-height: 60px;
+    font-size: 25px;
+    width: 100%;
+}
+
+
+#block_titre_soutenance{
+    height: 100%;
+    text-align: center;
+    font-style: italic;
+    background-color: #2969B0;
+}
+
+#block_titre_soutenance span{
+    color: white;
+    line-height:60px;
+    font-size: 20px;
+    width: 100%;
+}

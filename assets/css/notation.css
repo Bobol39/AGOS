@@ -31,6 +31,10 @@
 }
 
 #tablecolonnes tr th:nth-child(odd){
+    background-color: white;
+}
+
+#tablecolonnes tr th:nth-child(even){
     background-color: lightgray;
 }
 
