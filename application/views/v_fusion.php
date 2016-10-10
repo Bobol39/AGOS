@@ -14,16 +14,41 @@
         <div style="width: 98%; height: 93%; position:absolute">
             <table id="tablecolonnes">
                 <tr>
-                    <th valign="top">Insuffisant</th>
-                    <th valign="top">Superficiel</th>
-                    <th valign="top">Moyen</th>
-                    <th valign="top">Maîtrisé</th>
-                    <th valign="top">N.E</th>
+                    <th valign="top">Insuffisant (I)</th>
+                    <th valign="top">Superficiel (S)</th>
+                    <th valign="top">Moyen (M)</th>
+                    <th valign="top">Maîtrisé (T)</th>
                 </tr>
             </table>
         </div>
-        <div style="position: absolute; width: 98%; height: 95%; padding-top: 30px;">
+        <div style="position: absolute; width: 98%; height: 93%; padding-top: 30px">
+            <div class="col-lg-12 col-md-12 lineblock" >
+
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider1" class="slider-info"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider2" class="slider-info"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider3" class="slider-info"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider4" class="slider-info"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider5" class="slider-info"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider6" class="slider-info"></div>
+            </div>
+
         </div>
+
     </div>
     <div class="col-lg-2 col-md-2" id="block_deliberer">
         <div class="col-lg-10 col-lg-offset-1 " id="block_button_deliberer">
@@ -37,7 +62,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line1">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
@@ -47,7 +72,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line2">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
@@ -57,7 +82,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line3">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
@@ -67,7 +92,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line4">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
@@ -77,7 +102,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line5">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
@@ -87,7 +112,7 @@
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
-        <div class="col-lg-6 container_buttons_moyennes">
+        <div class="col-lg-6 container_buttons_moyennes line6">
             <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
             <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>

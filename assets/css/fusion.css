@@ -24,11 +24,9 @@
 #tablecolonnes tr th{
     height: 100%;
     text-align: center;
-    width: 23%;
+    width: 25%;
 }
-#tablecolonnes tr th:last-child{
-    width: 8%;
-}
+
 
 #tablecolonnes tr th:nth-child(odd){
     background-color: white;
@@ -37,7 +35,14 @@
 #tablecolonnes tr th:nth-child(even){
     background-color: lightgray;
 }
-
+.lineblock{
+    height: 12%;
+    padding: 0;
+}
+.slider-info {
+    width: 100%;
+    height: auto;
+}
 #block_button_deliberer {
     height: 30%;
     margin-top: 10%;

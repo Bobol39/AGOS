@@ -71,6 +71,40 @@ function chronoStop(){
     });
 
     showtimer = $("#showTimer");
+    $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
+        $('#colors_demo .tools').append("<a href='#colors_sketch' data-color='" + this + "' style='width: 10px; background: " + this + ";'></a> ");
+    });
+    $.each([3, 5, 10, 15], function() {
+        $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
+    });
+    $('#colors_sketch').sketch();
 
+    $("#switchtextdraw").click(function () {
+            if ($(this).hasClass("switchtext")){
+                $(this).removeClass("switchtext").addClass("switchdraw").siblings(".option_draw").hide()
+                                                                        .siblings(".option_text").show();
+                $("#colors_sketch").hide()
+                $("textarea").show().height("calc(100% - 30px)");
+            } else {
+                $(this).removeClass("switchdraw").addClass("switchtext").siblings(".option_draw").show()
+                                                                        .siblings(".option_text").hide();
+                $("textarea").hide();
+                $("#colors_sketch").show();
+            }
+    })
+
+    $(".colorpicker").click(function () {
+        $(".colorpicker").css("border","none")
+        $(this).css("border","2px solid white");
+    });
+
+    $("#textplus").click(function () {
+        var size = parseInt($("textarea").css("font-size")) +1;
+        $("textarea").css("font-size", size)
+    });
+    $("#textless").click(function () {
+        var size = parseInt($("textarea").css("font-size")) -1;
+        $("textarea").css("font-size", size)
+    });
 
 })();

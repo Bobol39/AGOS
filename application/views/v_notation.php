@@ -113,9 +113,27 @@
         </div>
     </div>
     <div class="col-lg-12 col-md-12" id="block_textarea">
+        <div class="tools">
+            <button id="switchtextdraw" class="switchtext"></button>
+            <a class="option_draw" href="#colors_sketch" data-color="black" data-size="3" ><button style="background-image: url('<?=base_url();?>assets/img/marker.png')"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-color="white" data-size="20" ><button style="background-image: url('<?=base_url();?>assets/img/eraser.png')"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-size="3" ><button style="background-image: url('<?=base_url();?>assets/img/dot_small.png')"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-size="5" ><button style="background-image: url('<?=base_url();?>assets/img/dot_medium.png')"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-size="10" ><button style="background-image: url('<?=base_url();?>assets/img/dot_big.png')"></button></a>
+            <button id="textless" class="option_text" style="background-image: url('<?=base_url();?>assets/img/textless.png')"></button>
+            <button id="textplus" class="option_text" style="background-image: url('<?=base_url();?>assets/img/textplus.png')"></button>
+            <a class="option_draw" href="#colors_sketch" data-color="red" ><button class="colorpicker" style="background-color: red"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-color="green" ><button class="colorpicker" style="background-color: green"></button></a>
+            <a class="option_draw" href="#colors_sketch" data-color="black" ><button class="colorpicker" style="background-color: #0f0f0f"></button></a>
+
+        </div>
+        <canvas id="colors_sketch"></canvas>
         <textarea></textarea>
+
     </div>
 </div>
+
+<script type="text/javascript" src="<?=base_url();?>assets/js/sketch.js"> </script>
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/notation.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
