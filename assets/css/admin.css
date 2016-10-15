@@ -1,0 +1,55 @@
+#container_admin{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    padding: 0px;
+}
+
+#container_planning{
+    height: 100%;
+}
+
+#container_titres_colonnes{
+    height: 30px;
+    width: 100%;
+    margin-top: 5px;
+    background-color: whitesmoke;
+}
+
+#container_titres_colonnes div{
+    height: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+
+#container_titres_lignes{
+    height: 60%;
+    background-color: whitesmoke;
+}
+
+#container_titres_lignes div{
+    height: 80px;
+    width: 100%;
+    margin-top: 20px;
+    line-height: 80px;
+}
+
+#container_soutenances{
+    height: 60%;
+    background-color: whitesmoke;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+
+.button_soutenance{
+    height: 80px;
+    background-color: red;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#container_modif_soutenances{
+    height: 30%;
+    margin-top: 10px;
+    background-color: whitesmoke;
+}

@@ -1,0 +1,36 @@
+#navbar_admin {
+    background-color: #222222;
+    height: 60px;
+    padding: 0px;
+}
+
+.button_navbar_admin{
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.button_navbar_admin:hover{
+    background-color: #2969B0;
+}
+
+.button_navbar_admin span{
+    color: white;
+    line-height: 60px;
+    font-size: 20px;
+    width: 100%;
+    font-weight: normal;
+
+}
+
+#admintitle{
+    color: white;
+    line-height: 60px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+#admintitle span:first-child{
+    font-weight: bolder;
+
+}

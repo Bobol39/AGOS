@@ -32,7 +32,10 @@ class C_admin extends CI_Controller
 
 
     function index(){
-        $this->load->view("v_index_admin");
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin");
     }
 
 }

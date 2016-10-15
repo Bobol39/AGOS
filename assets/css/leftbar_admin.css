@@ -1,0 +1,35 @@
+#leftbar{
+    height: calc(100vh - 60px);
+    background-color: #333333;
+    padding: 10px 0 0;
+}
+
+#logo_admin{
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#logo_admin img{
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button_leftbar_admin{
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button_leftbar_admin:hover{
+    background-color: #2969B0;
+}
+
+.button_leftbar_admin span{
+    color: white;
+    line-height: 50px;
+    font-size: 20px;
+    width: 100%;
+    font-weight: normal;
+}
