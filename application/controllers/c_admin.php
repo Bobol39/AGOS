@@ -35,7 +35,15 @@ class C_admin extends CI_Controller
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
-        $this->load->view("v_admin");
+        $this->load->view("v_admin_planning");
+    }
+
+
+    function creationSoutenance(){
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_soutenance");
     }
 
 }

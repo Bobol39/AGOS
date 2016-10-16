@@ -21,7 +21,7 @@
         <span>Ajout/suppression</span>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>test</span>
+        <a href="<?php echo base_url('index.php/c_admin/creationSoutenance');?>"><span>Création d'une soutenance</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
         <span>test</span>
