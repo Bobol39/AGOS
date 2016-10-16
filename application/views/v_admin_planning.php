@@ -12,84 +12,29 @@
 
 <div class="col-lg-10 col-md-10" id="container_admin">
     <div class="col-lg-12 col-md-12" id="container_planning">
-        <div id="container_titres_colonnes">
-            <div class="col-lg-3 col-md-3">
-                <span>Lundi</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>mardi</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>Mercredi</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>Jeudi</span>
-            </div>
-        </div>
-        <div class="col-lg-1 col-md-1" id="container_titres_lignes">
-            <div class="col-lg-3 col-md-3">
-                <span>8h</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>9h</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>10h</span>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <span>11h</span>
-            </div>
+        <div id="container_titres_colonnes" class="col-lg-11 col-md-11">
+            <table>
+                <tr>
+                    <th>TIME</th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mecredi</th>
+                    <th>Jeudi</th>
+                </tr>
+            </table>
         </div>
         <div class="col-lg-11 col-md-11" id="container_soutenances">
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
-            </div>
-            <div class="col-lg-3 col-md-2">
-                <div class="button_soutenance"></div>
+            <table>
+            </table>
+        </div>
+        <div class="col-lg-1 col-md-1" id="container_controls_planning">
+            <div id="container_addline" class="col-lg-12">
+                <button class="btn btn-info" id="addline">Ajouter ligne</button>
             </div>
         </div>
         <div class="col-lg-12" id="container_modif_soutenances"></div>
     </div>
 </div>
+
+<script type="text/javascript" src="<?=base_url();?>assets/js/planning.js"> </script>
+

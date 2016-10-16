@@ -10,14 +10,19 @@
 
 #container_titres_colonnes{
     height: 30px;
-    width: 100%;
     margin-top: 5px;
     background-color: whitesmoke;
+    padding-right: 20px;
 }
 
-#container_titres_colonnes div{
+#container_titres_colonnes table{
     height: 100%;
-    line-height: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+#container_titres_colonnes th{
+    width: 20%;
     text-align: center;
 }
 
@@ -40,12 +45,54 @@
     overflow-y: scroll;
 }
 
+#container_soutenances table {
+    width: 100%;
+    text-align: center;
+}
+#container_soutenances table td {
+    text-align: center;
+    width: 20%;
+    cursor: pointer;
+}
+
 
 .button_soutenance{
     height: 80px;
-    background-color: red;
-    width: 100%;
+    width: 90%;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #5cb85c;
+    border-radius: 4px;
+}
+.button_case{
+    height: 100%;
+    width: 100%;
+}
+#container_controls_planning{
+    height: 60%;
+}
+
+#container_addline{
+    height: 20%;
+    padding: 0;
+}
+#addline{
+    height: 100%;
+    width: 100%;
+}
+
+.nom_eleve{
+    width: 100%;
+    height: 50%;
+    font-weight: bolder;
+    line-height: 40px;
+}
+.nom_prof1, .nom_prof2{
+    width: 45%;
+    height: 50%;
+    display: inline-block;
+    line-height: 40px;
 }
 
 #container_modif_soutenances{
