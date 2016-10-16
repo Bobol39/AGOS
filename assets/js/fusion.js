@@ -56,6 +56,7 @@ $(function() {
         max: 100,
         values: [ 25, 50, 75],
         animate: true,
+        disabled: true,
         stop: function( event, ui ) {
             selectButton(ui, $(this))
         },
@@ -64,6 +65,6 @@ $(function() {
             $(this).find("span:nth-child(2)").removeClass("ui-state-default");
             selectButton(ui, $(this));
         },
-    });
+    }).removeClass("ui-state-disabled");
 
 });

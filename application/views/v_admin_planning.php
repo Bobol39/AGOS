@@ -8,6 +8,7 @@
 ?>
 
 <link href="<?php echo base_url();?>assets/css/admin.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/jquery.timepicker.css" rel="stylesheet">
 
 
 <div class="col-lg-10 col-md-10" id="container_admin">
@@ -25,6 +26,9 @@
         </div>
         <div class="col-lg-11 col-md-11" id="container_soutenances">
             <table>
+                <tbody>
+
+                </tbody>
             </table>
         </div>
         <div class="col-lg-1 col-md-1" id="container_controls_planning">
@@ -32,9 +36,11 @@
                 <button class="btn btn-info" id="addline">Ajouter ligne</button>
             </div>
         </div>
-        <div class="col-lg-12" id="container_modif_soutenances"></div>
+        <div class="col-lg-12" id="container_modif_soutenances">
+        </div>
     </div>
 </div>
 
+<script type="text/javascript" src="<?=base_url();?>assets/js/jquery.timepicker.min.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/planning.js"> </script>
 

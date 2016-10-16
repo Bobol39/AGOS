@@ -5,10 +5,31 @@ $(function() {
     $("#addline").click(function(){
         addline();
     });
+
+    var fixHelperModified = function(e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function(index) {
+                $(this).width($originals.eq(index).width())
+            });
+            return $helper;
+        },
+        updateIndex = function(e, ui) {
+            $('td.index', ui.item.parent()).each(function (i) {
+                $(this).html(i + 1);
+            });
+        };
+
+    $("#container_soutenances").find("tbody").sortable({
+        helper: fixHelperModified,
+        stop: updateIndex
+    });
+
+    $('#test').timepicker();
 });
 
 function addline(){
-    $("#container_soutenances").find("table").append(' \
+    $("#container_soutenances").find("tbody").append(' \
             <tr>\
                 <td>\
                     <input type="time">\
@@ -34,8 +55,8 @@ function addline(){
                     </div>\
                 </td>\
             </tr>\
-            ');
-    $(".button_case").click(function(){
+            ').find("input").timepicker();
+    $(".button_case").off("click").click(function(){
         add_case($(this));
     });
 }

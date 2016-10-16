@@ -52,7 +52,7 @@
 #container_soutenances table td {
     text-align: center;
     width: 20%;
-    cursor: pointer;
+    cursor: grabbing;
 }
 
 
@@ -65,6 +65,7 @@
     border: 2px solid #5cb85c;
     border-radius: 4px;
 }
+
 .button_case{
     height: 100%;
     width: 100%;
