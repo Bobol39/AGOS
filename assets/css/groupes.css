@@ -1,0 +1,28 @@
+#container_admin{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    padding: 0px;
+}
+
+#container_groupes{
+    height: 100%;
+}
+
+#container_affichage_groupes{
+    height: 60%;
+    background-color: whitesmoke;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+#container_controls_groupes{
+    height: 60%;
+    padding: 0;
+}
+
+#container_modif_groupes{
+    height: 30%;
+    margin-top: 10px;
+    padding: 0;
+    background-color: whitesmoke;
+}

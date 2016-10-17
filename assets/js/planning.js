@@ -32,7 +32,7 @@ function addline(){
     $("#container_soutenances").find("tbody").append(' \
             <tr>\
                 <td>\
-                    <input type="time">\
+                    <input type="time" class="changetime">\
                 </td>\
                 <td>\
                     <div class="button_soutenance">\
@@ -65,7 +65,26 @@ function add_case(button){
     button.hide();
     button.parent().append('\
         <div class="nom_eleve"><span>Eleve</span></div>\
-        <div class="nom_prof1"><span>Prof</span></div>\
-        <div class="nom_prof2"><span>Prof</span></div>\
-    ');
+        <input type="hidden" value="salle" class="num_salle" >\
+        <input type="hidden" value="Prof 1" class="nom_prof1" >\
+        <input type="hidden" value="Prof 2" class="nom_prof2" >\
+    ').click(function () {
+        edit_case($(this))
+    });
+}
+
+function edit_case(button){
+    $("#block_modif_prof1, #block_modif_prof2, #block_modif_elevessalle, #block_modif_titresoutenance").fadeIn()
+    $("#block_modif_prof1").find("input").val(button.find(".nom_prof1").val()).off("change").change(function () {
+        button.find(".nom_prof1").val($(this).val())
+    });
+    $("#block_modif_prof2").find("input").val(button.find(".nom_prof2").val()).off("change").change(function () {
+        button.find(".nom_prof2").val($(this).val())
+    });
+    $("#block_modif_eleves").find("input").first().val(button.find(".nom_eleve").text()).off("change").change(function () {
+        button.find(".nom_eleve span").text($(this).val())
+    });
+    $("#block_modif_salle").find("input").val(button.find(".num_salle").val()).off("change").change(function () {
+        button.find(".num_salle").val($(this).val())
+    });
 }
