@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 18 Octobre 2016 à 18:19
+-- Généré le :  Mar 18 Octobre 2016 à 18:32
 -- Version du serveur :  5.7.10
 -- Version de PHP :  5.6.17
 
@@ -151,13 +151,15 @@ CREATE TABLE `salle` (
 
 CREATE TABLE `soutenance` (
   `id` int(11) NOT NULL,
+  `id_planning` int(11) NOT NULL,
   `id_salle` int(11) NOT NULL,
   `horaire` time NOT NULL,
   `date` date NOT NULL,
   `professeur1` varchar(25) NOT NULL,
   `professeur2` varchar(50) NOT NULL,
   `titre` varchar(50) DEFAULT NULL,
-  `resume` text
+  `resume` text,
+  `note` float DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -217,7 +219,8 @@ ALTER TABLE `soutenance`
   ADD PRIMARY KEY (`id`),
   ADD KEY `professeur1` (`professeur1`),
   ADD KEY `professeur2` (`professeur2`),
-  ADD KEY `id_salle` (`id_salle`);
+  ADD KEY `id_salle` (`id_salle`),
+  ADD KEY `id_planning` (`id_planning`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
