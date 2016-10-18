@@ -15,13 +15,10 @@
         <img src="<?php echo base_url();?>assets/img/logo_leftbar_admin.png">
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Planning</span>
+        <span>Groupes</span>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Ajout/suppression</span>
-    </div>
-    <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/creationSoutenance');?>"><span>Création d'une soutenance</span></a>
+        <a href="<?php echo base_url('index.php/c_admin/creationSoutenance');?>"><span>Ajout/Suppr.</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
         <span>test</span>

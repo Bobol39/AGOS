@@ -57,13 +57,14 @@
 
 
 .button_soutenance{
-    height: 80px;
+    height: 40px;
     width: 90%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid #5cb85c;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .button_case{
@@ -72,6 +73,7 @@
 }
 #container_controls_planning{
     height: 60%;
+    padding: 0;
 }
 
 #container_addline{
@@ -83,21 +85,64 @@
     width: 100%;
 }
 
+.changetime {
+    height: 40px;
+    margin-top: 20px;
+    line-height: 40px;
+}
+
 .nom_eleve{
     width: 100%;
-    height: 50%;
+    height: 100%;
     font-weight: bolder;
     line-height: 40px;
 }
+
+.num_salle{
+    width: 100%;
+    height: 33%;
+    font-style: italic;
+    line-height: 27px;
+}
+
 .nom_prof1, .nom_prof2{
     width: 45%;
-    height: 50%;
+    height: 33%;
     display: inline-block;
-    line-height: 40px;
+    line-height: 27px;
 }
 
 #container_modif_soutenances{
     height: 30%;
     margin-top: 10px;
+    padding: 0;
     background-color: whitesmoke;
 }
+#block_modif_titresoutenance{
+    height: 20%;
+    display: none;
+    border: 4px solid #EAEAEA;
+
+}
+#block_modif_titresoutenance span{
+    width: 30%;
+}
+#block_modif_titresoutenance select{
+    width: 70%;
+}
+
+#block_modif_prof1, #block_modif_prof2, #block_modif_elevessalle{
+    height: 80%;
+    background-color: whitesmoke;
+    border: 4px solid #EAEAEA;
+    text-align: center;
+    display: none;
+}
+
+#block_modif_eleves, #block_modif_salle{padding: 0}
+
+#container_modif_soutenances input{
+    margin-top: 10px;
+    height: 30px;
+}
+
