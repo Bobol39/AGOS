@@ -48,6 +48,18 @@
     width: 100%;
 }
 
+#button_add_groupe {
+    border: 3px dashed #4cae4c;
+    color: #4cae4c;
+    font-size: 70px;
+    line-height: 80px;
+}
+
+#button_add_groupe:hover {
+    color: whitesmoke;
+    background-color: #4cae4c;
+}
+
 #container_controls_groupes{
     height: 60%;
     padding: 0;
@@ -60,23 +72,42 @@
     background-color: whitesmoke;
 }
 
-#container_modif_groupes div{
+.part_modif{
     height: 100%;
+    display: none;
 }
 
-#container_modif_groupes label{
+.labform{
     width: 15%;
     display: inline-block;
+    margin-top: 15px;
 }
 
-#titregroupe{
+#titregroupe, #selectpromo, #selectcriteres{
     width: 80%;
     display: inline-block;
+}
+
+#duree{
+    width: 30%;
+}
+
+#edit_planning, #delete_group{
+    height: 40px;
+    width: 45%;
+    margin-top: 50px;
+    display: inline-block;
+}
+
+.part_modif p {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 .datepicker{
     width: 20%;
 }
+
 
 
 
