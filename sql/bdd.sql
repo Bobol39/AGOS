@@ -66,7 +66,9 @@ CREATE TABLE `planning` (
   `duree` time NOT NULL,
   `titre` varchar(50) NOT NULL,
   `groupe` varchar(25) NOT NULL,
-  `id_critere` int(11) NOT NULL
+  `id_critere` int(11) NOT NULL,
+  `date_debut` date NOT NULL,
+  `date_fin` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -95,6 +97,7 @@ CREATE TABLE `soutenance` (
   `date` date NOT NULL,
   `professeur1` varchar(25) NOT NULL,
   `professeur2` varchar(50) NOT NULL,
+  `titre` varchar(100) NOT NULL,
   `resume` varchar(1000) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
