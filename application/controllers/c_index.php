@@ -23,7 +23,7 @@ class C_index extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-//		$this->load->database();
+		$this->load->database();
 		$this->load->helper(array('form', 'url', 'text', 'string'));
 		$this->load->library(array('session', 'form_validation', 'email'));
 //		$this->load->model('Users_model');

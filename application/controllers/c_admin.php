@@ -24,10 +24,10 @@ class C_admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
-//		$this->load->database();
+		$this->load->database();
         $this->load->helper(array('form', 'url', 'text', 'string'));
         $this->load->library(array('session', 'form_validation', 'email'));
-//		$this->load->model('Users_model');
+		$this->load->model('m_admin');
     }
 
 
@@ -39,11 +39,12 @@ class C_admin extends CI_Controller
     }
 
 
-    function creationSoutenance(){
+    function gestionProf(){
+        $data["prof"] = $this->m_admin->getAllProf();
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
-        $this->load->view("v_admin_soutenance");
+        $this->load->view("v_admin_prof",$data);
     }
 
     function showPlanning(){
@@ -51,6 +52,14 @@ class C_admin extends CI_Controller
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
         $this->load->view("v_admin_planning");
+    }
+
+    function saveAbreviation(){
+        $data["array"] = $this->input->post('array');
+        $decode = json_decode($data["array"]);
+        $array = json_decode(json_encode($decode), True);
+
+        $this->m_admin->saveAbreviation($array);
     }
 
 }
