@@ -70,7 +70,11 @@
                 <div id="block_modif_salle" class="col-lg-3 col-md-3">
                     <h4>Salle</h4>
                     <div class="col-lg-12">
-                        <input type="text" value="" placeholder="Input" class="form-control" />
+                        <select class="form-control">
+                            <?php foreach($salle as $value){
+                                echo "<option value='".$value["id"]."'>".$value["nom"]."</option>";
+                            }?>
+                        </select>
                     </div>
                 </div>
 

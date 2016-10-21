@@ -48,10 +48,12 @@ class C_admin extends CI_Controller
     }
 
     function showPlanning(){
+        $data["salle"] = $this->m_admin->getSalle();
+
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
-        $this->load->view("v_admin_planning");
+        $this->load->view("v_admin_planning",$data);
     }
 
     function saveAbreviation(){
@@ -60,6 +62,24 @@ class C_admin extends CI_Controller
         $array = json_decode(json_encode($decode), True);
 
         $this->m_admin->saveAbreviation($array);
+    }
+
+    function gestionSalle(){
+        $data["salle"] = $this->m_admin->getSalle();
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_salle",$data);
+    }
+
+    function supprSalle(){
+        $data["id"] = $this->input->post('id');
+        $this->m_admin->supprSalle($data['id']);
+    }
+
+    function createSalle(){
+        $data["nom"] = $this->input->post('nom');
+        $this->m_admin->createSalle($data["nom"]);
     }
 
 }

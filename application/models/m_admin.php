@@ -27,4 +27,25 @@ class M_admin extends CI_Model
 
         $this->db->update_batch('professeur', $final, 'id');
     }
+
+    public function getSalle(){
+        $this->db->select('*');
+        $this->db->from('salle');
+        $query = $this->db->get();
+
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function supprSalle($id){
+        $this->db->where("id",$id);
+        $this->db->delete('salle');
+    }
+
+    public function createSalle($nom){
+        $data = array(
+            'nom' => $nom
+        );
+        $this->db->insert('salle', $data);
+    }
 }

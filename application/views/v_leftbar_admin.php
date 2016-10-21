@@ -21,6 +21,6 @@
         <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>"><span>Gestion Professeur</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>test</span>
+        <a href="<?php echo base_url('index.php/c_admin/gestionSalle');?>"><span>Gestion salles</span></a>
     </div>
 </div>
