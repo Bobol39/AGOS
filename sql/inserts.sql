@@ -1,5 +1,6 @@
 TRUNCATE `agos`.`professeur`;
 TRUNCATE `agos`.`salle`;
+TRUNCATE `agos`.`promotion`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('jccharr', 'Charr', 'Jean-Claude', 'jccharr'),
@@ -40,3 +41,11 @@ INSERT INTO `agos`.`salle` (`id`, `nom`) VALUES
 ('102', '102'),
 ('101', '101'),
 ('LP', 'LP');
+
+INSERT INTO `agos`.`promotion` (`id`, `nom`) VALUES
+  (1, 's1'),
+  (2, 's2'),
+  (3, 's3'),
+  (4, 's4'),
+  (5, 's5'),
+  (6, 'LP TeProW');

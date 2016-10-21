@@ -32,7 +32,6 @@ class M_admin extends CI_Model
         $this->db->select('*');
         $this->db->from('salle');
         $query = $this->db->get();
-
         $row = $query->result_array();
         return $row;
     }
@@ -47,5 +46,13 @@ class M_admin extends CI_Model
             'nom' => $nom
         );
         $this->db->insert('salle', $data);
+    }
+
+    public function getPromotions(){
+        $this->db->select('*');
+        $this->db->from('promotion');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
     }
 }

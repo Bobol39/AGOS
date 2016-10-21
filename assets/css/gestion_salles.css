@@ -2,18 +2,18 @@
     height: calc(100vh - 60px);
     background-color: #EAEAEA;
     padding: 0px;
+    overflow-y: scroll;
 }
 
-#table_prof {
+#table_salles {
     background-color: whitesmoke;
-    width: 80%;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
 }
 
-
-#table_prof th {
+#table_salles th {
     background-color:#05AE0E;
     height: 50px;
     line-height: 50px;
@@ -22,22 +22,22 @@
     cursor: pointer;
 }
 
-#table_prof th i {
+#table_salles th i {
     margin-right: 10px;
 }
 
-#table_prof td {
-    height: 30px;
-    line-height: 30px;
+#table_salles td {
+    height: 25px;
+    line-height: 25px;
     text-align: center;
 }
 
-#table_prof input {
+#table_salles input {
     height: 100%;
     border: none;
 }
 
-#valider{
+#createSalle{
     width: 25%;
     margin-top: 30px;
     border: none;
@@ -52,19 +52,22 @@
     background-color: #4cae4c;
 
 }
-#retablir{
-    width: 25%;
-    margin-top: 10px;
-    border: none;
-    background-color: #FF9500;
-    height: 50px;
-    line-height: 50px;
-    color: white;
-    font-size: 25px;
 
+#input_name_salle {
+    width: 25%;
+    display: inline-block;
 }
 
-#retablir:hover{
+.supprSalle {
+    margin-top: 5px;
+    border: none;
+    background-color: #FF9500;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+}
+
+.supprSalle:hover {
     background-color: #eea236;
 }
 

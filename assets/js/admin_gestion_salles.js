@@ -1,4 +1,7 @@
 $(function() {
+
+    $("#table_salles").tablesorter();
+
     $(".supprSalle").click(function () {
         supprSalle(this)
     });
@@ -27,7 +30,7 @@ function createSalle(){
         type: "POST",
         url: baseurl    + "index.php/c_admin/createSalle",
         data: {nom: name}
-    }).done(
-        location.reload()
-    );
+    }).done(function () {
+        location.reload();
+    });
 }

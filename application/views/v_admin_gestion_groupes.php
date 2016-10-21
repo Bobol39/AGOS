@@ -7,7 +7,7 @@
  */
 ?>
 
-<link href="<?php echo base_url();?>assets/css/groupes.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/gestion_groupes.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/datepicker.css" rel="stylesheet">
 
 <div class="col-lg-10 col-md-10" id="container_admin">
@@ -28,11 +28,9 @@
                 <label for="selectpromo" class="labform">Promo:</label>
                 <select id="selectpromo">
                     <option value="default">-- Choisissez une promotion --</option>
-                    <option value="s1">S1</option>
-                    <option value="s2">S2</option>>
-                    <option value="s3">S3</option>
-                    <option value="s4">S4</option>
-                    <option value="lp">LP</option>
+                    <?php foreach($promotion as $value){?>
+                        <option value="<?= $value['nom'] ?>"><?= $value['nom'] ?></option>
+                    <?php }?>
                 </select>
 
                 <label for="selectcriteres" class="labform">Critères:</label>
@@ -65,5 +63,5 @@
 </div>
 <script type="text/javascript" src="<?=base_url();?>assets/js/jquery.timepicker.min.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
-<script type="text/javascript" src="<?=base_url();?>assets/js/groupes.js"> </script>
+<script type="text/javascript" src="<?=base_url();?>assets/js/admin_gestion_groupes.js"> </script>
 

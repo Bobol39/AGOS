@@ -32,10 +32,7 @@ class C_admin extends CI_Controller
 
 
     function index(){
-        $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
-        $this->load->view("v_admin_groupes");
+        $this->gestionGroupes();
     }
 
 
@@ -69,7 +66,7 @@ class C_admin extends CI_Controller
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
-        $this->load->view("v_admin_salle",$data);
+        $this->load->view("v_admin_gestion_salles",$data);
     }
 
     function supprSalle(){
@@ -80,6 +77,14 @@ class C_admin extends CI_Controller
     function createSalle(){
         $data["nom"] = $this->input->post('nom');
         $this->m_admin->createSalle($data["nom"]);
+    }
+
+    function gestionGroupes(){
+        $data["promotion"] = $this->m_admin->getPromotions();
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_gestion_groupes",$data);
     }
 
 }
