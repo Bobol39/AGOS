@@ -1,0 +1,69 @@
+#container_admin{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    padding: 0px;
+}
+
+#table_prof {
+    background-color: whitesmoke;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+#table_prof th {
+    background-color:#05AE0E;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+#table_prof th i {
+    margin-right: 10px;
+}
+
+#table_prof td {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#table_prof input {
+    height: 100%;
+    border: none;
+}
+
+#valider{
+    width: 25%;
+    margin-top: 30px;
+    border: none;
+    background-color:#05AE0E;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    font-size: 25px;
+}
+
+#valider:hover{
+    background-color: #4cae4c;
+
+}
+#retablir{
+    width: 25%;
+    margin-top: 10px;
+    border: none;
+    background-color: #FF9500;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    font-size: 25px;
+
+}
+
+#retablir:hover{
+    background-color: #eea236;
+}
+

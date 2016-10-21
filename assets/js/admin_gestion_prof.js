@@ -1,4 +1,7 @@
 $(function() {
+
+    $("#table_prof").tablesorter();
+
     $("#valider").click(function () {
         saveAbre()
     });

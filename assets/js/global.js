@@ -14,3 +14,14 @@ function showNotification(title,text, typecolor) {
         },5000)
     })
 }
+
+
+function start_loading(){
+    $("#loading_layer").fadeIn()
+}
+
+function stop_loading(var success){
+    if (success == true){
+        $("#loading_layer").find("img").addClass("imgsuccess");
+    }
+}

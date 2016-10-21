@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.theme.min.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="<?=base_url();?>assets/css/font-awesome.css">
 
     <script src="<?=base_url();?>assets/js/jquery-3.1.1.min.js"  crossorigin="anonymous"></script>
     <script src="<?=base_url();?>assets/js/jquery-ui.min.js" crossorigin="anonymous"></script>
@@ -23,6 +24,10 @@
             <h3></h3>
         </div>
         <span id="textnotif"></span>
+    </div>
+
+    <div class="text-center" id="loading_layer">
+        <img class="img-responsive" src="<?=base_url();?>assets/img/loading.gif">
     </div>
 
     </head>
