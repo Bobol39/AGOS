@@ -20,8 +20,11 @@ function start_loading(){
     $("#loading_layer").fadeIn()
 }
 
-function stop_loading(var success){
-    if (success == true){
-        $("#loading_layer").find("img").addClass("imgsuccess");
-    }
+function stop_loading(error){
+    $("#loading_layer").fadeOut(50, function () {
+        if (error){
+            showNotification("Echec",error, "warning")
+        }
+    })
+
 }

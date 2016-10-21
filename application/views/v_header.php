@@ -26,8 +26,9 @@
         <span id="textnotif"></span>
     </div>
 
-    <div class="text-center" id="loading_layer">
+    <div class="text-center" id="loading_layer" style="display: none">
         <img class="img-responsive" src="<?=base_url();?>assets/img/loading.gif">
+        <span>Yolo</span>
     </div>
 
     </head>
