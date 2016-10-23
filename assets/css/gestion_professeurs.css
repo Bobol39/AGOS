@@ -2,6 +2,7 @@
     height: calc(100vh - 60px);
     background-color: #EAEAEA;
     padding: 0px;
+    overflow-y: scroll;
 }
 
 #table_prof {
