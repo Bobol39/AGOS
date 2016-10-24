@@ -14,13 +14,7 @@
     <div class="col-lg-1 col-md-1 button_navbar_fusion">
         <span>AGOS</span>
     </div>
-    <div class="col-lg-1 col-md-1 button_navbar_fusion">
-        <span>D</span>
-    </div>
-    <div class="col-lg-1 col-md-1 button_navbar_fusion">
-        <span>C</span>
-    </div>
-    <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1" id="block_titre_soutenance">
+    <div class="col-lg-4 col-lg-offset-3 col-md-4 col-md-offset-3" id="block_titre_soutenance">
         <span>Soutenance à propos de trucs</span>
     </div>
     <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-4 button_navbar_fusion" id="timeblock">

@@ -77,7 +77,8 @@ function chronoStop(){
     $.each([3, 5, 10, 15], function() {
         $('#colors_demo .tools').append("<a href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
     });
-    $('#colors_sketch').sketch();
+    $('#colors_sketch').sketch().attr("height",$('#colors_sketch').height()).attr('width',$('#colors_sketch').width());
+
 
     $("#switchtextdraw").click(function () {
             if ($(this).hasClass("switchtext")){

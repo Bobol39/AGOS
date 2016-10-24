@@ -127,7 +127,7 @@
             <a class="option_draw" href="#colors_sketch" data-color="black" ><button class="colorpicker" style="background-color: #0f0f0f"></button></a>
 
         </div>
-        <canvas id="colors_sketch"></canvas>
+        <canvas id="colors_sketch" width="" height=""></canvas>
         <textarea></textarea>
 
     </div>
