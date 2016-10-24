@@ -25,7 +25,7 @@ class Cas {
         $this->CI = $CI;
         $CI->config->load('cas');
         $this->phpcas_path = $CI->config->item('phpcas_path');
-        $this->cas_server_url = $CI->config->item('cas_server_url');
+        $this->cas_server_url = $this->cas_server_url;
 
         if (empty($this->phpcas_path)
             or filter_var($this->cas_server_url, FILTER_VALIDATE_URL) === FALSE) {
