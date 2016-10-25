@@ -45,13 +45,15 @@ function saveCritere(){
         return;
     }
 
+    start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/saveCritere",
         data: {titre: titre,bar: bar}
-    }).done(
-        location.reload()
-    );
+    }).done(function(){
+        stop_loading();
+        location.reload();
+    });
 }
 
 function saveGroupCritere(){
@@ -70,13 +72,15 @@ function saveGroupCritere(){
     crit5 = $("#crit4").val();
     crit6 = $("#crit5").val();
 
+    start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/createGroupCritere",
         data: {titre: titre,crit1: crit1,crit2: crit2,crit3: crit3,crit4: crit4,crit5: crit5,crit6: crit6}
-    }).done(
-        location.reload()
-    );
+    }).done( function(){
+        stop_loading();
+        location.reload();
+    });
 }
 
 function updateView(){
