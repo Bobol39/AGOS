@@ -48,24 +48,3 @@ body{
     padding-right: 10px;
 
 }
-
-#loading_layer{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 5000;
-}
-
-#loading_layer img{
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-}
-
-.imgsuccess{
-    content:url("../img/loading_success.gif"); !important
-}

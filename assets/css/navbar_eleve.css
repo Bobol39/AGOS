@@ -1,0 +1,32 @@
+#navbar_eleve {
+    background-color: #2C3E50;
+    height: 60px;
+    padding: 0px;
+}
+
+#logo_eleve, .button_navbar_eleve{
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.button_navbar_eleve:hover{
+    background-color: #34495E;
+}
+
+#logo_eleve span, .button_navbar_eleve span{
+    color: white;
+    line-height: 60px;
+    font-size: 25px;
+    width: 100%;
+}
+
+.button_navbar_eleve span {
+    font-size: 20px;
+}
+
+
+.button_navbar_eleve label{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

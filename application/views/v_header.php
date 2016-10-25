@@ -7,6 +7,7 @@
 
     <link href="<?=base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/css/global.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/loading.css" rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.structure.min.css">
     <link rel="stylesheet" href="<?=base_url();?>assets/css/jquery-ui.theme.min.css">
@@ -26,8 +27,17 @@
     </div>
 
     <div class="text-center" id="loading_layer" style="display: none">
-        <img class="img-responsive" src="<?=base_url();?>assets/img/loading.gif">
-        <span>Yolo</span>
+        <div class="in_up"></div>
+        <div class="loader">
+            <div class="inner one"></div>
+            <div class="inner one2"></div>
+            <div class="inner two"></div>
+            <div class="inner two2"></div>
+            <div class="inner three"></div>
+            <div class="inner three2"></div>
+            <div class="load">Chargement...</div>
+            <div class="loading_iut"><img src="<?=base_url();?>/assets/img/iut.png"></div>
+        </div>
     </div>
 
     </head>

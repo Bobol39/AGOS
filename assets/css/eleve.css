@@ -1,0 +1,51 @@
+#container_eleve{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    overflow-y: auto;
+    text-align: center;
+}
+
+#container_titre{
+    height: 20%;
+}
+
+#container_markup{
+    height: 70%;
+}
+
+#input_titre {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#container_upload {
+    height:100%;
+}
+
+#container_upload label{
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.markitUp{
+    margin-top: 10px;
+    height: 100%;
+    display: block;
+}
+
+#markup_editor{
+    resize: none;
+
+}
+
+#controls_markup{
+    height: 300px;
+    background-color: white;
+}
+
+
+
+
