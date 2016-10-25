@@ -30,11 +30,9 @@ class C_admin extends CI_Controller
 		$this->load->model('m_admin');
     }
 
-
     function index(){
         $this->gestionGroupes();
     }
-
 
     function gestionProf(){
         $data["prof"] = $this->m_admin->getAllProf();
@@ -46,6 +44,7 @@ class C_admin extends CI_Controller
 
     function showPlanning(){
         $data["salle"] = $this->m_admin->getSalle();
+        $data["prof"] = $this->m_admin->getAllProf();
 
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
@@ -86,6 +85,51 @@ class C_admin extends CI_Controller
         $this->load->view("v_leftbar_admin");
         $this->load->view("v_admin_gestion_groupes",$data);
     }
+
+    function gestionNotation(){
+        $data["critere"]= $this->m_admin->getAllCritere();
+        $data["groupe_critere"]= $this->m_admin->getAllGroupCritere();
+
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_gestion_notation",$data);
+    }
+
+    function saveCritere(){
+        $data["titre"]= $this->input->post('titre');
+        $data["bareme"] = $this->input->post('bar');
+        $this->m_admin->saveCritere($data["titre"],$data["bareme"]);
+    }
+
+    function createGroupCritere(){
+        $data["titre"]= $this->input->post('titre');
+        $data["crit1"]= $this->input->post('crit1');
+        $data["crit2"]= $this->input->post('crit2');
+        $data["crit3"]= $this->input->post('crit3');
+        $data["crit4"]= $this->input->post('crit4');
+        $data["crit5"]= $this->input->post('crit5');
+        $data["crit6"]= $this->input->post('crit6');
+        $this->m_admin->createGroupCritere($data);
+    }
+
+    function getCritereFromGroup(){
+        $id = $this->input->post('id');
+        $crit = $this->m_admin->getCritereFromGroup($id);
+        echo json_encode($crit);
+    }
+
+    function modifCritereFromGroup(){
+        $data["id"]= $this->input->post('id');
+        $data["crit1"]= $this->input->post('crit1');
+        $data["crit2"]= $this->input->post('crit2');
+        $data["crit3"]= $this->input->post('crit3');
+        $data["crit4"]= $this->input->post('crit4');
+        $data["crit5"]= $this->input->post('crit5');
+        $data["crit6"]= $this->input->post('crit6');
+        $this->m_admin->modifCritereFromGroup($data);
+    }
+
 
 }
 ?>

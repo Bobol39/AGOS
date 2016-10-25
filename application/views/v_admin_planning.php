@@ -48,8 +48,12 @@
                 </select>
             </div>
             <div class="col-lg-3 col-lg-3" id="block_modif_prof1">
-                <h3>Professeur 1</h3>
-                <input type="text" value="" placeholder="Input" class="form-control" />
+                <h3>Professeur 1 (Tuteur)</h3>
+                <select class="form-control" >
+                    <?php foreach ($prof as $value){ ?>
+                        <option value="<?= $value["id"]?>"><?= $value["nom"]." ".$value["prenom"]?></option>
+                    <?php }?>
+                </select>
             </div>
             <div class="col-lg-6 col-lg-6" id="block_modif_elevessalle">
                 <div id="block_modif_eleves" class="col-lg-9 col-md-9">
@@ -81,7 +85,11 @@
             </div>
             <div class="col-lg-3 col-lg-3" id="block_modif_prof2">
                 <h3>Professeur 2</h3>
-                <input type="text" value="" placeholder="Input" class="form-control" />
+                <select class="form-control" >
+                    <?php foreach ($prof as $value){ ?>
+                        <option value="<?= $value["id"]?>"><?= $value["nom"]." ".$value["prenom"]?></option>
+                    <?php }?>
+                </select>
             </div>
         </div>
     </div>
