@@ -36,9 +36,6 @@ CREATE TABLE `critere` (
 -- Contenu de la table `critere`
 --
 
-INSERT INTO `critere` (`id`, `titre`, `bareme`) VALUES
-(1, 'test1', 1),
-(2, 'test2', 2);
 
 -- --------------------------------------------------------
 
@@ -56,9 +53,6 @@ CREATE TABLE `critere_groupe_notation_jonction` (
 -- Contenu de la table `critere_groupe_notation_jonction`
 --
 
-INSERT INTO `critere_groupe_notation_jonction` (`id`, `id_critere`, `id_groupe_notation`) VALUES
-(1, 1, 1),
-(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -85,12 +79,7 @@ CREATE TABLE `groupe_notation` (
   `titre` varchar(120) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Contenu de la table `groupe_notation`
---
 
-INSERT INTO `groupe_notation` (`id`, `titre`) VALUES
-(1, 'ptut');
 
 -- --------------------------------------------------------
 
@@ -104,8 +93,10 @@ CREATE TABLE `planning` (
   `titre` varchar(50) NOT NULL,
   `id_promotion` int(11) NOT NULL,
   `date_debut` date NOT NULL,
+  `date2` date NOT NULL,
+  `date3` date NOT NULL,
   `date_fin` date NOT NULL,
-  `id_groupe_notation` int(11) DEFAULT NULL
+  `id_groupe_notation` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

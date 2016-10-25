@@ -159,4 +159,26 @@ class M_admin extends CI_Model
 
         $this->db->insert_batch('critere_groupe_notation_jonction', $data);
     }
+
+    public function saveGroupSoutenance($duree,$titre,$promo,$critere,$date){
+        $data = array(
+            'duree' => $duree,
+            'titre' => $titre,
+            'id_promotion' => $promo,
+            'date_debut' => $date["1"],
+            'date2' => $date["2"],
+            'date3' => $date["3"],
+            'date_fin' => $date["4"],
+            'id_groupe_notation' => $critere
+        );
+        $this->db->insert('planning',$data);
+    }
+
+    public function getAllGroupSoutenance(){
+        $this->db->select('*');
+        $this->db->from('planning');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
 }

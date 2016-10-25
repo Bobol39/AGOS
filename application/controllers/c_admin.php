@@ -80,6 +80,9 @@ class C_admin extends CI_Controller
 
     function gestionGroupes(){
         $data["promotion"] = $this->m_admin->getPromotions();
+        $data["groupe_critere"] = $this->m_admin->getAllGroupCritere();
+        $data["groupe_soutenance"] = $this->m_admin->getAllGroupSoutenance();
+
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
@@ -130,6 +133,22 @@ class C_admin extends CI_Controller
         $this->m_admin->modifCritereFromGroup($data);
     }
 
+    function saveGroupSoutenance(){
+        $duree = $this->input->post('duree');
+        $duree = "00:".$duree.":00";
+        $titre = $this->input->post('titre');
+        $promo = $this->input->post('promo');
+        $critere = $this->input->post('critere');
+        $date["1"] = $this->input->post('date1');
+        $date["1"] = date("Y-m-d", strtotime($date["1"]));
+        $date["2"] = $this->input->post('date2');
+        $date["2"] = date("Y-m-d", strtotime($date["2"]));
+        $date["3"] = $this->input->post('date3');
+        $date["3"] = date("Y-m-d", strtotime($date["3"]));
+        $date["4"] = $this->input->post('date4');
+        $date["4"] = date("Y-m-d", strtotime($date["4"]));
 
+        $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere,$date);
+    }
 }
 ?>
