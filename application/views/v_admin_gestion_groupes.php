@@ -6,6 +6,9 @@
  * Time: 16:23
  */
 ?>
+<script>
+    var baseurl = '<?php echo base_url();?>';
+</script>
 
 <link href="<?php echo base_url();?>assets/css/gestion_groupes.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/datepicker.css" rel="stylesheet">
@@ -29,15 +32,16 @@
                 <select id="selectpromo">
                     <option value="default">-- Choisissez une promotion --</option>
                     <?php foreach($promotion as $value){?>
-                        <option value="<?= $value['nom'] ?>"><?= $value['nom'] ?></option>
+                        <option value="<?= $value['id'] ?>"><?= $value['nom'] ?></option>
                     <?php }?>
                 </select>
 
                 <label for="selectcriteres" class="labform">Critères:</label>
                 <select name="selectcriteres" id="selectcriteres">
                     <option value="default">-- Choisissez des critères --</option>
-                    <option value="pt">Projets Tutorés</option>
-                    <option value="stage">Stage</option>
+                    <?php foreach($groupe_critere as $value){?>
+                        <option value="<?= $value['id'] ?>"><?= $value['titre'] ?></option>
+                    <?php }?>
                 </select>
 
                 <label for="duree" class="labform">Durée:</label>
@@ -46,15 +50,16 @@
             </div>
             <div class="col-lg-6 part_modif">
                 <label for="datepicker" class="labform">Jours:</label>
-                <input type="text" name="datepicker" class="datepicker">
-                <input type="text" name="datepicker" class="datepicker">
-                <input type="text" name="datepicker" class="datepicker">
-                <input type="text" name="datepicker" class="datepicker">
+                <input type="text" id="datepicker1" name="datepicker" class="datepicker">
+                <input type="text" id="datepicker2" name="datepicker" class="datepicker">
+                <input type="text" id="datepicker3" name="datepicker" class="datepicker">
+                <input type="text" id="datepicker4" name="datepicker" class="datepicker">
                 <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3">
                     <a href="<?php echo base_url("index.php/C_admin/showPlanning")?>">
                         <button class="btn btn-info" id="edit_planning">Planning</button>
                     </a>
                     <button class="btn btn-danger" id="delete_group">Supprimer</button>
+                    <button class="btn btn-info" id="valid_group">Valider</button>
                 </div>
 
             </div>
