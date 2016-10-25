@@ -173,4 +173,12 @@ class M_admin extends CI_Model
         );
         $this->db->insert('planning',$data);
     }
+
+    public function getAllGroupSoutenance(){
+        $this->db->select('*');
+        $this->db->from('planning');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
 }

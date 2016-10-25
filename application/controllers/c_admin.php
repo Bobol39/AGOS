@@ -81,6 +81,7 @@ class C_admin extends CI_Controller
     function gestionGroupes(){
         $data["promotion"] = $this->m_admin->getPromotions();
         $data["groupe_critere"] = $this->m_admin->getAllGroupCritere();
+        $data["groupe_soutenance"] = $this->m_admin->getAllGroupSoutenance();
 
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
