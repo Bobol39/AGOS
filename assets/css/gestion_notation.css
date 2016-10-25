@@ -1,0 +1,29 @@
+#container_admin{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    padding: 0px;
+}
+
+#container_groupe_notation, #container_creer_critere{
+    text-align: center;
+}
+
+
+#container_groupe_notation h4, #container_creer_critere h4, #container_groupe_notation h2, #container_creer_critere h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+#container_groupe_notation select {
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    margin: 5px;
+}
+
+#input_bar{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+}

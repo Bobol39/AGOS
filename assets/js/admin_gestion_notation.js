@@ -1,25 +1,20 @@
-var create = true;
-
 $(function() {
 
-    $("#create").hide();
     $("#select_groupe_critere").hide();
     $("#valider_crit").click(function () {
         saveCritere()
     });
     $("#valider").click(function () {
-        if (create){
+        if (isCreate()){
             saveGroupCritere();
         }else {
             modifGroupCritere();
         }
     });
-    $("#create").click(function () {
+    $('#radioCreer, #radioModif').change(function (evt) {
         updateView();
     });
-    $("#modif").click(function () {
-        updateView();
-    });
+
     $("#select_groupe_critere").change(function () {
         getCritereGroup()
     });
@@ -84,18 +79,14 @@ function saveGroupCritere(){
 }
 
 function updateView(){
-    if (create){
-        create = false;
-        $("#modif").hide();
+    if (!isCreate()){
+        $("#radioModif").prop("checked", true);
         $("#input_titre").hide();
-        $("#create").show();
         $("#select_groupe_critere").show();
         getCritereGroup();
     }else {
-        create = true;
-        $("#create").hide();
+        $("#radioCreer").prop("checked", true);
         $("#select_groupe_critere").hide();
-        $("#modif").show();
         $("#input_titre").show();
     }
 }
@@ -139,6 +130,11 @@ function modifGroupCritere(){
     }).done(
         stop_loading()
     );
+}
+
+function isCreate() {
+    return $("input:radio[name ='groupcreermodifier']:checked").val() == "creer";
+
 }
 
 
