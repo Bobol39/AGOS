@@ -55,4 +55,108 @@ class M_admin extends CI_Model
         $row = $query->result_array();
         return $row;
     }
+
+    public function saveCritere($titre,$bareme){
+        $data = array(
+            'titre' => $titre,
+            'bareme' => $bareme
+        );
+        $this->db->insert('critere',$data);
+    }
+
+    public function getAllCritere(){
+        $this->db->select('*');
+        $this->db->from('critere');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function createGroupCritere($val){
+        $data = array(
+            'titre' => $val["titre"]
+        );
+        $this->db->insert('groupe_notation', $data);
+        $id = $this->db->insert_id();
+
+        $data2 = array(
+            array(
+                'id_critere' => $val["crit1"] ,
+                'id_groupe_notation' => $id
+            ),
+            array(
+                'id_critere' => $val["crit2"] ,
+                'id_groupe_notation' => $id
+            ),
+            array(
+                'id_critere' => $val["crit3"] ,
+                'id_groupe_notation' => $id
+            ),
+            array(
+                'id_critere' => $val["crit4"] ,
+                'id_groupe_notation' => $id
+            ),
+            array(
+                'id_critere' => $val["crit5"] ,
+                'id_groupe_notation' => $id
+            ),
+            array(
+                'id_critere' => $val["crit6"] ,
+                'id_groupe_notation' => $id
+            )
+        );
+
+        $this->db->insert_batch('critere_groupe_notation_jonction', $data2);
+    }
+
+    public function getAllGroupCritere(){
+        $this->db->select('*');
+        $this->db->from('groupe_notation');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function getCritereFromGroup($id){
+        $this->db->select('critere.titre,critere.bareme,critere.id');
+        $this->db->from('critere_groupe_notation_jonction');
+        $this->db->join('critere','critere_groupe_notation_jonction.id_critere = critere.id');
+        $this->db->where('id_groupe_notation',$id);
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function modifCritereFromGroup($val){
+        $this->db->delete('critere_groupe_notation_jonction', array('id_groupe_notation' => $val["id"]));
+
+        $data = array(
+            array(
+                'id_critere' => $val["crit1"] ,
+                'id_groupe_notation' => $val["id"]
+            ),
+            array(
+                'id_critere' => $val["crit2"] ,
+                'id_groupe_notation' => $val["id"]
+            ),
+            array(
+                'id_critere' => $val["crit3"] ,
+                'id_groupe_notation' => $val["id"]
+            ),
+            array(
+                'id_critere' => $val["crit4"] ,
+                'id_groupe_notation' => $val["id"]
+            ),
+            array(
+                'id_critere' => $val["crit5"] ,
+                'id_groupe_notation' => $val["id"]
+            ),
+            array(
+                'id_critere' => $val["crit6"] ,
+                'id_groupe_notation' => $val["id"]
+            )
+        );
+
+        $this->db->insert_batch('critere_groupe_notation_jonction', $data);
+    }
 }

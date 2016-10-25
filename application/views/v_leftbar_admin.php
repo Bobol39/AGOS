@@ -18,9 +18,12 @@
         <a href="<?php echo base_url('index.php/c_admin/');?>"><span>Groupes</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>"><span>Gestion Professeur</span></a>
+        <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>"><span>Gestion professeur</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
         <a href="<?php echo base_url('index.php/c_admin/gestionSalle');?>"><span>Gestion salles</span></a>
+    </div>
+    <div class="col-lg-12 col-md-12 button_leftbar_admin">
+        <a href="<?php echo base_url('index.php/c_admin/gestionNotation');?>"><span>Gestion notation</span></a>
     </div>
 </div>
