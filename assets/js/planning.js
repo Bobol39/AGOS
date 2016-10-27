@@ -26,10 +26,11 @@ $(function() {
     });
 
     $('#test').timepicker();
+    $( "#tabs" ).tabs();
 });
 
 function addline(){
-    $("#container_soutenances").find("tbody").append(' \
+    $("#tabs").find("div").find("tbody").append(' \
             <tr>\
                 <td>\
                     <input type="time" class="changetime">\

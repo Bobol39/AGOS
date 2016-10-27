@@ -13,23 +13,35 @@
 
 <div class="col-lg-10 col-md-10" id="container_admin">
     <div class="col-lg-12 col-md-12" id="container_planning">
-        <div id="container_titres_colonnes" class="col-lg-11 col-md-11">
-            <table>
-                <tr>
-                    <th>TIME</th>
-                    <th>Lundi</th>
-                    <th>Mardi</th>
-                    <th>Mecredi</th>
-                    <th>Jeudi</th>
-                </tr>
-            </table>
-        </div>
         <div class="col-lg-11 col-md-11" id="container_soutenances">
-            <table>
-                <tbody>
+            <div id="tabs" style="height: 100%">
+                <ul>
+                    <li><a href="#tabs-1">Nunc tincidunt</a></li>
+                    <li><a href="#tabs-2">Proin dolor</a></li>
+                    <li><a href="#tabs-3">Aenean lacinia</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <table>
+                        <tbody>
 
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tabs-2">
+                    <table>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="tabs-3">
+                    <table>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="col-lg-1 col-md-1" id="container_controls_planning">
             <div id="container_addline" class="col-lg-12 col-md-12">
@@ -50,9 +62,9 @@
             <div class="col-lg-3 col-lg-3" id="block_modif_prof1">
                 <h3>Professeur 1 (Tuteur)</h3>
                 <select class="form-control" >
-                    <?php foreach ($prof as $value){ ?>
-                        <option value="<?= $value["id"]?>"><?= $value["nom"]." ".$value["prenom"]?></option>
-                    <?php }?>
+                    <?php /*foreach ($prof as $value){ */?>
+                        <option value="<?/*= $value["id"]*/?>"><?/*= $value["nom"]." ".$value["prenom"]*/?></option>
+                    <?php /*}*/?>
                 </select>
             </div>
             <div class="col-lg-6 col-lg-6" id="block_modif_elevessalle">
@@ -75,9 +87,9 @@
                     <h4>Salle</h4>
                     <div class="col-lg-12">
                         <select class="form-control">
-                            <?php foreach($salle as $value){
+                            <?php /*foreach($salle as $value){
                                 echo "<option value='".$value["id"]."'>".$value["nom"]."</option>";
-                            }?>
+                            }*/?>
                         </select>
                     </div>
                 </div>
@@ -86,13 +98,14 @@
             <div class="col-lg-3 col-lg-3" id="block_modif_prof2">
                 <h3>Professeur 2</h3>
                 <select class="form-control" >
-                    <?php foreach ($prof as $value){ ?>
-                        <option value="<?= $value["id"]?>"><?= $value["nom"]." ".$value["prenom"]?></option>
-                    <?php }?>
+                    <?php /*foreach ($prof as $value){ */?>
+                        <option value="<?/*= $value["id"]*/?>"><?/*= $value["nom"]." ".$value["prenom"]*/?></option>
+                    <?php /*}*/?>
                 </select>
             </div>
         </div>
     </div>
+
 </div>
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/jquery.timepicker.min.js"> </script>
