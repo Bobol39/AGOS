@@ -41,6 +41,10 @@ function selectButton(ui, slider) {
         $(".line"+selectedIndex).find(".btn-success").addClass("btn-fill");
     }
 }
+
+
+
+
 $(function() {
     startTime();
 
@@ -63,7 +67,7 @@ $(function() {
         create: function( event, ui ) {
             ui.values = $(this).slider('values');
             $(this).find("span:nth-child(2)").removeClass("ui-state-default");
-            selectButton(ui, $(this));
+            //selectButton(ui, $(this));
         },
     }).removeClass("ui-state-disabled");
 

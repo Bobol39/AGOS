@@ -28,6 +28,19 @@ function chronoStop(){
         $("#button_next").fadeIn();
     })
 }
+
+function afficherFiche() {
+    $("#fiche_layer").fadeIn(100, function () {
+        $("#fiche_viewer").animate({"height":"70%"},300);
+    })
+}
+
+function cacherFiche() {
+    $("#fiche_viewer").animate({"height":"10%"},300, function () {
+        $("#fiche_layer").fadeOut(100);
+    });
+}
+
 (function() {
     $("#button_next").hide();
     $("#notification").click(function () {
@@ -108,4 +121,14 @@ function chronoStop(){
         $("textarea").css("font-size", size)
     });
 
+    $("#button_fiche").click(function () {
+        afficherFiche();
+    });
+
+    $("#fiche_layer").click(function () {
+        cacherFiche();
+    });
+    $("#fiche_viewer").click(function (e) {
+        e.stopPropagation();
+    })
 })();

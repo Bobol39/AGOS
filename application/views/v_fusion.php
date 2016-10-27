@@ -63,69 +63,69 @@
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line1">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line2">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line3">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line4">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line5">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes line6">
-            <div class="col-lg-3 block_button"><button class="btn btn-danger ">I</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-warning btn-fill">S</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">M</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
         </div>
 
         <div class="col-lg-6 titleline text-center" style=" margin-top: 30px;">
             <span>Sujet</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes">
-            <div class="col-lg-3 col-lg-offset-3 block_button"><button class="btn btn-success ">0</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success btn-fill">1</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-success ">2</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
+            <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
         </div>
     </div>
     <div class="col-lg-2 col-md-2" id="block_note_finale">

@@ -1,3 +1,34 @@
+#fiche_layer {
+    position: absolute;
+    top:0px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 200;
+    display: none;
+}
+
+#fiche_viewer{
+    height: 10%;
+    width: 40%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: whitesmoke;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#fiche_header{
+    height: 60px;
+    background-color: #1f1d1d;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 #container_notation{
     height: calc(100vh - 60px);

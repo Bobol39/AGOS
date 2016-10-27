@@ -1,6 +1,13 @@
 <link href="<?=base_url();?>assets/css/notation.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
 
+
+<div id="fiche_layer">
+    <div id="fiche_viewer">
+        <div id="fiche_header"></div>
+    </div>
+</div>
+
 <div class="col-lg-12 col-md-12" id="container_notation">
     <div class="col-lg-12 col-md-12" id="block_notation">
         <div class="col-lg-3 col-md-3" style="height: 100%; padding: 30px 0 0;">
