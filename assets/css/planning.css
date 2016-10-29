@@ -26,24 +26,14 @@
     text-align: center;
 }
 
-#container_titres_lignes{
-    height: 60%;
-    background-color: whitesmoke;
-}
-
-#container_titres_lignes div{
-    height: 80px;
-    width: 100%;
-    margin-top: 20px;
-    line-height: 80px;
-}
 
 #container_soutenances{
     height: 60%;
     background-color: whitesmoke;
     padding: 0;
-    overflow-y: scroll;
+    overflow-:hidden
 }
+
 
 #container_soutenances table {
     width: 100%;
@@ -51,66 +41,90 @@
 }
 #container_soutenances table td {
     text-align: center;
-    width: 20%;
-    cursor: grabbing;
+    height: 50px;
+    line-height: 50px;
+    padding: 5px;
 }
-
-
-.button_soutenance{
-    height: 40px;
-    width: 90%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid #5cb85c;
-    border-radius: 4px;
-    cursor: pointer;
+#container_soutenances table th {
+    width: 10%;
+    padding: 3px;
 }
-
-.button_case{
-    height: 100%;
+#container_soutenances table th .bootstrap-select{
     width: 100%;
 }
+
+.buttonAjouter{
+    width: 100%;
+    background-color: transparent;
+    color: darkgray;
+    border: 2px solid darkgray;
+    font-weight: bolder;
+    height: 50px;
+    line-height: 50px;
+}
+.buttonAjouter:hover{
+    color: #05AE0E;
+    border: 2px solid #05AE0E;
+}
+
+.buttonSoutenance {
+    width: 100%;
+    border: 2px solid #05AE0E;
+    height: 50px;
+    padding: 0;
+    cursor: pointer;
+}
+.buttonSoutenance span {
+}
+.nomEleve{
+    color: #05AE0E;
+    font-weight: bold;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+
+}
+.nomProf1, .nomProf2{
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+
+}
+
+
+#tabs{
+    overflow: hidden;
+    height: 100%;
+}
+
+#tabs ul li a {
+    cursor: pointer;
+}
+.tabbed {
+    overflow: auto;
+    height: 100%;
+}
+
 #container_controls_planning{
     height: 60%;
     padding: 0;
 }
 
-#container_addline{
+#container_addline, #container_addcolumn {
     height: 20%;
-    padding: 0;
-}
-#addline{
-    height: 100%;
     width: 100%;
+    padding: 10px;
 }
-
-.changetime {
-    height: 40px;
-    margin-top: 20px;
-    line-height: 40px;
-}
-
-.nom_eleve{
+#addline, #addcolumn{
     width: 100%;
-    height: 100%;
+    background-color: transparent;
+    color: #05AE0E;
+    border: 2px solid #05AE0E;
     font-weight: bolder;
-    line-height: 40px;
+    margin-top: 10px;
+    height: 100%;
 }
 
-.num_salle{
-    width: 100%;
-    height: 33%;
-    font-style: italic;
-    line-height: 27px;
-}
-
-.nom_prof1, .nom_prof2{
-    width: 45%;
-    height: 33%;
-    display: inline-block;
-    line-height: 27px;
-}
 
 #container_modif_soutenances{
     height: 30%;
@@ -131,7 +145,7 @@
     width: 70%;
 }
 
-#block_modif_prof1, #block_modif_prof2, #block_modif_elevessalle{
+#block_modif_prof1, #block_modif_prof2, #block_modif_eleve{
     height: 80%;
     background-color: whitesmoke;
     border: 4px solid #EAEAEA;
@@ -139,10 +153,55 @@
     display: none;
 }
 
-#block_modif_eleves, #block_modif_salle{padding: 0}
-
 #container_modif_soutenances input{
     margin-top: 10px;
     height: 30px;
+}
+
+
+#promptday_layer {
+    position: absolute;
+    top:0px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 200;
+    display: none;
+}
+
+#promptday{
+    height: 10%;
+    width: 40%;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: whitesmoke;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#promptday_header{
+    height: 60px;
+    background-color: #1f1d1d;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: whitesmoke;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+}
+
+#promptday_content{
+    height: calc(100% - 60px);
+    width: 100%;
+    text-align: center;
+}
+
+#valider_promptday{
+    margin-top: 10px;
 }
 

@@ -94,6 +94,7 @@ class MY_LoginControl extends CI_Controller  {
         if($this->session->has_userdata('client') == null) {
             $this->session->set_userdata('client', phpCAS::client(CAS_VERSION_3_0, $cas_url['host'], $cas_url['port'], $cas_url['path'], false));
         }
+
     }
 
     public function logout(){
