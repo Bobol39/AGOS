@@ -8,10 +8,10 @@ var nouveauJour = "<table>" +
         "<thead>" +
             "<tr>" +
                 "<th></th>" +
-                "<th><select class='selectpicker' data-live-search='true' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' title='Salle' multiple></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
             "</tr>" +
         "</thead>" +
         "<tbody>" +
@@ -28,7 +28,7 @@ var nouveauCreneau = "<tr>" +
     "<th><input type='date' class='timepicker'></th>" +
     "</tr>";
 
-var nouvelleSalle ="<th><select class='selectpicker' data-live-search='true' title='Salle' multiple></select></th>";
+var nouvelleSalle ="<th><select class='selectpicker' data-size='5' data-live-search='true' title='Salle' multiple></select></th>";
 
 
 $(function() {
