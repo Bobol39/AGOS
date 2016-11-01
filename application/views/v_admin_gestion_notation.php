@@ -45,15 +45,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-12 col-md-12" id="choice_critere">
                 <h4>Critères :</h4>
                 <?php for ($i = 0; $i<6;$i++){ ?>
-                    <div class="col-lg-2 col-md-2"><select id="crit<?=$i?>">
+                    <div class="col-lg-2 col-md-2 crit_div"><select class="crit">
                         <?php foreach($critere as $value){?>
                             <option value="<?= $value["id"] ?>"><?= $value["titre"]." : ".$value["bareme"] ?> </option>
                         <?php } ?>
                     </select></div>
                 <?php } ?>
+                <button id="add_critere">+ critere</button>
                 <button id="valider" class="btn btn-success">Valider</button>
             </div>
         </div>

@@ -11,6 +11,9 @@ $(function() {
             modifGroupCritere();
         }
     });
+    $("#add_critere").click(function(){
+        $("#add_critere").prev().clone().insertBefore("#add_critere");
+    });
     $('#radioCreer, #radioModif').change(function (evt) {
         updateView();
     });
@@ -60,12 +63,7 @@ function saveGroupCritere(){
         return;
     }
 
-    crit1 = $("#crit0").val();
-    crit2 = $("#crit1").val();
-    crit3 = $("#crit2").val();
-    crit4 = $("#crit3").val();
-    crit5 = $("#crit4").val();
-    crit6 = $("#crit5").val();
+    $(".crit").each("");
 
     start_loading();
     jQuery.ajax({
