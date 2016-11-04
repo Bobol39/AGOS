@@ -50,9 +50,10 @@
                 <?php for ($i = 0; $i<6;$i++){ ?>
                     <div class="col-lg-2 col-md-2 crit_div"><select class="crit">
                         <?php foreach($critere as $value){?>
-                            <option value="<?= $value["id"] ?>"><?= $value["titre"]." : ".$value["bareme"] ?> </option>
+                            <option value="<?= $value["id"] ?>"><?= $value["titre"] ?> </option>
                         <?php } ?>
-                    </select></div>
+                    </select>
+                    <input type="number" class="bareme" placeholder="bareme"></div>
                 <?php } ?>
                 <button id="add_critere">+ critere</button>
                 <button id="valider" class="btn btn-success">Valider</button>
@@ -63,8 +64,6 @@
         <h2>Créer un critère</h2>
         <h4>Titre : </h4>
         <input type="text" id="input_titre_crit" class="form-control">
-        <h4>Barème : </h4>
-        <input type="number" id="input_bar" class="form-control">
         <button id="valider_crit" class="btn btn-success">Valider</button>
     </div>
 

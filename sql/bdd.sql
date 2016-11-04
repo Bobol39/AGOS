@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `critere` (
   `id` int(11) NOT NULL,
-  `titre` varchar(50) NOT NULL,
-  `bareme` float NOT NULL
+  `titre` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -46,7 +45,8 @@ CREATE TABLE `critere` (
 CREATE TABLE `critere_groupe_notation_jonction` (
   `id` int(11) NOT NULL,
   `id_critere` int(11) NOT NULL,
-  `id_groupe_notation` int(11) NOT NULL
+  `id_groupe_notation` int(11) NOT NULL,
+  `bareme` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --

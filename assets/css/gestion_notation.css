@@ -21,9 +21,9 @@
     margin: 5px;
 }
 
-#input_bar{
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5px;
+.bareme{
+    width: 100%;
+    margin:5px;
+    text-align: center;
+    border: 1px solid #DDDDDD;
 }

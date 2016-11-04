@@ -56,10 +56,9 @@ class M_admin extends CI_Model
         return $row;
     }
 
-    public function saveCritere($titre,$bareme){
+    public function saveCritere($titre){
         $data = array(
-            'titre' => $titre,
-            'bareme' => $bareme
+            'titre' => $titre
         );
         $this->db->insert('critere',$data);
     }
@@ -79,33 +78,15 @@ class M_admin extends CI_Model
         $this->db->insert('groupe_notation', $data);
         $id = $this->db->insert_id();
 
-        $data2 = array(
-            array(
-                'id_critere' => $val["crit1"] ,
-                'id_groupe_notation' => $id
-            ),
-            array(
-                'id_critere' => $val["crit2"] ,
-                'id_groupe_notation' => $id
-            ),
-            array(
-                'id_critere' => $val["crit3"] ,
-                'id_groupe_notation' => $id
-            ),
-            array(
-                'id_critere' => $val["crit4"] ,
-                'id_groupe_notation' => $id
-            ),
-            array(
-                'id_critere' => $val["crit5"] ,
-                'id_groupe_notation' => $id
-            ),
-            array(
-                'id_critere' => $val["crit6"] ,
-                'id_groupe_notation' => $id
-            )
-        );
-
+        $data2 = array();
+        foreach($val["array"] as $value){
+            $temp = array(
+                'id_critere' => $value[0] ,
+                'id_groupe_notation' => $id,
+                'bareme' => $value[1]
+            );
+            array_push($data2,$temp);
+        }
         $this->db->insert_batch('critere_groupe_notation_jonction', $data2);
     }
 

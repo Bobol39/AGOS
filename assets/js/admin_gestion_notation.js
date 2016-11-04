@@ -24,30 +24,20 @@ $(function() {
 });
 function saveCritere(){
     $("#input_titre_crit").css("border","initial");
-    $("#input_bar").css("border","initial");
 
-    val = false;
     titre = $("#input_titre_crit").val();
-    bar = $("#input_bar").val();
 
     if (titre == ""){
         $("#input_titre_crit").css("border","red 2px solid");
-        val = true;
-
-    }
-    if (bar == ""){
-        $("#input_bar").css("border","red 2px solid");
-        val = true;
-    }
-    if (val){
         return;
     }
+
 
     start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/saveCritere",
-        data: {titre: titre,bar: bar}
+        data: {titre: titre}
     }).done(function(){
         stop_loading();
         location.reload();
@@ -55,21 +45,35 @@ function saveCritere(){
 }
 
 function saveGroupCritere(){
+    var array = [];
+    var test = false;
     $("#input_titre").css("border","initial");
+    $(".bareme").css("border","1px solid #DDDDDD");
 
     titre = $("#input_titre").val();
     if (titre == ""){
         $("#input_titre").css("border","red 2px solid");
         return;
     }
+    $(".bareme").each(function(){
+        if ($(this).val() == ""){
+            $(this).css('border','red 2px solid');
+            test = true;
+        }
+    });
+    if (test){
+        return;
+    }
 
-    $(".crit").each("");
-
+    $(".crit").each(function(){
+        temp = [$(this).val(),$(this).next().val()];
+        array.push(temp);
+    });
     start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/createGroupCritere",
-        data: {titre: titre,crit1: crit1,crit2: crit2,crit3: crit3,crit4: crit4,crit5: crit5,crit6: crit6}
+        data: {titre: titre,array: JSON.stringify(array)}
     }).done( function(){
         stop_loading();
         location.reload();
