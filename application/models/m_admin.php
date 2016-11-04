@@ -99,7 +99,7 @@ class M_admin extends CI_Model
     }
 
     public function getCritereFromGroup($id){
-        $this->db->select('critere.titre,critere.bareme,critere.id');
+        $this->db->select('critere.titre,critere_groupe_notation_jonction.bareme,critere.id');
         $this->db->from('critere_groupe_notation_jonction');
         $this->db->join('critere','critere_groupe_notation_jonction.id_critere = critere.id');
         $this->db->where('id_groupe_notation',$id);
@@ -111,32 +111,15 @@ class M_admin extends CI_Model
     public function modifCritereFromGroup($val){
         $this->db->delete('critere_groupe_notation_jonction', array('id_groupe_notation' => $val["id"]));
 
-        $data = array(
-            array(
-                'id_critere' => $val["crit1"] ,
-                'id_groupe_notation' => $val["id"]
-            ),
-            array(
-                'id_critere' => $val["crit2"] ,
-                'id_groupe_notation' => $val["id"]
-            ),
-            array(
-                'id_critere' => $val["crit3"] ,
-                'id_groupe_notation' => $val["id"]
-            ),
-            array(
-                'id_critere' => $val["crit4"] ,
-                'id_groupe_notation' => $val["id"]
-            ),
-            array(
-                'id_critere' => $val["crit5"] ,
-                'id_groupe_notation' => $val["id"]
-            ),
-            array(
-                'id_critere' => $val["crit6"] ,
-                'id_groupe_notation' => $val["id"]
-            )
-        );
+        $data = array();
+        foreach($val["array"] as $value){
+            $temp = array(
+                'id_critere' => $value[0] ,
+                'id_groupe_notation' => $val["id"],
+                'bareme' => $value[1]
+            );
+            array_push($data,$temp);
+        }
 
         $this->db->insert_batch('critere_groupe_notation_jonction', $data);
     }

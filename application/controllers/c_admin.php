@@ -121,12 +121,9 @@ class C_admin extends CI_Controller
 
     function modifCritereFromGroup(){
         $data["id"]= $this->input->post('id');
-        $data["crit1"]= $this->input->post('crit1');
-        $data["crit2"]= $this->input->post('crit2');
-        $data["crit3"]= $this->input->post('crit3');
-        $data["crit4"]= $this->input->post('crit4');
-        $data["crit5"]= $this->input->post('crit5');
-        $data["crit6"]= $this->input->post('crit6');
+        $data["array"] = $this->input->post('array');
+        $decode = json_decode($data["array"]);
+        $data["array"] = json_decode(json_encode($decode), True);
         $this->m_admin->modifCritereFromGroup($data);
     }
 
