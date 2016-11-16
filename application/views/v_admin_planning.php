@@ -38,11 +38,14 @@ $js_array = json_encode($salle)
             </div>
         </div>
         <div class="col-lg-1 col-md-1" id="container_controls_planning">
-            <div id="container_addline" class="col-lg-12 col-md-12">
+            <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-info" id="addline">+creneau</button>
             </div>
-            <div id="container_addcolumn" class="col-lg-12 col-md-12">
+            <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-info" id="addcolumn">+salle</button>
+            </div>
+            <div  class="col-lg-12 col-md-12 container_controls">
+                <button class="btn btn-info" id="removeday">-jour</button>
             </div>
         </div>
         <div class="col-lg-11 col-md-11" id="container_modif_soutenances">

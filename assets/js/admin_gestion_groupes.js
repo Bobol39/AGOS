@@ -19,14 +19,12 @@ $(function() {
     $("#valid_group").click(function(){
        controlInformation();
     });
-
-    $(".datepicker").datepicker();
 });
 
 function editGroup(container) {
     $("#titregroupe").val(container.find("button").text())
         .off("change").change(function () {
-            container.find("button").text($(this).val())
+            container.find("button").text($(this).val());
         });
     $('#selectpromo').find('option[value='+container.find(".group_promo").val()+']').prop('selected', true)
     $('#selectpromo').off("change").change(function () {
@@ -59,13 +57,13 @@ function controlInformation(){
         return;
     }
 
-    start_loading();
+    //start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/saveGroupSoutenance",
         data: {titre: titre,promo: promo,critere: critere,date1: date1,date2: date2,date3: date3,date4: date4,duree: duree}
     }).done( function(){
-        stop_loading();
+        //stop_loading();
         location.reload();
     });
 }

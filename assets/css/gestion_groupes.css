@@ -60,10 +60,6 @@
     background-color: #4cae4c;
 }
 
-#container_controls_groupes{
-    height: 60%;
-    padding: 0;
-}
 
 #container_modif_groupes{
     height: 30%;
@@ -92,10 +88,10 @@
     width: 30%;
 }
 
-#edit_planning, #delete_group{
+#edit_planning, #delete_group, #valid_group{
     height: 40px;
     width: 45%;
-    margin-top: 50px;
+    margin-top: 20px;
     display: inline-block;
 }
 

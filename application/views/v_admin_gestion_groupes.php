@@ -12,6 +12,8 @@
 
 <link href="<?php echo base_url();?>assets/css/gestion_groupes.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/datepicker.css" rel="stylesheet">
+<link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
+
 
 <div class="col-lg-10 col-md-10" id="container_admin">
     <div class="col-lg-12 col-md-12" id="container_groupes">
@@ -19,9 +21,6 @@
             <div class="container_groupe col-lg-3 col-md-3">
                 <button id="button_add_groupe">+</button>
             </div>
-        </div>
-        <div class="col-lg-1 col-md-1" id="container_controls_groupes">
-
         </div>
         <div class="col-lg-11 col-md-11" id="container_modif_groupes">
             <div class="col-lg-6 part_modif">
@@ -49,17 +48,12 @@
 
             </div>
             <div class="col-lg-6 part_modif">
-                <label for="datepicker" class="labform">Jours:</label>
-                <input type="text" id="datepicker1" name="datepicker" class="datepicker">
-                <input type="text" id="datepicker2" name="datepicker" class="datepicker">
-                <input type="text" id="datepicker3" name="datepicker" class="datepicker">
-                <input type="text" id="datepicker4" name="datepicker" class="datepicker">
-                <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3">
+                <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 text-center">
                     <a href="<?php echo base_url("index.php/C_admin/showPlanning")?>">
                         <button class="btn btn-info" id="edit_planning">Planning</button>
-                    </a>
-                    <button class="btn btn-danger" id="delete_group">Supprimer</button>
-                    <button class="btn btn-info" id="valid_group">Valider</button>
+                    </a><br>
+                    <button class="btn btn-danger" id="delete_group">Supprimer</button><br>
+                    <button class="btn btn-success" id="valid_group">Valider</button>
                 </div>
 
             </div>

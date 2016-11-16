@@ -6,6 +6,7 @@
 
 #container_planning{
     height: 100%;
+    padding: 0;
 }
 
 #container_titres_colonnes{
@@ -110,12 +111,12 @@
     padding: 0;
 }
 
-#container_addline, #container_addcolumn {
+.container_controls {
     height: 20%;
     width: 100%;
     padding: 10px;
 }
-#addline, #addcolumn{
+#addline, #addcolumn, #removeday{
     width: 100%;
     background-color: transparent;
     color: #05AE0E;

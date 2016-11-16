@@ -39,6 +39,17 @@ $(function() {
     $("#addcolumn").click(function(){
         ajouterSalle();
     });
+
+    $("#removeday").click(function () {
+        var index = $('#tabs').tabs("option","active");
+        var date = $("#tabs").find(".ui-tabs-nav li:eq("+index+")").text();
+        if (disableddates.indexOf(date)>-1) disableddates.splice(disableddates.indexOf(date), 1);
+        else alert(date);
+        $("#tabs").find(".ui-tabs-nav li:eq("+index+")").remove();
+        $("#tabs").tabs("refresh");
+
+
+    });
     $("#newday_datepicker").datepicker({
         beforeShowDay: function (date) {
             var string = $.datepicker.formatDate('mm/dd/yy', date);
