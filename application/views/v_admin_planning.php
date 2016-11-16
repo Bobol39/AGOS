@@ -16,7 +16,6 @@ $js_array = json_encode($salle)
 <script>
 
     <?php echo "var salles = ".$js_array.";\n"?>
-    console.log(salles)
 </script>
 <div id="promptday_layer">
     <div id="promptday">

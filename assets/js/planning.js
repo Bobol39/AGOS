@@ -16,7 +16,7 @@ var nouveauJour = "<table>" +
         "</thead>" +
         "<tbody>" +
             "<tr>" +
-                "<th><input type='date' class='timepicker'></th>" +
+                "<th><input class='picktime'></th>" +
                 nouveauAjouter +
                 nouveauAjouter +
                 nouveauAjouter +
@@ -107,7 +107,7 @@ function ajouterJour() {
     $("div#tabs").tabs("refresh");
     var index = $('#tabs a[href="#tab'+num_tabs+'"]').parent().index();
     $("#tabs").tabs("option", "active", index);
-    $(".timepicker").timepicker({
+   $(".picktime").timepicker({
         'minTime': '8:00',
         'maxTime': '19:30',
         'timeFormat': "G:i"
@@ -133,7 +133,7 @@ function bindAjouter(){
 
 function ajouterCreneau() {
     $("#tabs .ui-tabs-panel:visible").find("tbody").append(nouveauCreneau);
-    $(".timepicker").timepicker({
+    $(".picktime").timepicker({
         'minTime': '8:00',
         'maxTime': '19:30',
         'timeFormat': "G:i"
