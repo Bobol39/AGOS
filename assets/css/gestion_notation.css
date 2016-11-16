@@ -17,9 +17,10 @@
 
 .crit_div{
     display: inline-block;
-    max-width: 20%;
+    padding: 5px;
 }
 
 .crit, .bareme{
     width: 100%;
+    margin: 1px;
 }

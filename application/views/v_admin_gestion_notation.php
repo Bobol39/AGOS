@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12" id="choice_critere">
                 <h4>Critères :</h4>
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="container_crits">
                 <?php for ($i = 0; $i<4;$i++){ ?>
                     <div class="crit_div">
                         <select class="crit">

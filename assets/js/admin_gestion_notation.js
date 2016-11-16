@@ -1,3 +1,4 @@
+var div;
 $(function() {
     $("#select_groupe_critere").hide();
     $("#valider_crit").click(function () {
@@ -25,7 +26,7 @@ $(function() {
 });
 var create = true;
 function addCritere(){
-    $("#add_critere").prev().clone().insertBefore("#add_critere");
+    $(".crit_div").last().clone().appendTo($(".crit_div").last().parent());
 }
 
 function saveCritere(){
@@ -103,7 +104,7 @@ function updateView(){
         $(".crit_div").each(function(){
             $(this).remove();
         });
-        $("#add_critere").before(div);
+        $("#container_crits").append(div);
         for(i=0;i<4;i++){
             addCritere();
         }
@@ -114,7 +115,7 @@ function updateView(){
 function getCritereGroup(){
     console.log("ok");
     id = $("#select_groupe_critere").val();
-    var div = $(".crit_div").first();
+    if (div==null) div = $(".crit_div").first();
     $(".crit_div").each(function(){
        $(this).remove();
     });
@@ -127,16 +128,11 @@ function getCritereGroup(){
     }).done( function(data) {
         data = $.parseJSON(data);
         console.log(data);
-        i = 0;
         $.each(data,function(){
-            if (i == 0 ){
-                $("#add_critere").before(div);
-            }else {
-                addCritere();
-            }
+            $("#container_crits").append(div.clone());
+
             $(".crit_div").last().children(".crit").val($(this)[0]['id']);
             $(".crit_div").last().children(".bareme").val($(this)[0]['bareme']);
-            i++;
         });
         stop_loading();
     }).fail( function(data){
@@ -176,7 +172,7 @@ function modifGroupCritere(){
 }
 
 function enleverCritere(){
-    $("#add_critere").prev().remove();
+    $(".crit_div").last().remove();
 }
 
 
