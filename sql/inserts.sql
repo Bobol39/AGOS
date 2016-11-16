@@ -1,6 +1,9 @@
 TRUNCATE `agos`.`professeur`;
 TRUNCATE `agos`.`salle`;
 TRUNCATE `agos`.`promotion`;
+TRUNCATE `agos`.`critere`;
+TRUNCATE `agos`.`groupe_notation`;
+TRUNCATE `agos`.`critere_groupe_notation_jonction`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('jccharr', 'Charr', 'Jean-Claude', 'jccharr'),
@@ -49,3 +52,19 @@ INSERT INTO `agos`.`promotion` (`id`, `nom`) VALUES
   (4, 's4'),
   (5, 's5'),
   (6, 'LP TeProW');
+
+INSERT INTO `agos`.`critere` (`id`, `titre`) VALUES
+  (1, 'crit1'),
+  (2, 'crit2'),
+  (3, 'crit3');
+
+
+INSERT INTO `agos`.`groupe_notation` (`id`, `titre`) VALUES
+  (1, 'group1'),
+  (2, 'group2'),
+  (3, 'group3');
+
+INSERT INTO `agos`.`critere_groupe_notation_jonction` (`id`, `id_critere`, `id_groupe_notation`, `bareme`) VALUES
+  (1, 1, 1, 0),
+  (2, 2,1, 2.0),
+  (3, 2,1, 1.0);

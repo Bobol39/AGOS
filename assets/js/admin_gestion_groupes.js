@@ -1,7 +1,7 @@
 $(function() {
     var newbutton = '\
         <div class="container_groupe col-lg-3 col-md-3">\
-            <button class="btn btn-success btn-fill button_groupe"></button>\
+            <button class="btn btn-success btn-fill button_groupe">Nouveau Groupe</button>\
             <input type="hidden" class="group_promo" value="default">\
             <input type="hidden" class="group_criteres" value="default">\
             <input type="hidden" class="group_duree" value="40">\
@@ -18,6 +18,10 @@ $(function() {
 
     $("#valid_group").click(function(){
        controlInformation();
+    });
+
+    $("#delete_group").click(function(){
+        deleteGroup();
     });
 });
 
@@ -47,23 +51,19 @@ function controlInformation(){
     titre = $("#titregroupe").val();
     promo = $("#selectpromo").val();
     critere = $("#selectcriteres").val();
-    date1 = $("#datepicker1").val();
-    date2 = $("#datepicker2").val();
-    date3 = $("#datepicker3").val();
-    date4 = $("#datepicker4").val();
 
-    if (titre == "" || promo == "" || critere == "" || date1=="" || date2=="" || date3=="" || date4=="" || duree==""){
-        showNotification("Champs non remplis","Veuillez remplir tout les champs avant de valider ce groupe.","warning");
+    if (titre == "" || promo == "" || critere == "" || duree==""){
+        showNotification("Champs non remplis","Veuillez remplir tous les champs avant de valider ce groupe.","warning");
         return;
     }
 
-    //start_loading();
+    start_loading();
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/saveGroupSoutenance",
-        data: {titre: titre,promo: promo,critere: critere,date1: date1,date2: date2,date3: date3,date4: date4,duree: duree}
+        data: {titre: titre,promo: promo,critere: critere,duree: duree}
     }).done( function(){
-        //stop_loading();
+        stop_loading();
         location.reload();
     });
 }

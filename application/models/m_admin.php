@@ -129,10 +129,6 @@ class M_admin extends CI_Model
             'duree' => $duree,
             'titre' => $titre,
             'id_promotion' => $promo,
-            'date_debut' => $date["1"],
-            'date2' => $date["2"],
-            'date3' => $date["3"],
-            'date_fin' => $date["4"],
             'id_groupe_notation' => $critere
         );
         $this->db->insert('planning',$data);

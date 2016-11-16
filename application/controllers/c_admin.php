@@ -133,16 +133,8 @@ class C_admin extends CI_Controller
         $titre = $this->input->post('titre');
         $promo = $this->input->post('promo');
         $critere = $this->input->post('critere');
-        $date["1"] = $this->input->post('date1');
-        $date["1"] = date("Y-m-d", strtotime($date["1"]));
-        $date["2"] = $this->input->post('date2');
-        $date["2"] = date("Y-m-d", strtotime($date["2"]));
-        $date["3"] = $this->input->post('date3');
-        $date["3"] = date("Y-m-d", strtotime($date["3"]));
-        $date["4"] = $this->input->post('date4');
-        $date["4"] = date("Y-m-d", strtotime($date["4"]));
 
-        $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere,$date);
+        $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere);
     }
 }
 ?>

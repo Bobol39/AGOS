@@ -25,6 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `critere`
 --
+DROP TABLE critere, critere_groupe_notation_jonction, etudiant, groupe_notation, planning, professeur, promotion, salle, soutenance;
 
 CREATE TABLE `critere` (
   `id` int(11) NOT NULL,
@@ -92,10 +93,6 @@ CREATE TABLE `planning` (
   `duree` time NOT NULL,
   `titre` varchar(50) NOT NULL,
   `id_promotion` int(11) NOT NULL,
-  `date_debut` date NOT NULL,
-  `date2` date NOT NULL,
-  `date3` date NOT NULL,
-  `date_fin` date NOT NULL,
   `id_groupe_notation` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
