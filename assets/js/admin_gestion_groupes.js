@@ -1,13 +1,13 @@
+
 $(function() {
     var newbutton = '\
-        <div class="container_groupe col-lg-3 col-md-3">\
-            <button class="btn btn-success btn-fill button_groupe">Nouveau Groupe</button>\
-            <input type="hidden" class="group_promo" value="default">\
-            <input type="hidden" class="group_criteres" value="default">\
-            <input type="hidden" class="group_duree" value="40">\
-        </div>';
-
-
+            <div class="container_groupe col-lg-3 col-md-3">\
+                <button class="btn btn-success btn-fill button_groupe">Nouveau Groupe</button>\
+                <input type="hidden" class="group_promo" value="default">\
+                <input type="hidden" class="group_criteres" value="default">\
+                <input type="hidden" class="group_duree" value="40">\
+                <input type="hidden" class="id_group" value="0">\
+            </div>';
 
     $("#button_add_groupe").click(function () {
         $(this).parent().before(newbutton);
@@ -20,8 +20,8 @@ $(function() {
        controlInformation();
     });
 
-    $("#delete_group").click(function(){
-        deleteGroup();
+    $(".button_groupe").click(function () {
+        editGroup($(this).parent());
     });
 });
 
@@ -30,7 +30,7 @@ function editGroup(container) {
         .off("change").change(function () {
             container.find("button").text($(this).val());
         });
-    $('#selectpromo').find('option[value='+container.find(".group_promo").val()+']').prop('selected', true)
+    $('#selectpromo').find('option[value='+container.find(".group_promo").val()+']').prop('selected', true);
     $('#selectpromo').off("change").change(function () {
         container.find(".group_promo").val($(this).val())
     });
@@ -67,3 +67,4 @@ function controlInformation(){
         location.reload();
     });
 }
+

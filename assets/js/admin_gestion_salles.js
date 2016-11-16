@@ -18,8 +18,9 @@ function supprSalle(elt){
         type: "POST",
         url: baseurl    + "index.php/c_admin/supprSalle",
         data: {id: id}
-    }).done(
-        location.reload()
+    }).done(function () {
+            location.reload()
+        }
     );
 }
 

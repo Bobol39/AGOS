@@ -129,7 +129,6 @@ class C_admin extends CI_Controller
 
     function saveGroupSoutenance(){
         $duree = $this->input->post('duree');
-        $duree = "00:".$duree.":00";
         $titre = $this->input->post('titre');
         $promo = $this->input->post('promo');
         $critere = $this->input->post('critere');

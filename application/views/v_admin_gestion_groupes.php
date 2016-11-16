@@ -18,6 +18,15 @@
 <div class="col-lg-10 col-md-10" id="container_admin">
     <div class="col-lg-12 col-md-12" id="container_groupes">
         <div class="col-lg-11 col-md-11" id="container_affichage_groupes">
+            <?php foreach($groupe_soutenance as $group){?>
+                <div class="container_groupe col-lg-3 col-md-3">
+                    <button class="btn btn-success btn-fill button_groupe"><?= $group['titre'] ?></button>
+                    <input type="hidden" class="group_promo" value="<?= $group['id_promotion'] ?>">
+                    <input type="hidden" class="group_criteres" value="<?= $group['id_groupe_notation'] ?>">
+                    <input type="hidden" class="group_duree" value="<?= $group['duree'] ?>">
+                    <input type="hidden" class="id_group" value="0">
+                </div>
+            <?php } ?>
             <div class="container_groupe col-lg-3 col-md-3">
                 <button id="button_add_groupe">+</button>
             </div>

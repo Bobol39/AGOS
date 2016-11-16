@@ -90,7 +90,7 @@ CREATE TABLE `groupe_notation` (
 
 CREATE TABLE `planning` (
   `id` int(11) NOT NULL,
-  `duree` time NOT NULL,
+  `duree` INT(11) NOT NULL,
   `titre` varchar(50) NOT NULL,
   `id_promotion` int(11) NOT NULL,
   `id_groupe_notation` int(11) NOT NULL

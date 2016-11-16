@@ -4,6 +4,7 @@ TRUNCATE `agos`.`promotion`;
 TRUNCATE `agos`.`critere`;
 TRUNCATE `agos`.`groupe_notation`;
 TRUNCATE `agos`.`critere_groupe_notation_jonction`;
+TRUNCATE `agos`.`planning`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('jccharr', 'Charr', 'Jean-Claude', 'jccharr'),
