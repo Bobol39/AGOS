@@ -47,16 +47,20 @@
         <div class="row">
             <div class="col-lg-12 col-md-12" id="choice_critere">
                 <h4>Critères :</h4>
+                <div class="col-lg-12">
                 <?php for ($i = 0; $i<4;$i++){ ?>
-                    <div class="col-lg-2 col-md-2 crit_div"><select class="crit">
+                    <div class="crit_div">
+                        <select class="crit">
                         <?php foreach($critere as $value){?>
                             <option value="<?= $value["id"] ?>"><?= $value["titre"] ?> </option>
                         <?php } ?>
-                    </select>
-                    <input type="number" class="bareme" placeholder="bareme"></div>
+                        </select>
+                        <input type="number" class="bareme" placeholder="bareme">
+                    </div>
                 <?php } ?>
-                <button id="add_critere">+ critere</button>
-                <button id="moins_critere">- critere</button>
+                    </div>
+                <button id="add_critere" class="btn btn-info">+</button>
+                <button id="moins_critere" class="btn btn-info">-</button>
                 <button id="valider" class="btn btn-success">Valider</button>
             </div>
         </div>

@@ -14,16 +14,12 @@
     margin-bottom: 0;
 }
 
-#container_groupe_notation select {
-    height: 30px;
-    line-height: 30px;
-    width: 100%;
-    margin: 5px;
+
+.crit_div{
+    display: inline-block;
+    max-width: 20%;
 }
 
-.bareme{
+.crit, .bareme{
     width: 100%;
-    margin:5px;
-    text-align: center;
-    border: 1px solid #DDDDDD;
 }

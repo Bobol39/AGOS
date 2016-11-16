@@ -25,7 +25,7 @@ var nouveauJour = "<table>" +
         "</tbody>" +
     "</table>";
 var nouveauCreneau = "<tr>" +
-    "<th><input type='date' class='timepicker'></th>" +
+    "<th><input class='timepicker'></th>" +
     "</tr>";
 
 var nouvelleSalle ="<th><select class='selectpicker' data-size='5' data-live-search='true' title='Salle' multiple></select></th>";
