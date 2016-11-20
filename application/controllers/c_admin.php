@@ -132,8 +132,18 @@ class C_admin extends CI_Controller
         $titre = $this->input->post('titre');
         $promo = $this->input->post('promo');
         $critere = $this->input->post('critere');
+        $id = $this->input->post('id');
+
+        if ($id != 0){
+            $this->m_admin->deleteGroupSoutenance($id);
+        }
 
         $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere);
+    }
+
+    function deleteGroupSoutenance(){
+        $id = $this->input->post('id');
+        $this->m_admin->deleteGroupSoutenance($id);
     }
 }
 ?>

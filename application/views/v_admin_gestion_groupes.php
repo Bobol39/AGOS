@@ -24,7 +24,7 @@
                     <input type="hidden" class="group_promo" value="<?= $group['id_promotion'] ?>">
                     <input type="hidden" class="group_criteres" value="<?= $group['id_groupe_notation'] ?>">
                     <input type="hidden" class="group_duree" value="<?= $group['duree'] ?>">
-                    <input type="hidden" class="id_group" value="0">
+                    <input type="hidden" class="group_id" value="<?= $group['id'] ?>">
                 </div>
             <?php } ?>
             <div class="container_groupe col-lg-3 col-md-3">
@@ -54,7 +54,7 @@
 
                 <label for="duree" class="labform">Durée:</label>
                 <input id="duree" name="duree" type="number" value="20"><p>mn</p>
-
+                <input type="hidden" id="idgroup">
             </div>
             <div class="col-lg-6 part_modif">
                 <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 text-center">

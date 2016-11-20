@@ -134,6 +134,11 @@ class M_admin extends CI_Model
         $this->db->insert('planning',$data);
     }
 
+    public function deleteGroupSoutenance($id){
+        $this->db->where('id',$id);
+        $this->db->delete('planning');
+    }
+
     public function getAllGroupSoutenance(){
         $this->db->select('*');
         $this->db->from('planning');

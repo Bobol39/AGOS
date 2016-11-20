@@ -6,7 +6,7 @@ $(function() {
                 <input type="hidden" class="group_promo" value="default">\
                 <input type="hidden" class="group_criteres" value="default">\
                 <input type="hidden" class="group_duree" value="40">\
-                <input type="hidden" class="id_group" value="0">\
+                <input type="hidden" class="group_id" value="0">\
             </div>';
 
     $("#button_add_groupe").click(function () {
@@ -20,12 +20,19 @@ $(function() {
        controlInformation();
     });
 
+    $("#delete_group").click(function(){
+        deleteGroup();
+    });
+
+
     $(".button_groupe").click(function () {
         editGroup($(this).parent());
     });
 });
 
 function editGroup(container) {
+
+    $("#idgroup").val(container.find(".group_id").val());
     $("#titregroupe").val(container.find("button").text())
         .off("change").change(function () {
             container.find("button").text($(this).val());
@@ -34,6 +41,7 @@ function editGroup(container) {
     $('#selectpromo').off("change").change(function () {
         container.find(".group_promo").val($(this).val())
     });
+
     $('#selectcriteres').find('option[value='+container.find(".group_criteres").val()+']').prop('selected', true);
     $('#selectcriteres').off("change").change(function () {
         container.find(".group_criteres").val($(this).val())
@@ -51,20 +59,35 @@ function controlInformation(){
     titre = $("#titregroupe").val();
     promo = $("#selectpromo").val();
     critere = $("#selectcriteres").val();
+    id = $("#idgroup").val();
 
     if (titre == "" || promo == "" || critere == "" || duree==""){
         showNotification("Champs non remplis","Veuillez remplir tous les champs avant de valider ce groupe.","warning");
         return;
     }
 
+
     start_loading();
     jQuery.ajax({
         type: "POST",
-        url: baseurl    + "index.php/c_admin/saveGroupSoutenance",
-        data: {titre: titre,promo: promo,critere: critere,duree: duree}
+        url: baseurl    + "index.php/c_admin/saveGroupSoutenance/",
+        data: {titre: titre,promo: promo,critere: critere,duree: duree,id: id}
     }).done( function(){
         stop_loading();
         location.reload();
     });
 }
 
+function deleteGroup(){
+    id = $("#idgroup").val();
+
+    start_loading();
+    jQuery.ajax({
+        type: "POST",
+        url: baseurl    + "index.php/c_admin/deleteGroupSoutenance/",
+        data: {id: id}
+    }).done( function(){
+        stop_loading();
+        location.reload();
+    });
+}

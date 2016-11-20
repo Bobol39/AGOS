@@ -63,6 +63,10 @@ $(function() {
         pickDay();
     });
 
+    $("#savePlanning").click(function () {
+        save_planning();
+    })
+
     $("#promptday_layer").click(function () {
         $("#promptday").animate({"height":"10%"},300, function () {
             $("#promptday_layer").hide();
@@ -172,4 +176,33 @@ function edit_case(button){
     $("#block_modif_prof2").find("select").off("change").change(function () {
         button.find(".nomProf2 span").text($(this).val())
     });
+}
+
+
+function save_planning() {
+    //POUR CHAQUE JOUR
+    var data = [], soutenance, tabnumber,heure, salle;
+    $(".tabbed").each(function () {
+        tabnumber = $(this).attr("id");
+        $(this).find("tbody tr").each(function () {
+            //POUR CHAQUE LIGNE
+            heure = $(this).find("th input").val();
+
+            $(this).find(".buttonSoutenance").each(function () {
+                //POUR CHAQUE SOUTENANCE
+                salle = $(this).parents("table").find("thead th:nth-child("+($(this).parent().index()+1)+")").find("button").attr("title");
+                soutenance = {
+                    eleve: $(this).find(".nomEleve span").text(),
+                    prof1: $(this).find(".nomProf1 span").text(),
+                    prof2: $(this).find(".nomProf2 span").text(),
+                    date: $(".ui-tabs-tab[aria-controls="+tabnumber+"]").text(),
+                    heure: heure,
+                    salle: salle
+                };
+                data.push(soutenance);
+            })
+        });
+
+    });
+    console.log(data);
 }
