@@ -54,7 +54,6 @@ CREATE TABLE `etudiant` (
   `id` varchar(25) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
-  `id_soutenance` int(11) DEFAULT NULL,
   `id_promotion` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -157,6 +156,7 @@ CREATE TABLE `soutenance` (
   `id_salle` int(11) NOT NULL,
   `horaire` time NOT NULL,
   `date` date NOT NULL,
+  `id_etudiant` int(11) DEFAULT NULL,
   `professeur1` varchar(25) NOT NULL,
   `professeur2` varchar(50) NOT NULL,
   `titre` varchar(50) DEFAULT NULL,
