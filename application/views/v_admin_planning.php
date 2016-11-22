@@ -49,6 +49,7 @@ $js_array = json_encode($salle)
             <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-success" id="savePlanning">SAVE</button>
             </div>
+            <input id="idgroup" type="hidden" value="<?php echo $idgroup?>">
         </div>
         <div class="col-lg-11 col-md-11" id="container_modif_soutenances">
             <div class="col-lg-3 col-lg-3" id="block_modif_prof1">

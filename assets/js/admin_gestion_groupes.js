@@ -28,6 +28,14 @@ $(function() {
     $(".button_groupe").click(function () {
         editGroup($(this).parent());
     });
+
+    $("#edit_planning").click(function () {
+        if ($("#idgroup").val()==0){
+            showNotification("Attention!","Pour editer le planning, vous devez d'abord valider ce groupe","warning");
+        } else {
+            window.location.replace(baseurl+"index.php/C_admin/showPlanning/"+$("#idgroup").val());
+        }
+    })
 });
 
 function editGroup(container) {

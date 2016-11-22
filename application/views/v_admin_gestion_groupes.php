@@ -58,9 +58,7 @@
             </div>
             <div class="col-lg-6 part_modif">
                 <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 text-center">
-                    <a href="<?php echo base_url("index.php/C_admin/showPlanning")?>">
-                        <button class="btn btn-info" id="edit_planning">Planning</button>
-                    </a><br>
+                    <button class="btn btn-info" id="edit_planning">Planning</button>
                     <button class="btn btn-danger" id="delete_group">Supprimer</button><br>
                     <button class="btn btn-success" id="valid_group">Valider</button>
                 </div>

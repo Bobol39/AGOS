@@ -197,7 +197,8 @@ function save_planning() {
                     prof2: $(this).find(".nomProf2 span").text(),
                     date: $(".ui-tabs-tab[aria-controls="+tabnumber+"]").text(),
                     heure: heure,
-                    salle: salle
+                    salle: salle,
+                    group: $("#idgroup").val()
                 };
                 data.push(soutenance);
             })
@@ -205,4 +206,13 @@ function save_planning() {
 
     });
     console.log(data);
+    start_loading();
+    jQuery.ajax({
+        type: "POST",
+        url: baseurl    + "index.php/c_admin/savePlanning/",
+        data: {soutenances: data}
+    }).done( function(){
+        stop_loading();
+        location.reload();
+    });
 }

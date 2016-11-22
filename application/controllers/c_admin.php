@@ -42,9 +42,10 @@ class C_admin extends CI_Controller
         $this->load->view("v_admin_gestion_prof",$data);
     }
 
-    function showPlanning(){
+    function showPlanning($idgroup){
         $data["salle"] = $this->m_admin->getSalle();
         $data["prof"] = $this->m_admin->getAllProf();
+        $data["idgroup"] = $idgroup;
 
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
@@ -144,6 +145,14 @@ class C_admin extends CI_Controller
     function deleteGroupSoutenance(){
         $id = $this->input->post('id');
         $this->m_admin->deleteGroupSoutenance($id);
+    }
+
+
+    function savePlanning(){
+        $soutenances = $this->input->post("soutenances");
+        foreach ($soutenances as $sout){
+
+        }
     }
 }
 ?>
