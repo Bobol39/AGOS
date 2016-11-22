@@ -210,7 +210,7 @@ function save_planning() {
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/savePlanning/",
-        data: {soutenances: data}
+        data: {soutenances: JSON.stringify(data)}
     }).done( function(){
         stop_loading();
         location.reload();

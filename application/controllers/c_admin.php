@@ -150,6 +150,8 @@ class C_admin extends CI_Controller
 
     function savePlanning(){
         $soutenances = $this->input->post("soutenances");
+        $decode = json_decode($soutenances);
+        $soutenances = json_decode(json_encode($decode), True);
         foreach ($soutenances as $sout){
 
         }
