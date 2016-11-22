@@ -146,4 +146,9 @@ class M_admin extends CI_Model
         $row = $query->result_array();
         return $row;
     }
+
+    public function saveSoutenance($data){
+        unset($data["eleve"]);
+        $this->db->insert('soutenance', $data);
+    }
 }

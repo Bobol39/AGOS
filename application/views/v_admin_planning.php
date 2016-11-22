@@ -14,7 +14,7 @@ $js_array = json_encode($salle)
 <link href="<?php echo base_url();?>assets/css/bootstrap-select.min.css" rel="stylesheet">
 
 <script>
-
+    var baseurl = '<?php echo base_url();?>';
     <?php echo "var salles = ".$js_array.";\n"?>
 </script>
 <div id="promptday_layer">

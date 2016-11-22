@@ -153,7 +153,7 @@ class C_admin extends CI_Controller
         $decode = json_decode($soutenances);
         $soutenances = json_decode(json_encode($decode), True);
         foreach ($soutenances as $sout){
-
+            $this->m_admin->saveSoutenance($sout);
         }
     }
 }

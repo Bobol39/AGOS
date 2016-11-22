@@ -124,9 +124,9 @@ function bindAjouter(){
         $(this).hide()
         $(this).parent().append("" +
             "<div class='buttonSoutenance'>" +
-            "<div class='col-lg-12 col-md-12 nomEleve'><span>eleve</span></div>" +
-            "<div class='col-lg-6 nomProf1'><span>prof1</span></div>" +
-            "<div class='col-lg-6 nomProf2'><span>prof2</span></div>" +
+            "<div class='col-lg-12 col-md-12 nomEleve'><span>Eleve</span></div>" +
+            "<div class='col-lg-6 nomProf1'><span>Professeur</span></div>" +
+            "<div class='col-lg-6 nomProf2'><span>Professeur</span></div>" +
             "</div>");
         edit_case($(this).siblings(".buttonSoutenance"));
         $(this).siblings(".buttonSoutenance").click(function () {
@@ -178,6 +178,28 @@ function edit_case(button){
     });
 }
 
+function validerPlanning(data) {
+    if (data.length == 0){
+        showNotification("Aucune soutenance","Vous n'avez pas ajouté de soutenance","warning");
+        return false;
+    }
+    valid = true;
+    data.forEach(function (sout) {
+        if (valid){
+            if (sout["id_salle"] == "Salle"){
+                showNotification("Salle manquante", "Une des soutenances n'a pas de salle", "warning");
+                valid = false;
+            } else if ((sout["professeur1"] == "Professeur") || (sout["professeur2"] == "Professeur")){
+                showNotification("Professeur manquant", "Une des soutenances n'a pas de professeur défini", "warning");
+                valid = false;
+            } else if (sout["eleve"] == "Eleve"){
+                showNotification("Eleve manquante", "Une des soutenances n'a pas de Chef de Projet défini", "warning");
+                valid = false;
+            }
+        }
+    });
+    return valid;
+}
 
 function save_planning() {
     //POUR CHAQUE JOUR
@@ -193,12 +215,12 @@ function save_planning() {
                 salle = $(this).parents("table").find("thead th:nth-child("+($(this).parent().index()+1)+")").find("button").attr("title");
                 soutenance = {
                     eleve: $(this).find(".nomEleve span").text(),
-                    prof1: $(this).find(".nomProf1 span").text(),
-                    prof2: $(this).find(".nomProf2 span").text(),
+                    professeur1: $(this).find(".nomProf1 span").text(),
+                    professeur2: $(this).find(".nomProf2 span").text(),
                     date: $(".ui-tabs-tab[aria-controls="+tabnumber+"]").text(),
-                    heure: heure,
-                    salle: salle,
-                    group: $("#idgroup").val()
+                    horaire: heure,
+                    id_salle: salle,
+                    id_planning: $("#idgroup").val()
                 };
                 data.push(soutenance);
             })
@@ -206,13 +228,18 @@ function save_planning() {
 
     });
     console.log(data);
-    start_loading();
-    jQuery.ajax({
-        type: "POST",
-        url: baseurl    + "index.php/c_admin/savePlanning/",
-        data: {soutenances: JSON.stringify(data)}
-    }).done( function(){
-        stop_loading();
-        location.reload();
-    });
+    if (validerPlanning(data)){
+        start_loading();
+        jQuery.ajax({
+            type: "POST",
+            url: baseurl    + "index.php/c_admin/savePlanning/",
+            data: {soutenances: JSON.stringify(data)}
+        }).done( function(result){
+            alert(result);
+            stop_loading();
+            location.reload();
+        });
+    }
 }
+
+
