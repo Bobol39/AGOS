@@ -164,8 +164,7 @@ CREATE TABLE `soutenance` (
   `professeur1` varchar(25) NOT NULL,
   `professeur2` varchar(50) NOT NULL,
   `titre` varchar(50) DEFAULT NULL,
-  `resume` text,
-  `note` float DEFAULT NULL
+  `resume` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
