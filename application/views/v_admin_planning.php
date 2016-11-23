@@ -62,8 +62,11 @@ $js_array = json_encode($salle)
             </div>
             <div id="block_modif_eleve" class="col-lg-6 col-md-6">
                 <h4>Chef de Projet</h4>
-                <input type="text" value="" placeholder="Input" class="form-control" />
-            </div>
+                <select class="form-control" >
+                    <?php foreach ($eleves as $eleve){ ?>
+                        <option value="<?php echo $eleve["id"]?>"><?php echo $eleve["nom"]." ".$eleve["prenom"]?></option>
+                    <?php }?>
+                </select>            </div>
             <div class="col-lg-3 col-lg-3" id="block_modif_prof2">
                 <h3>Professeur 2</h3>
                 <select class="form-control" >
