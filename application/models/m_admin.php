@@ -148,16 +148,7 @@ class M_admin extends CI_Model
     }
 
     public function saveSoutenance($data){
+        unset($data["eleve"]);
         $this->db->insert('soutenance', $data);
-    }
-
-    public function getEtudiantsByGroup($idgroup){
-        $this->db->select('etudiant.*');
-        $this->db->from('etudiant');
-        $this->db->join('planning','planning.id_promotion = etudiant.id_promotion');
-        $this->db->where('planning.id',$idgroup);
-        $query = $this->db->get();
-        $row = $query->result_array();
-        return $row;
     }
 }

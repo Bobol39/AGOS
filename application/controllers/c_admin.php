@@ -46,7 +46,7 @@ class C_admin extends CI_Controller
         $data["salle"] = $this->m_admin->getSalle();
         $data["prof"] = $this->m_admin->getAllProf();
         $data["idgroup"] = $idgroup;
-        $data["eleves"] = $this->m_admin->getEtudiantsByGroup($idgroup);
+
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");

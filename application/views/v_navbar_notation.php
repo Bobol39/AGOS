@@ -9,10 +9,10 @@
         <span>Bilan</span>
     </div>
     <div class="col-lg-1 col-md-1 button_navbar_notation" id="button_fiche">
-        <span>Fiche</span>
+        <span>Résumé</span>
     </div>
     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1" id="block_titre_soutenance">
-        <span>Soutenance à propos de trucs</span>
+        <span><?= $soutenance[0]['titre']?></span>
     </div>
     <div class="col-lg-2 col-md-2" id="block_duree">
         <span>Durée: </span>
