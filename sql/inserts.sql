@@ -5,6 +5,8 @@ TRUNCATE `agos`.`critere`;
 TRUNCATE `agos`.`groupe_notation`;
 TRUNCATE `agos`.`critere_groupe_notation_jonction`;
 TRUNCATE `agos`.`planning`;
+TRUNCATE `agos`.`soutenance`;
+TRUNCATE `agos`.`etudiant`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('jccharr', 'Charr', 'Jean-Claude', 'jccharr'),
@@ -70,22 +72,22 @@ INSERT INTO `agos`.`critere_groupe_notation_jonction` (`id`, `id_critere`, `id_g
   (2, 2,1, 2.0),
   (3, 2,1, 1.0);
 
-INSERT INTO `agos`.`etudiant` (`id`, `nom`, `prenom`,'id_promotion') VALUES
-  (1, 'Jossic', 'Alfred',6),
-  (2, 'Bolard', 'Clement',6),
-  (3, 'Ilyes', 'Haj-Ali-G',6),
-  (4, 'Nom1', 'Prenom1',5),
-  (5, 'Nom2', 'Prenom2',5),
-  (6, 'Nom3', 'Prenom3',5),
-  (7, 'Nom4', 'Prenom4',4),
-  (8, 'Nom5', 'Prenom5',4),
-  (9, 'Nom6', 'Prenom6',4),
-  (10, 'Nom7', 'Prenom7',3),
-  (11, 'Nom8', 'Prenom8',3),
-  (12, 'Nom9', 'Prenom9',3),
-  (13, 'Nom10', 'Prenom10',2),
-  (14, 'Nom11', 'Prenom11',2),
-  (15, 'Nom12', 'Prenom12',2),
-  (16, 'Nom13', 'Prenom13',1),
-  (17, 'Nom14', 'Prenom14',1),
-  (18, 'Nom15', 'Prenom15',1);
+INSERT INTO `agos`.`etudiant` (`id`, `nom`, `prenom`,`id_promotion`) VALUES
+  ('ajossic', 'Jossic', 'Alfred',6),
+  ('cbolard', 'Bolard', 'Clement',6),
+  ('ihajali', 'Ilyes', 'Haj-Ali-G',6),
+  ('pnom1', 'Nom1', 'Prenom1',5),
+  ('pnom2', 'Nom2', 'Prenom2',5),
+  ('pnom3', 'Nom3', 'Prenom3',5),
+  ('pnom4', 'Nom4', 'Prenom4',4),
+  ('pnom5', 'Nom5', 'Prenom5',4),
+  ('pnom6', 'Nom6', 'Prenom6',4),
+  ('pnom7', 'Nom7', 'Prenom7',3),
+  ('pnom8', 'Nom8', 'Prenom8',3),
+  ('pnom9', 'Nom9', 'Prenom9',3),
+  ('pnom10', 'Nom10', 'Prenom10',2),
+  ('pnom11', 'Nom11', 'Prenom11',2),
+  ('pnom12', 'Nom12', 'Prenom12',2),
+  ('pnom13', 'Nom13', 'Prenom13',1),
+  ('pnom14', 'Nom14', 'Prenom14',1),
+  ('pnom15', 'Nom15', 'Prenom15',1);

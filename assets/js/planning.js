@@ -163,10 +163,14 @@ function ajouterSalle() {
 
 
 function edit_case(button){
-    $("#block_modif_prof1, #block_modif_prof2, #block_modif_eleve").fadeIn()
-    $("#block_modif_eleve").find("input").val(button.find(".nomEleve span").text()).off("change").change(function () {
+    $("#block_modif_prof1, #block_modif_prof2, #block_modif_eleve").fadeIn();
+
+    $("#block_modif_eleve").find("select option[value='"+button.find(".nomEleve span").text()+"']").prop('selected', true);
+    $("#block_modif_eleve").find("select").off("change").change(function () {
         button.find(".nomEleve span").text($(this).val())
     });
+
+
     $("#block_modif_prof1").find("select option[value='"+button.find(".nomProf1 span").text()+"']").prop('selected', true);
     $("#block_modif_prof1").find("select").off("change").change(function () {
         button.find(".nomProf1 span").text($(this).val())
@@ -214,7 +218,7 @@ function save_planning() {
                 //POUR CHAQUE SOUTENANCE
                 salle = $(this).parents("table").find("thead th:nth-child("+($(this).parent().index()+1)+")").find("button").attr("title");
                 soutenance = {
-                    eleve: $(this).find(".nomEleve span").text(),
+                    id_etudiant: $(this).find(".nomEleve span").text(),
                     professeur1: $(this).find(".nomProf1 span").text(),
                     professeur2: $(this).find(".nomProf2 span").text(),
                     date: $(".ui-tabs-tab[aria-controls="+tabnumber+"]").text(),
@@ -237,7 +241,7 @@ function save_planning() {
         }).done( function(result){
             alert(result);
             stop_loading();
-            location.reload();
+            //location.reload();
         });
     }
 }

@@ -160,9 +160,9 @@ CREATE TABLE `soutenance` (
   `id_salle` int(11) NOT NULL,
   `horaire` time NOT NULL,
   `date` date NOT NULL,
-  `id_etudiant` int(11) DEFAULT NULL,
+  `id_etudiant` varchar(25) DEFAULT NULL,
   `professeur1` varchar(25) NOT NULL,
-  `professeur2` varchar(50) NOT NULL,
+  `professeur2` varchar(25) NOT NULL,
   `titre` varchar(50) DEFAULT NULL,
   `resume` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
