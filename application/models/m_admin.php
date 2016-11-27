@@ -160,4 +160,15 @@ class M_admin extends CI_Model
         $row = $query->result_array();
         return $row;
     }
+
+    public function getSoutenancesByPlanning($idgroup){
+        $this->db->select('*');
+        $this->db->from('soutenance');
+        $this->db->where('id_planning',$idgroup);
+        $this->db->order_by("date", "asc");
+        $this->db->order_by("horaire", "asc");
+        $this->db->order_by("id_salle", "asc");
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

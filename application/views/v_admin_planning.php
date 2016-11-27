@@ -15,7 +15,10 @@ $js_array = json_encode($salle)
 
 <script>
     var baseurl = '<?php echo base_url();?>';
-    <?php echo "var salles = ".$js_array.";\n"?>
+    <?php echo "var salles = ".$js_array.";\n";
+        echo "var soutJSON = ".$soutenances.";\n";
+    ?>
+
 </script>
 <div id="promptday_layer">
     <div id="promptday">
@@ -31,6 +34,7 @@ $js_array = json_encode($salle)
     <div class="col-lg-12 col-md-12" id="container_planning">
         <div class="col-lg-11 col-md-11" id="container_soutenances">
             <div id="tabs" style="height: 100%">
+
                 <ul>
                     <li id="ajouterJour"><a href="#tabs-0">Ajouter un jour</a></li>
                 </ul>

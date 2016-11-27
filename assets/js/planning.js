@@ -8,10 +8,10 @@ var nouveauJour = "<table>" +
         "<thead>" +
             "<tr>" +
                 "<th></th>" +
-                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
-                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' multiple></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' ></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' ></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' ></select></th>" +
+                "<th><select class='selectpicker' data-live-search='true' data-size='5' title='Salle' ></select></th>" +
             "</tr>" +
         "</thead>" +
         "<tbody>" +
@@ -28,7 +28,7 @@ var nouveauCreneau = "<tr>" +
     "<th><input class='timepicker'></th>" +
     "</tr>";
 
-var nouvelleSalle ="<th><select class='selectpicker' data-size='5' data-live-search='true' title='Salle' multiple></select></th>";
+var nouvelleSalle ="<th><select class='selectpicker' data-size='5' data-live-search='true' title='Salle'></select></th>";
 
 
 $(function() {
@@ -51,13 +51,15 @@ $(function() {
 
     });
     $("#newday_datepicker").datepicker({
+        dateFormat: 'yy-mm-dd',
         beforeShowDay: function (date) {
-            var string = $.datepicker.formatDate('mm/dd/yy', date);
+            var string = $.datepicker.formatDate('yy-mm-dd', date);
             return [disableddates.indexOf(string) == -1];
         }
     });
 
-    $( "#tabs" ).tabs();
+    restore();
+
 
     $("#ajouterJour").click(function () {
         pickDay();
@@ -241,9 +243,41 @@ function save_planning() {
         }).done( function(result){
             alert(result);
             stop_loading();
-            //location.reload();
+            location.reload();
         });
     }
+}
+
+function restore() {
+    var tabs = $( "#tabs" ).tabs();
+    var tab = soutJSON;
+    var days = [], sallesFound = [];
+    tab.forEach(function (sout) {
+        if ($.inArray(sout.date, days) == -1) {
+            //ADD TABS FOR DAYS
+            days.push(sout.date);
+            var ul = tabs.find( "ul" );
+            $( "<li><a href='#tab"+sout.date+"'>"+sout.date+"</a></li>" ).insertBefore(ul.find("li").last());
+            $( "<div id='tab"+sout.date+"'>"+nouveauJour+"</div>" ).appendTo( tabs );
+        }
+    });
+    //AJOUT DES SALLES DANS LES SELECT
+    for (var i=0; i< salles.length; i++){
+        $(".selectpicker").append("<option>"+salles[i].id+"</option>")
+    }
+
+    //SELECT DES SALLES
+    days.forEach(function (day) {
+        sallesFound = [];
+        tab.forEach(function (sout) {
+            if ((sout.date == day) && ($.inArray(sout.id_salle, sallesFound) == -1)){
+                    $(".selectpicker option:eq(3)").prop('selected',true);
+            }
+        });
+
+    });
+    //var selectpickers = $('.selectpicker').selectpicker();
+    tabs.tabs( "refresh" );
 }
 
 

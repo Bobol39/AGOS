@@ -47,6 +47,7 @@ class C_admin extends CI_Controller
         $data["prof"] = $this->m_admin->getAllProf();
         $data["idgroup"] = $idgroup;
         $data["eleves"] = $this->m_admin->getEtudiantsByGroup($idgroup);
+        $data["soutenances"] = json_encode($this->m_admin->getSoutenancesByPlanning($idgroup));
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
