@@ -46,12 +46,9 @@ class C_admin extends CI_Controller
         $data["salle"] = $this->m_admin->getSalle();
         $data["prof"] = $this->m_admin->getAllProf();
         $data["idgroup"] = $idgroup;
-<<<<<<< HEAD:application/controllers/c_admin.php
         $data["eleves"] = $this->m_admin->getEtudiantsByGroup($idgroup);
         $data["soutenances"] = json_encode($this->m_admin->getSoutenancesByPlanning($idgroup));
-=======
 
->>>>>>> origin/master:application/controllers/C_admin.php
         $this->load->view("v_header");
         $this->load->view("v_navbar_admin");
         $this->load->view("v_leftbar_admin");
@@ -154,9 +151,12 @@ class C_admin extends CI_Controller
 
 
     function savePlanning(){
+
         $soutenances = $this->input->post("soutenances");
         $decode = json_decode($soutenances);
         $soutenances = json_decode(json_encode($decode), True);
+        $this->m_admin->deleteSoutenances($soutenances[0]['id_planning']);
+
         foreach ($soutenances as $sout){
             $this->m_admin->saveSoutenance($sout);
         }

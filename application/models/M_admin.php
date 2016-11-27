@@ -151,7 +151,10 @@ class M_admin extends CI_Model
         unset($data["eleve"]);
         $this->db->insert('soutenance', $data);
     }
-<<<<<<< HEAD:application/models/m_admin.php
+
+    public function deleteSoutenances($idplanning){
+        $this->db->delete('soutenance', array('id_planning' => $idplanning));
+    }
 
     public function getEtudiantsByGroup($idgroup){
         $this->db->select('etudiant.*');
@@ -164,16 +167,14 @@ class M_admin extends CI_Model
     }
 
     public function getSoutenancesByPlanning($idgroup){
-        $this->db->select('*');
+        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
         $this->db->from('soutenance');
         $this->db->where('id_planning',$idgroup);
         $this->db->order_by("date", "asc");
-        $this->db->order_by("horaire", "asc");
         $this->db->order_by("id_salle", "asc");
+        $this->db->order_by("horaire", "asc");
+
         $query = $this->db->get();
         return $query->result();
     }
 }
-=======
-}
->>>>>>> origin/master:application/models/M_admin.php

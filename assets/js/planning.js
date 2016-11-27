@@ -24,8 +24,18 @@ var nouveauJour = "<table>" +
             "</tr>" +
         "</tbody>" +
     "</table>";
+
+var nouveauJourEmpty = "<table>" +
+    "<thead>" +
+        "<tr>" +
+            "<th></th>" +
+        "</tr>" +
+    "</thead>" +
+    "<tbody>" +
+    "</tbody>" +
+    "</table>";
 var nouveauCreneau = "<tr>" +
-    "<th><input class='timepicker'></th>" +
+    "<th><input class='picktime'></th>" +
     "</tr>";
 
 var nouvelleSalle ="<th><select class='selectpicker' data-size='5' data-live-search='true' title='Salle'></select></th>";
@@ -211,8 +221,10 @@ function save_planning() {
     //POUR CHAQUE JOUR
     var data = [], soutenance, tabnumber,heure, salle;
     $(".tabbed").each(function () {
+
         tabnumber = $(this).attr("id");
         $(this).find("tbody tr").each(function () {
+
             //POUR CHAQUE LIGNE
             heure = $(this).find("th input").val();
 
@@ -241,43 +253,100 @@ function save_planning() {
             url: baseurl    + "index.php/c_admin/savePlanning/",
             data: {soutenances: JSON.stringify(data)}
         }).done( function(result){
-            alert(result);
             stop_loading();
-            location.reload();
+            //location.reload();
         });
     }
 }
 
 function restore() {
+    start_loading();
     var tabs = $( "#tabs" ).tabs();
     var tab = soutJSON;
-    var days = [], sallesFound = [];
+    var days = [], sallesFound = [], horaireFound = [];
     tab.forEach(function (sout) {
         if ($.inArray(sout.date, days) == -1) {
             //ADD TABS FOR DAYS
             days.push(sout.date);
             var ul = tabs.find( "ul" );
             $( "<li><a href='#tab"+sout.date+"'>"+sout.date+"</a></li>" ).insertBefore(ul.find("li").last());
-            $( "<div id='tab"+sout.date+"'>"+nouveauJour+"</div>" ).appendTo( tabs );
+            $( "<div class='tabbed ui-tabs-panel ui-corner-bottom ui-widget-content' id='tab"+sout.date+"'>"+nouveauJourEmpty+"</div>" ).appendTo( tabs );
         }
     });
-    //AJOUT DES SALLES DANS LES SELECT
-    for (var i=0; i< salles.length; i++){
-        $(".selectpicker").append("<option>"+salles[i].id+"</option>")
-    }
 
-    //SELECT DES SALLES
+    //AJOUT DES SALLES
     days.forEach(function (day) {
         sallesFound = [];
         tab.forEach(function (sout) {
-            if ((sout.date == day) && ($.inArray(sout.id_salle, sallesFound) == -1)){
-                    $(".selectpicker option:eq(3)").prop('selected',true);
+            if (($.inArray(sout.id_salle, sallesFound) == -1) && (sout.date == day)) {
+                sallesFound.push(sout.id_salle);
+                $("#tab"+day).find("thead tr").append("<th><select class='selectpicker' data-live-search='true' data-size='5' title='"+sout.id_salle+"' ></select></th>")
+            }
+        })
+    })
+    for (var i=0; i< salles.length; i++){
+        $(".selectpicker").append("<option>"+salles[i].id+"</option>")
+    }
+    $(".selectpicker").selectpicker();
+
+
+    var nbrSalles;
+    //AJOUT DES HORAIRES
+    days.forEach(function (day) {
+        console.log("DAY: "+day)
+        nbrSalles = $("#tab"+day).find("thead th").length-1;
+        horaireFound = [];
+        tab.forEach(function (sout) {
+            if (($.inArray(sout.horaire, horaireFound) == -1) && (sout.date == day)) {
+                horaireFound.push(sout.horaire);
+                $("#tab"+day).find("tbody").append("<tr><th><input class='picktime' value='"+sout.horaire+"'></th></tr>").find(".picktime").timepicker({
+                    'minTime': '8:00',
+                    'maxTime': '19:30',
+                    'timeFormat': "G:i"
+                });;
+                for (var i=0; i<nbrSalles;i++){
+                    $("#tab"+day).find("tbody tr").last().append(nouveauAjouter);
+                }
+            }
+        })
+
+        var indexsalle,indexhoraire;
+        tab.forEach(function (sout) {
+            if (sout.date == day){
+                $("#tab"+day).find("thead button").each(function (index) {
+                    if ($(this).attr("title") == sout.id_salle) {
+                        indexsalle = index+2;
+                        return false;
+                    }
+                });
+                $("#tab"+day).find("tbody .picktime").each(function (index) {
+                    if ($(this).val() == sout.horaire) {
+                        indexhoraire = index+1;
+                        return false;
+                    }
+                });
+                console.log(indexhoraire+","+indexsalle);
+                $("#tab"+day).find("tbody tr:nth-child("+indexhoraire+")").find("td:nth-child("+indexsalle+")").html("" +
+                    "<div class='buttonSoutenance'>" +
+                    "<div class='col-lg-12 col-md-12 nomEleve'><span>"+sout.id_etudiant+"</span></div>" +
+                    "<div class='col-lg-6 nomProf1'><span>"+sout.professeur1+"</span></div>" +
+                    "<div class='col-lg-6 nomProf2'><span>"+sout.professeur2+"</span></div>" +
+                    "</div>").find(".buttonSoutenance").click(function () {
+                    edit_case($(this));
+                })
             }
         });
 
-    });
+    })
+
+
+    $(".picktime")
+
+
+
     //var selectpickers = $('.selectpicker').selectpicker();
     tabs.tabs( "refresh" );
+    stop_loading();
 }
 
 
