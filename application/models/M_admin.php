@@ -148,8 +148,10 @@ class M_admin extends CI_Model
     }
 
     public function saveSoutenance($data){
+        unset($data["eleve"]);
         $this->db->insert('soutenance', $data);
     }
+<<<<<<< HEAD:application/models/m_admin.php
 
     public function getEtudiantsByGroup($idgroup){
         $this->db->select('etudiant.*');
@@ -172,3 +174,6 @@ class M_admin extends CI_Model
         return $query->result();
     }
 }
+=======
+}
+>>>>>>> origin/master:application/models/M_admin.php

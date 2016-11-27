@@ -27,12 +27,16 @@ class C_notation extends CI_Controller
 		$this->load->database();
         $this->load->helper(array('form', 'url', 'text', 'string'));
         $this->load->library(array('session', 'form_validation', 'email'));
-//		$this->load->model('Users_model');
+		$this->load->model('m_soutenance');
     }
 
     public function index(){
+        $id_soutenance = 1;
+        $data["soutenance"]=$this->m_soutenance->getInfoSoutenance($id_soutenance);
+        $data["critere"] = $this->m_soutenance->getCritereFromSoutenance($id_soutenance);
+
         $this->load->view('v_header');
-        $this->load->view('v_navbar_notation');
+        $this->load->view('v_navbar_notation',$data);
         $this->load->view('v_notation');
     }
 
