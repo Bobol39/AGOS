@@ -2,6 +2,7 @@
  * Created by pelomedusa on 16/10/2016.
  */
 var disableddates = [];
+var blinker;
 var nouveauAjouter = "<td><button class='buttonAjouter'>Ajouter</button></td>";
 
 var nouveauJour = "<table>" +
@@ -175,23 +176,38 @@ function ajouterSalle() {
 
 
 function edit_case(button){
+    clearInterval(blinker);
+    button.animate({ opacity: 0.5 },500,function () {
+        $(this).animate({ opacity: 1 },500);
+    })
+    blinker = setInterval(function(){
+        button.animate({ opacity: 0.5 },500,function () {
+            $(this).animate({ opacity: 1 },500);
+        })
+    }, 1000);
+
     $("#block_modif_prof1, #block_modif_prof2, #block_modif_eleve").fadeIn();
 
     $("#block_modif_eleve").find("select option[value='"+button.find(".nomEleve span").text()+"']").prop('selected', true);
-    $("#block_modif_eleve").find("select").off("change").change(function () {
+    $("#block_modif_eleve").find("select").off("click").click(function () {
         button.find(".nomEleve span").text($(this).val())
     });
 
 
     $("#block_modif_prof1").find("select option[value='"+button.find(".nomProf1 span").text()+"']").prop('selected', true);
-    $("#block_modif_prof1").find("select").off("change").change(function () {
+    $("#block_modif_prof1").find("select").off("click").click(function () {
         button.find(".nomProf1 span").text($(this).val())
     });
 
     $("#block_modif_prof2").find("select option[value='"+button.find(".nomProf2 span").text()+"']").prop('selected', true);
-    $("#block_modif_prof2").find("select").off("change").change(function () {
+    $("#block_modif_prof2").find("select").off("click").click(function () {
         button.find(".nomProf2 span").text($(this).val())
     });
+
+    $("#removeSoutenance").off("click").click(function () {
+        button.parent().replaceWith(nouveauAjouter);
+        bindAjouter();
+    })
 }
 
 function validerPlanning(data) {
@@ -211,9 +227,19 @@ function validerPlanning(data) {
             } else if (sout["eleve"] == "Eleve"){
                 showNotification("Eleve manquante", "Une des soutenances n'a pas de Chef de Projet défini", "warning");
                 valid = false;
+            }else if (sout["horaire"] == ""){
+                showNotification("Horaire manquante", "Une des soutenances n'a pas d'horaire définie", "warning");
+                valid = false;
             }
         }
+        data.forEach(function (soutCompare) {
+            if ((sout!=soutCompare) && ((soutCompare.horaire == sout.horaire) && (soutCompare.id_salle == sout.id_salle))){
+                showNotification("Conflit", "Deux soutenances ont la même date ET la même horaire", "warning");
+                valid = false;
+            }
+        })
     });
+
     return valid;
 }
 
@@ -245,7 +271,7 @@ function save_planning() {
         });
 
     });
-    console.log(data);
+
     if (validerPlanning(data)){
         start_loading();
         jQuery.ajax({
@@ -254,7 +280,7 @@ function save_planning() {
             data: {soutenances: JSON.stringify(data)}
         }).done( function(result){
             stop_loading();
-            //location.reload();
+            location.reload();
         });
     }
 }
@@ -325,7 +351,7 @@ function restore() {
                         return false;
                     }
                 });
-                console.log(indexhoraire+","+indexsalle);
+
                 $("#tab"+day).find("tbody tr:nth-child("+indexhoraire+")").find("td:nth-child("+indexsalle+")").html("" +
                     "<div class='buttonSoutenance'>" +
                     "<div class='col-lg-12 col-md-12 nomEleve'><span>"+sout.id_etudiant+"</span></div>" +

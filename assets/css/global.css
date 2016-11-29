@@ -34,7 +34,7 @@ body{
     background: #5CB85C url("../img/icon_success.png") no-repeat;
 }
 
-#notification h3 {
+#notification h4 {
     margin-top: 10px;
     color: whitesmoke;
     display: inline-block;

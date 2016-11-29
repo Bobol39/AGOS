@@ -1,3 +1,4 @@
+var blinker;
 
 $(function() {
     var newbutton = '\
@@ -17,7 +18,8 @@ $(function() {
     });
 
     $("#valid_group").click(function(){
-       controlInformation();
+        clearInterval(blinker);
+        controlInformation();
     });
 
     $("#delete_group").click(function(){
@@ -39,6 +41,15 @@ $(function() {
 });
 
 function editGroup(container) {
+    clearInterval(blinker);
+    container.animate({ opacity: 0.5 },500,function () {
+        $(this).animate({ opacity: 1 },500);
+    })
+    blinker = setInterval(function(){
+        container.animate({ opacity: 0.5 },500,function () {
+            $(this).animate({ opacity: 1 },500);
+        })
+    }, 1000);
 
     $("#idgroup").val(container.find(".group_id").val());
     $("#titregroupe").val(container.find("button").text())
@@ -69,21 +80,20 @@ function controlInformation(){
     critere = $("#selectcriteres").val();
     id = $("#idgroup").val();
 
-    if (titre == "" || promo == "" || critere == "" || duree==""){
+    if (titre == "" || promo == "" || critere == "" || duree=="" ||  promo == "default" || critere == "default" || duree=="0"){
         showNotification("Champs non remplis","Veuillez remplir tous les champs avant de valider ce groupe.","warning");
-        return;
+    } else {
+        start_loading();
+        jQuery.ajax({
+            type: "POST",
+            url: baseurl    + "index.php/c_admin/saveGroupSoutenance/",
+            data: {titre: titre,promo: promo,critere: critere,duree: duree,id: id}
+        }).done( function(){
+            stop_loading();
+            location.reload();
+        });
     }
 
-
-    start_loading();
-    jQuery.ajax({
-        type: "POST",
-        url: baseurl    + "index.php/c_admin/saveGroupSoutenance/",
-        data: {titre: titre,promo: promo,critere: critere,duree: duree,id: id}
-    }).done( function(){
-        stop_loading();
-        location.reload();
-    });
 }
 
 function deleteGroup(){

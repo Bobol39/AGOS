@@ -70,7 +70,9 @@ $js_array = json_encode($salle)
                     <?php foreach ($eleves as $eleve){ ?>
                         <option value="<?php echo $eleve["id"]?>"><?php echo $eleve["nom"]." ".$eleve["prenom"]?></option>
                     <?php }?>
-                </select>            </div>
+                </select>
+                <button class="btn btn-danger" id="removeSoutenance">Supprimer cette soutenance</button>
+            </div>
             <div class="col-lg-3 col-lg-3" id="block_modif_prof2">
                 <h3>Professeur 2</h3>
                 <select class="form-control" >

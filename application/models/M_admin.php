@@ -170,8 +170,6 @@ class M_admin extends CI_Model
         $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
         $this->db->from('soutenance');
         $this->db->where('id_planning',$idgroup);
-        $this->db->order_by("date", "asc");
-        $this->db->order_by("id_salle", "asc");
         $this->db->order_by("horaire", "asc");
 
         $query = $this->db->get();
