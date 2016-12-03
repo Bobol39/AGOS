@@ -45,6 +45,17 @@ class MY_LoginControl extends CI_Controller  {
 
     }
 
+    public function get_ldap_info ($uid){
+        // LDAP variables
+        $ldaphost = "ldap2.univ-fcomte.fr";  // votre serveur LDAP
+        $ldapport = 389;                 // votre port de serveur LDAP
+
+        // Connexion LDAP
+        $ldapconn = ldap_connect($ldaphost, $ldapport)
+        or die("Impossible de se connecter au serveur LDAP $ldaphost");
+
+    }
+
     //check if user's access is in the allowed userlist of this page
     public function permission_check()
     {
