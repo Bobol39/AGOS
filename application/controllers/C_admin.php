@@ -37,8 +37,8 @@ class C_admin extends CI_Controller
     function gestionProf(){
         $data["prof"] = $this->m_admin->getAllProf();
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_gestion_prof",$data);
     }
 
@@ -50,8 +50,8 @@ class C_admin extends CI_Controller
         $data["soutenances"] = json_encode($this->m_admin->getSoutenancesByPlanning($idgroup));
 
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_planning",$data);
     }
 
@@ -66,8 +66,8 @@ class C_admin extends CI_Controller
     function gestionSalle(){
         $data["salle"] = $this->m_admin->getSalle();
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_gestion_salles",$data);
     }
 
@@ -87,8 +87,8 @@ class C_admin extends CI_Controller
         $data["groupe_soutenance"] = $this->m_admin->getAllGroupSoutenance();
 
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navtbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_gestion_groupes",$data);
     }
 
@@ -97,8 +97,8 @@ class C_admin extends CI_Controller
         $data["groupe_critere"]= $this->m_admin->getAllGroupCritere();
 
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_gestion_notation",$data);
     }
 

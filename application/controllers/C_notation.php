@@ -36,8 +36,8 @@ class C_notation extends CI_Controller
         $data["critere"] = $this->m_soutenance->getCritereFromSoutenance($id_soutenance);
 
         $this->load->view('v_header');
-        $this->load->view('v_navbar_notation',$data);
-        $this->load->view('v_notation');
+        $this->load->view('v_prof_notation_navbar',$data);
+        $this->load->view('v_prof_notation');
     }
 
 }

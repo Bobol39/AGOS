@@ -24,8 +24,8 @@ class C_fusion extends CI_Controller
 
     public function index(){
         $this->load->view('v_header');
-        $this->load->view('v_navbar_fusion');
-        $this->load->view('v_fusion');
+        $this->load->view('v_prof_fusion_navbar');
+        $this->load->view('v_prof_fusion');
     }
 
 }

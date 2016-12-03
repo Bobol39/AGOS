@@ -23,8 +23,8 @@ class C_cas extends MY_LoginControl
         //$this->cas->force_auth();
         //$this->cas->user();
         $this->load->view("v_header");
-        $this->load->view("v_navbar_admin");
-        $this->load->view("v_leftbar_admin");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
         $this->load->view("v_cas");
     }
 
