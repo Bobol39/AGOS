@@ -14,11 +14,7 @@ $js_array = json_encode($salle)
 <link href="<?php echo base_url();?>assets/css/bootstrap-select.min.css" rel="stylesheet">
 
 <script>
-    var baseurl = '<?php echo base_url();?>';
-    <?php echo "var salles = ".$js_array.";\n";
-        echo "var soutJSON = ".$soutenances.";\n";
-    ?>
-
+    <?php echo "var salles = ".$js_array.";\n"?>
 </script>
 <div id="promptday_layer">
     <div id="promptday">
@@ -31,10 +27,9 @@ $js_array = json_encode($salle)
     </div>
 </div>
 <div class="col-lg-10 col-md-10" id="container_admin">
-    <div class="col-lg-12 col-md-12" id="container_planning">
+    <div class="col-lg-12 col-md-12" id="containr_planning">
         <div class="col-lg-11 col-md-11" id="container_soutenances">
             <div id="tabs" style="height: 100%">
-
                 <ul>
                     <li id="ajouterJour"><a href="#tabs-0">Ajouter un jour</a></li>
                 </ul>
@@ -53,7 +48,6 @@ $js_array = json_encode($salle)
             <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-success" id="savePlanning">SAVE</button>
             </div>
-            <input id="idgroup" type="hidden" value="<?php echo $idgroup?>">
         </div>
         <div class="col-lg-11 col-md-11" id="container_modif_soutenances">
             <div class="col-lg-3 col-lg-3" id="block_modif_prof1">
@@ -66,12 +60,7 @@ $js_array = json_encode($salle)
             </div>
             <div id="block_modif_eleve" class="col-lg-6 col-md-6">
                 <h4>Chef de Projet</h4>
-                <select class="form-control" >
-                    <?php foreach ($eleves as $eleve){ ?>
-                        <option value="<?php echo $eleve["id"]?>"><?php echo $eleve["nom"]." ".$eleve["prenom"]?></option>
-                    <?php }?>
-                </select>
-                <button class="btn btn-danger" id="removeSoutenance">Supprimer cette soutenance</button>
+                <input type="text" value="" placeholder="Input" class="form-control" />
             </div>
             <div class="col-lg-3 col-lg-3" id="block_modif_prof2">
                 <h3>Professeur 2</h3>

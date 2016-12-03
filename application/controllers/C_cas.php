@@ -6,9 +6,9 @@
  * Date: 23/10/2016
  * Time: 19:42
  */
-class c_cas extends MY_LoginControl
+class C_cas extends MY_LoginControl
 {
-    protected $access = "Admin";
+    protected $access = "Admin,teacher";
 
     function __construct()
     {
@@ -22,6 +22,9 @@ class c_cas extends MY_LoginControl
     function index(){
         //$this->cas->force_auth();
         //$this->cas->user();
+        $this->load->view("v_header");
+        $this->load->view("v_navbar_admin");
+        $this->load->view("v_leftbar_admin");
         $this->load->view("v_cas");
     }
 

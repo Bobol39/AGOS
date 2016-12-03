@@ -15,7 +15,7 @@
         <img src="<?php echo base_url();?>assets/img/logo_leftbar_admin.png">
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/');?>"><span>Groupes</span></a>
+        <a href="<?php echo base_url('index.php/c_admin/');?>"><span>Sessions</span></a>
     </div>
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
         <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>"><span>Gestion professeur</span></a>
