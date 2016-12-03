@@ -8,7 +8,7 @@
  */
 class c_cas extends MY_LoginControl
 {
-    protected $access = "Admin";
+    protected $access = "Admin,teacher";
 
     function __construct()
     {

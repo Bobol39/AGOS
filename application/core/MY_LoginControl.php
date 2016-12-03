@@ -25,13 +25,27 @@ class MY_LoginControl extends CI_Controller  {
     public function login_check()
     {
         $this->init_PHPCAS();
-
-
         // For production use set the CA certificate that is the issuer of the cert
         // phpCAS::setCasServerCACert($cas_server_ca_cert_path);
 
         phpCAS::setNoCasServerValidation();
+        //----------->forceAuthentification force l'utilisateur à s'être connecté au CAS
+        // Si l'utilisateur n'est pas connecté il est redirigé vers la page de connexion du cas: cas.univ-fcomte.fr
         phpCAS::forceAuthentication();
+        //A partir d'ici, l'utilisateur est forcément connectée au CAS
+        $uid = phpCAS::getUser();//On recupère le uid de l'utilisateur grâce au cas
+        $this->session->set_userdata('uid', $uid);//On met le $uid en session pour cet utlisateur
+
+
+        if(true){//--------------> Ici vérifier si l'utilisateur est enregistrer en bdd
+
+        }
+        else{
+            $this->get_ldap_info($uid);//----> Recupération des info utilisateur depuis le LDAP + mise en session des info recupérées
+            //----------> ICI insérer l'utilisateur en BDD grâce aux info user du LDAP enregistrés en session
+
+        }
+
 
         //TOUT UTILISATEUR CONNECTE EST CONSIDERER COMME UN ( Admin / Student / Teacher )
         $this->session->set_userdata('role', 'Admin');
@@ -46,13 +60,63 @@ class MY_LoginControl extends CI_Controller  {
     }
 
     public function get_ldap_info ($uid){
-        // LDAP variables
-        $ldaphost = "ldap2.univ-fcomte.fr";  // votre serveur LDAP
-        $ldapport = 389;                 // votre port de serveur LDAP
 
-        // Connexion LDAP
-        $ldapconn = ldap_connect($ldaphost, $ldapport)
-        or die("Impossible de se connecter au serveur LDAP $ldaphost");
+        // Initialisation des variables
+        $ldaphost = "ldap://ldap.univ-fcomte.fr";  // votre serveur LDAP
+        $ldapport = 903;
+        $dn = 'uid=ihajali,ou=people,dc=univ-fcomte,dc=fr';
+        $pass = 'yesadolyon00769*';
+
+        $connect = ldap_connect($ldaphost,$ldapport);
+        if($connect)
+            echo '<p>connect ok</p>';
+        else
+            echo '<p>connect Nok</p>';
+
+        if (ldap_set_option($connect, LDAP_OPT_PROTOCOL_VERSION, 3))
+            echo '<p>Version LDAPv3</p>';
+        else
+            echo '<p>Impossible de modifier la version du protocole à 3</p>';
+
+        if (ldap_set_option($connect, LDAP_OPT_REFERRALS, 0) )
+            echo '<p>LDAP_OPT_REFERRALS ok</p>';
+        else
+            echo '<p>LDAP_OPT_REFERRALS Nok</p>';
+
+
+        $bind = ldap_bind($connect, $dn, $pass);
+
+        if($bind)
+            echo '<p>bind ok</p>';
+        else
+            echo '<p>bind Nok</p>';
+
+
+        //--------------------------> Recherche de l'utlisateur dans le LDAP
+        $filter ="(uid=".$uid.")";
+        //givenname = prenom, sn=nom, edupersonaffiliation=student ou teacher, mail= mail universitaire
+        $justthese = array('givenname','sn','edupersonprimaryaffiliation','mail');
+        $baseDn = "ou=people,dc=univ-fcomte,dc=fr";
+
+        $result=ldap_list($connect, $baseDn, $filter, $justthese) or die("No search data found.");
+        $info = ldap_get_entries($connect, $result);
+
+
+
+        //Enregistrement des info utlisateur en session
+        $this->session->set_userdata('role',info[0]["edupersonprimaryaffiliation"][0]);
+        $this->session->set_userdata('nom',info[0]["sn"][0]);
+        $this->session->set_userdata('prenom',info[0]["givenname"][0]);
+        $this->session->set_userdata('mail',info[0]["mail"][0]);
+
+        //Affichage des info utilisateur pour les tests uniquement
+        echo "Nom: ".$this->session->sn . '<br />';
+        echo "Prenom: ".$this->session->prenom. '<br />';
+        echo "Type: ".$this->session->role. '<br />'; //rajouter [0] si c'est un array
+        echo "Mail: ".$this->session->mail. '<br />';
+
+
+
 
     }
 
