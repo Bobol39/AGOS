@@ -87,7 +87,7 @@ class C_admin extends CI_Controller
         $data["groupe_soutenance"] = $this->m_admin->getAllGroupSoutenance();
 
         $this->load->view("v_header");
-        $this->load->view("v_admin_navtbar");
+        $this->load->view("v_admin_navbar");
         $this->load->view("v_admin_leftbar");
         $this->load->view("v_admin_gestion_groupes",$data);
     }

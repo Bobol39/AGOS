@@ -33,8 +33,8 @@ class C_eleve extends CI_Controller
 
     function index(){
         $this->load->view("v_header");
-        $this->load->view("v_eleve_index");
         $this->load->view("v_eleve_navbar");
+        $this->load->view("v_eleve_index");
     }
 
 }
