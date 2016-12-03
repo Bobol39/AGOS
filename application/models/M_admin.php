@@ -3,7 +3,6 @@
 class M_admin extends CI_Model
 {
 
-
     public function getAllProf(){
         $this->db->select('*');
         $this->db->from('professeur');

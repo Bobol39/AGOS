@@ -11,6 +11,9 @@
 <div class="col-lg-12 col-md-12" id="container_notation">
     <div class="col-lg-12 col-md-12" id="block_notation">
         <div class="col-lg-3 col-md-3" style="height: 100%; padding: 30px 0 0;">
+            <div class="col-lg-12 col-md-12 linetitleblock" >
+                <div class="bigtitleline"></div>
+            </div>
 
             <?php foreach($critere as $value) { ?>
                 <div class="col-lg-12 col-md-12 linetitleblock" >

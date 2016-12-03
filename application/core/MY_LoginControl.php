@@ -20,6 +20,7 @@ class MY_LoginControl extends CI_Controller  {
         if(isset($_REQUEST['logout'])){
             $this->logout();
         }
+        $this->load->model('M_log');
     }
 
     public function login_check()
@@ -37,6 +38,8 @@ class MY_LoginControl extends CI_Controller  {
         $this->session->set_userdata('uid', $uid);//On met le $uid en session pour cet utlisateur
 
 
+        $response = $this->M_log->checkSave($uid);
+        echo $response;
         if(true){//--------------> Ici vérifier si l'utilisateur est enregistrer en bdd
 
         }
@@ -53,9 +56,9 @@ class MY_LoginControl extends CI_Controller  {
         //AT this point user is logged in
         //we user is logged in check if he has permission to access this page
 
-        if (! $this->permission_check()) {
-            die("<h4>Access denied</h4>");
-        }
+//        if (! $this->permission_check()) {
+//            die("<h4>Access denied</h4>");
+//        }
 
     }
 
