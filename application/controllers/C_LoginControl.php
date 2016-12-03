@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_LoginControl extends CI_Controller  {
 
     /**
-     * 'Admin' for admin
-     * 'Teacher' for editor group
-     * 'Student' for author group
+     * 'admin' for admin
+     * 'teacher' for techers
+     * 'student' for students
      * @var string
      */
-    protected $access = "Admin";
+    protected $access = "admin,";
 
 
     public function __construct()
@@ -130,6 +130,7 @@ class MY_LoginControl extends CI_Controller  {
         $access = is_array($this->access) ? $this->access : explode(",", $this->access);
 
         //check if user's access is in the allowed userlist of this page
+        $this->session->role = strtolower($this->session->role);
         if (in_array($this->session->userdata("role"), array_map("trim", $access)) ) {
             return true;
         }
