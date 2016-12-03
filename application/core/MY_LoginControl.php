@@ -15,12 +15,12 @@ class MY_LoginControl extends CI_Controller  {
     public function __construct()
     {
         parent::__construct();
+        $this->load->database();
         $this->load->library('session');
         $this->login_check();
         if(isset($_REQUEST['logout'])){
             $this->logout();
         }
-        $this->load->model('M_log');
     }
 
     public function login_check()
@@ -37,17 +37,14 @@ class MY_LoginControl extends CI_Controller  {
         $uid = phpCAS::getUser();//On recupère le uid de l'utilisateur grâce au cas
         $this->session->set_userdata('uid', $uid);//On met le $uid en session pour cet utlisateur
 
-
+        $this->load->model('M_log');
         $response = $this->M_log->checkSave($uid);
-        echo $response;
-        if(true){//--------------> Ici vérifier si l'utilisateur est enregistrer en bdd
-
-        }
-        else{
+        if($response){ //Utilisateur non présent dans la database
             $this->get_ldap_info($uid);//----> Recupération des info utilisateur depuis le LDAP + mise en session des info recupérées
             //----------> ICI insérer l'utilisateur en BDD grâce aux info user du LDAP enregistrés en session
-
+            $this->M_log->saveUser();
         }
+
 
 
         //TOUT UTILISATEUR CONNECTE EST CONSIDERER COMME UN ( Admin / Student / Teacher )
@@ -60,6 +57,49 @@ class MY_LoginControl extends CI_Controller  {
 //            die("<h4>Access denied</h4>");
 //        }
 
+    }
+
+    public function init_PHPCAS(){
+        // ---- Initialize phpCAS
+        $CI =& get_instance();
+        $this->CI = $CI;
+        $CI->config->load('cas');
+        $this->phpcas_path = $CI->config->item('phpcas_path');
+        $this->cas_server_url = $CI->config->item('cas_server_url');
+
+        // ---- init CAS client
+        $defaults = array('path' => '', 'port' => 443);
+        $cas_url = array_merge($defaults, parse_url($this->cas_server_url));
+
+        if (empty($this->phpcas_path)
+            or filter_var($this->cas_server_url, FILTER_VALIDATE_URL) === FALSE) {
+            cas_show_config_error();
+        }
+        $cas_lib_file = $this->phpcas_path . '/CAS.php';
+        if (!file_exists($cas_lib_file)){
+            show_error("Could not find file: <code>" . $cas_lib_file. "</code>");
+        }
+        require_once $cas_lib_file;
+
+        // END OF INIT PHPCAS
+
+        // Enable debugging
+        phpCAS::setDebug();
+        // Enable verbose error messages. Disable in production!
+        phpCAS::setVerbose(false);
+
+
+        //Condition pour éviter de boucler entre cas et agos
+        if($this->session->has_userdata('client') == null) {
+            $this->session->set_userdata('client', phpCAS::client(CAS_VERSION_3_0, $cas_url['host'], $cas_url['port'], $cas_url['path'], false));
+        }
+
+    }
+
+    //check if user's access is in the allowed userlist of this page
+
+    public function logout(){
+        phpCAS::logoutWithRedirectService('http://www.iut-bm.univ-fcomte.fr/');
     }
 
     public function get_ldap_info ($uid){
@@ -123,7 +163,6 @@ class MY_LoginControl extends CI_Controller  {
 
     }
 
-    //check if user's access is in the allowed userlist of this page
     public function permission_check()
     {
         //getting list of allowed users on this page
@@ -137,47 +176,6 @@ class MY_LoginControl extends CI_Controller  {
 
         return false;
 
-    }
-
-    public function init_PHPCAS(){
-        // ---- Initialize phpCAS
-        $CI =& get_instance();
-        $this->CI = $CI;
-        $CI->config->load('cas');
-        $this->phpcas_path = $CI->config->item('phpcas_path');
-        $this->cas_server_url = $CI->config->item('cas_server_url');
-
-        // ---- init CAS client
-        $defaults = array('path' => '', 'port' => 443);
-        $cas_url = array_merge($defaults, parse_url($this->cas_server_url));
-
-        if (empty($this->phpcas_path)
-            or filter_var($this->cas_server_url, FILTER_VALIDATE_URL) === FALSE) {
-            cas_show_config_error();
-        }
-        $cas_lib_file = $this->phpcas_path . '/CAS.php';
-        if (!file_exists($cas_lib_file)){
-            show_error("Could not find file: <code>" . $cas_lib_file. "</code>");
-        }
-        require_once $cas_lib_file;
-
-        // END OF INIT PHPCAS
-
-        // Enable debugging
-        phpCAS::setDebug();
-        // Enable verbose error messages. Disable in production!
-        phpCAS::setVerbose(false);
-
-
-        //Condition pour éviter de boucler entre cas et agos
-        if($this->session->has_userdata('client') == null) {
-            $this->session->set_userdata('client', phpCAS::client(CAS_VERSION_3_0, $cas_url['host'], $cas_url['port'], $cas_url['path'], false));
-        }
-
-    }
-
-    public function logout(){
-        phpCAS::logoutWithRedirectService('http://www.iut-bm.univ-fcomte.fr/');
     }
 }
 

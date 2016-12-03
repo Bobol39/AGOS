@@ -6,7 +6,7 @@
  * Date: 23/10/2016
  * Time: 19:42
  */
-class c_cas extends MY_LoginControl
+class C_cas extends MY_LoginControl
 {
     protected $access = "Admin,teacher";
 
