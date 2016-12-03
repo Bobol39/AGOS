@@ -1,6 +1,16 @@
 <link href="<?=base_url();?>assets/css/notation.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
 
+<script src="<?=base_url();?>/node/node_modules/socket.io-client/dist/socket.io.js"></script>
+<script>
+    var socketio = io.connect('http://127.0.0.1:3000/')
+
+    socketio.on('connect', function () {
+        socketio.emit('connection');
+    });
+
+</script>
+
 
 <div id="fiche_layer">
     <div id="fiche_viewer">

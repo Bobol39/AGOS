@@ -31,7 +31,7 @@ class C_notation extends CI_Controller
     }
 
     public function index(){
-        $id_soutenance = 1;
+        $id_soutenance = 3;
         $data["soutenance"]=$this->m_soutenance->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_soutenance->getCritereFromSoutenance($id_soutenance);
 
