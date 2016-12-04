@@ -39,7 +39,7 @@ class C_index extends CI_Controller {
 	public function form_valid_connexion(){
 		$login = $this->input->post('login');
 		if ($login == "prof") {
-			Redirect("c_notation");
+			Redirect("c_prof");
 		}else if ($login == "admin") {
 			Redirect("c_admin");
 		}else if($login =="eleve"){

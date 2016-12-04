@@ -1,0 +1,35 @@
+#container_choix_soutenance{
+    height: 100vh;
+    background-color: #EAEAEA;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#container_soutenances{
+    background-color: whitesmoke;
+    height: 79%;
+    text-align: left;
+}
+
+#container_soutenances h4{
+    margin-left: 30px;
+}
+
+#container_soutenances span{
+    margin-left: 10px;
+    font-style: italic;
+    color: gray;
+    margin-bottom: 20px;
+}
+.container_soutenance{
+    height: 80px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.button_soutenance{
+    height: 100%;
+    width: 100%;
+}
