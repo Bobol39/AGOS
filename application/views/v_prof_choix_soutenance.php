@@ -43,3 +43,4 @@
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/choix_soutenance.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
+

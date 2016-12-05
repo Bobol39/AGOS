@@ -20,6 +20,8 @@
     background-color: whitesmoke;
     margin: auto;
     border-radius: 10px;
+    overflow-y: hidden;
+
 }
 
 #fiche_header{
@@ -28,6 +30,18 @@
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    line-height: 60px;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+#fiche_body{
+    width: 100%;
+    padding: 10px;
+    height: calc(100% - 70px);
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
 }
 
 #container_notation{

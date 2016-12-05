@@ -14,7 +14,13 @@
 
 <div id="fiche_layer">
     <div id="fiche_viewer">
-        <div id="fiche_header"></div>
+        <div id="fiche_header" class="text-center">
+            <span>Resumé de la soutenance</span>
+        </div>
+        <div id="fiche_body">
+            <?= $soutenance[0]['resume']?>
+        </div>
+
     </div>
 </div>
 

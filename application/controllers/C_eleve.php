@@ -27,7 +27,7 @@ class C_eleve extends CI_Controller
 		$this->load->database();
         $this->load->helper(array('form', 'url', 'text', 'string'));
         $this->load->library(array('session', 'form_validation', 'email'));
-//		$this->load->model('Users_model');
+		$this->load->model('m_eleve');
     }
 
 
@@ -35,6 +35,13 @@ class C_eleve extends CI_Controller
         $this->load->view("v_header");
         $this->load->view("v_eleve_navbar");
         $this->load->view("v_eleve_index");
+    }
+
+
+    function saveResume(){
+        $data["titre"] = $this->input->post('titre');
+        $data["resume"] = $this->input->post('resume');
+        $this->m_eleve->saveResume($data, $this->input->post('id_etudiant'));
     }
 
 }

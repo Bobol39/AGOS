@@ -20,7 +20,8 @@
     font-size: 25px;
     width: 100%;
 }
-#block_titre_soutenance span{
+#block_titre_soutenance span, #block_titre_soutenance marquee{
+    white-space:nowrap;
     color: white;
     line-height:60px;
     font-size: 20px;

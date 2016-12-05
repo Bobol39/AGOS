@@ -3,6 +3,10 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markitup.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markupeditor.css" />
 
+<script>
+    var baseurl = '<?php echo base_url();?>';
+</script>
+
 <div class="col-lg-12 col-md-12" id="container_eleve">
     <div class="col-lg-12 col-md-12" id="container_titre">
         <h3>Titre de la soutenance</h3>
@@ -15,10 +19,11 @@
         <a href="" id="lien"></a>
         <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3" id="container_upload">
             <textarea id="markup_editor" cols="80" rows="20"></textarea>
+            <button class="btn btn-success" id="confirmer">Confirmer</button>
         </div>
+
     </div>
 
-    <button class="btn btn-success">Confirmer</button>
 
 </div>
 

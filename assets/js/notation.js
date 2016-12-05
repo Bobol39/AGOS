@@ -5,6 +5,11 @@
 var timer,showtimer;
 var sec=58, min=19, hr=0;
 
+var el = $('#block_titre_soutenance');
+if (el.width() < el.find("span").width()) {
+    el.find("span").replaceWith("<marquee>"+el.html()+"</marquee>")
+}
+
 
 function chronoStart(){
     timer = setInterval(function(){
