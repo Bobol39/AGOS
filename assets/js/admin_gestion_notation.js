@@ -1,5 +1,6 @@
 var div;
 $(function() {
+    if (div==null) div = $(".crit_div").first();
     $("#select_groupe_critere").hide();
     $("#valider_crit").click(function () {
         saveCritere()
@@ -26,7 +27,7 @@ $(function() {
 });
 var create = true;
 function addCritere(){
-    $(".crit_div").last().clone().appendTo($(".crit_div").last().parent());
+    $("#container_crits").append(div.clone());
 }
 
 function saveCritere(){
@@ -88,15 +89,15 @@ function saveGroupCritere(){
 }
 
 function updateView(){
+    //Modifie la vue pour la modification de groupe de critères
     if (create){
-        console.log("modif");
         $("#radioModif").prop("checked", true);
         $("#input_titre").hide();
         $("#select_groupe_critere").show();
         getCritereGroup();
         create = false;
     }else {
-        console.log("creer");
+        //Modifie la vue pour la création de groupe de critères
         $("#radioCreer").prop("checked", true);
         $("#select_groupe_critere").hide();
         $("#input_titre").show();
@@ -113,9 +114,7 @@ function updateView(){
 }
 
 function getCritereGroup(){
-    console.log("ok");
     id = $("#select_groupe_critere").val();
-    if (div==null) div = $(".crit_div").first();
     $(".crit_div").each(function(){
        $(this).remove();
     });
@@ -127,9 +126,10 @@ function getCritereGroup(){
         data: {id: id}
     }).done( function(data) {
         data = $.parseJSON(data);
-        console.log(data);
         $.each(data,function(){
             $("#container_crits").append(div.clone());
+            console.log('append');
+            console.log(div);
 
             $(".crit_div").last().children(".crit").val($(this)[0]['id']);
             $(".crit_div").last().children(".bareme").val($(this)[0]['bareme']);
