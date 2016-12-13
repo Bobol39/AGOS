@@ -1,15 +1,7 @@
 <link href="<?=base_url();?>assets/css/notation.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
 
-<script src="<?=base_url();?>/node/node_modules/socket.io-client/dist/socket.io.js"></script>
-<script>
-    var socketio = io.connect('http://127.0.0.1:3000/')
-
-    socketio.on('connect', function () {
-        socketio.emit('connection');
-    });
-
-</script>
+<script src="<?=base_url();?>node/node_modules/socket.io-client/dist/socket.io.js"></script>
 
 
 <div id="fiche_layer">
@@ -98,3 +90,18 @@
 <script type="text/javascript" src="<?=base_url();?>assets/js/notation.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>
+
+<script>
+    $(function() {
+        var socketio = io.connect('http://127.0.0.1:3000/');
+        var login = prompt("Login?")
+        socketio.emit('notation',{id: "<?=$soutenance[0]['id'];?>", login: login});
+        socketio.on("waiting", function () {
+            alert("waiting");
+            start_loading();
+        }).on("stopWaiting", function () {
+            alert("stopWaiting");
+            stop_loading();
+        });
+    });
+</script>

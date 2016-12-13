@@ -28,3 +28,12 @@ function stop_loading(error){
     })
 
 }
+
+function start_waiting(nom){
+    $("#waiting_layer").find(".load").text("En attente de "+nom);
+    $("#waiting_layer").fadeIn()
+}
+
+function stop_waiting(){
+    $("#waiting_layer").fadeOut(50);
+}

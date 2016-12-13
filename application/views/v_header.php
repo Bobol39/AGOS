@@ -40,5 +40,18 @@
             <div class="loading_iut"><img src="<?=base_url();?>/assets/img/iut.png"></div>
         </div>
     </div>
+    <div class="text-center" id="waiting_layer" style="display: none">
+        <div class="in_up"></div>
+        <div class="loader">
+            <div class="inner one"></div>
+            <div class="inner one2"></div>
+            <div class="inner two"></div>
+            <div class="inner two2"></div>
+            <div class="inner three"></div>
+            <div class="inner three2"></div>
+            <div class="load">Chargement...</div>
+            <div class="loading_iut"><img src="<?=base_url();?>/assets/img/reseau.png"></div>
+        </div>
+    </div>
 
     </head>
