@@ -97,10 +97,8 @@
         var login = prompt("Login?")
         socketio.emit('notation',{id: "<?=$soutenance[0]['id'];?>", login: login});
         socketio.on("waiting", function () {
-            alert("waiting");
             start_loading();
         }).on("stopWaiting", function () {
-            alert("stopWaiting");
             stop_loading();
         });
     });

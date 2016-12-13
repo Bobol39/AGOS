@@ -39,18 +39,21 @@ io.on('connection', function(socket){
         } else if ((soutTrouve.prof1 != null) && (soutTrouve.prof2 != null)){
             if (soutTrouve.prof1.login == data.login){
                 console.log("Prof1 reconnected");
-                tryEmit(soutTrouve.prof2.socket, "stopWaiting")
+                tryEmit(soutTrouve.prof2.socket, "stopWaiting");
+                soutTrouve.prof1.socket = socket;
             }
             else if (soutTrouve.prof2.login == data.login) {
                 console.log("Prof2 reconnected");
-                tryEmit(soutTrouve.prof1.socket, "stopWaiting")
+                tryEmit(soutTrouve.prof1.socket, "stopWaiting");
+                soutTrouve.prof2.socket = socket;
+
             }
             else console.log("THIS SHOULD NOT HAPPEN");
         }
     });
     socket.on("disconnect", function () {
         soutenances.forEach(function (sout) {
-            console.log(sout.prof1.login+","+sout.prof2.login)
+            console.log(sout.prof1.login+","+sout.prof2.login);
             if (sout.prof1.socket == socket){
                 console.log("prof1 disconnected");
                 tryEmit(sout.prof2.socket, "waiting");
