@@ -1,75 +1,92 @@
+"use strict"
+
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var Soutenance = require("./Soutenance.js");
+var DEBUG = true;
+var soutenances = {};
 
-class Soutenance {
-    constructor(id, prof1,socket) {
-        this.id = id;
-        this.prof1 = {login: prof1, socket: socket};
-        this.prof2 = null;
-    }
-
-    setProf2(prof2, socket){
-        this.prof2 = {login: prof2, socket: socket};
-    }
-}
-
-var soutenances = [];
 
 
 io.on('connection', function(socket){
-
-    var soutTrouve = null;
     socket.on('notation', function(data){
-        soutenances.forEach(function(sout){
-            if (sout.id == data.id){
-                soutTrouve = sout;
+        //Un client se connecte/reconnecte dans la vue notation
+        if (!(soutenances[data.id])){
+            debug("Arrivée de "+data.login+": La soutenance "+data.id+" n'existe pas");
+            soutenances[data.id] = new Soutenance();
+            debug("Il attend l'autre professeur");
+            tryEmit(socket, "waiting");
+        } else {
+            debug("Arrivée de "+data.login+": La soutenance "+data.id+" existe deja");
+            if ((soutenances[data.id].getProf1().socket != null) && (soutenances[data.id].getProf2().socket != null)){
+                debug("Tout le monde est present, plus personne n'attends");
+                if (data.tuteur) tryEmit(soutenances[data.id].getProf2().socket,"stopWaiting");
+                else tryEmit(soutenances[data.id].getProf1().socket,"stopWaiting");
+            }else if ((soutenances[data.id].getProf1().socket == null) && (soutenances[data.id].getProf2().socket == null)){
+                debug("Un professeur est deconnecté, attends");
+                tryEmit(socket, "waiting");
+            }else {
+                debug("Tout le monde est present, plus personne n'attends");
+                tryEmitToAll(data.id, "stopWaiting");
             }
-        });
-        if (soutTrouve == null){
-            soutTrouve = new Soutenance(data.id, data.login, socket);
-            soutenances.push(soutTrouve);
-            console.log("prof1 FIRST CONNECTION");
-            socket.emit("waiting");
-        }else if ((soutTrouve.prof2 == null) && (soutTrouve.prof1.login != data.login)){
-            console.log("prof2 FIRST CONNECTION");
-            soutTrouve.setProf2(data.login, socket);
-            tryEmit(soutTrouve.prof1.socket, "stopWaiting")
-
-        } else if ((soutTrouve.prof1 != null) && (soutTrouve.prof2 != null)){
-            if (soutTrouve.prof1.login == data.login){
-                console.log("Prof1 reconnected");
-                tryEmit(soutTrouve.prof2.socket, "stopWaiting");
-                soutTrouve.prof1.socket = socket;
-            }
-            else if (soutTrouve.prof2.login == data.login) {
-                console.log("Prof2 reconnected");
-                tryEmit(soutTrouve.prof1.socket, "stopWaiting");
-                soutTrouve.prof2.socket = socket;
-
-            }
-            else console.log("THIS SHOULD NOT HAPPEN");
         }
-    });
-    socket.on("disconnect", function () {
-        soutenances.forEach(function (sout) {
-            console.log(sout.prof1.login+","+sout.prof2.login);
-            if (sout.prof1.socket == socket){
-                console.log("prof1 disconnected");
-                tryEmit(sout.prof2.socket, "waiting");
-            } else if (sout.prof2.socket == socket){
-                console.log("prof2 disconnected");
-                tryEmit(sout.prof1.socket, "waiting");
+        creerProf(data, socket);
+        socket.on("disconnect", function () {
+            debug("Deconnection de "+data.login);
+            tryEmitToAll(data.id, "waiting");
+            if (data.tuteur) soutenances[data.id].getProf1().socket = null;
+            else soutenances[data.id].getProf2().socket = null;
+        })
+
+        socket.on("clientReadyForFusion", function () {
+            debug("Client "+data.login+" signale qu'il est pret pour la fusion");
+            if (data.tuteur) soutenances[data.id].getProf1().readyForFusion = true;
+            else {soutenances[data.id].getProf2().readyForFusion = true;}
+            if (soutenances[data.id].bothReadyForFusion()){
+                debug("Tout le monde est prêt pour la fusion et arrête d'attendre");
+                tryEmitToAll(data.id,"redirectFusion");
+            } else {
+                debug("L'autre professeur n'est pas pret, "+data.login+" doit attendre");
             }
         })
-    })
+    });
 });
 
+function creerProf(data, socket) {
+    if (data.tuteur){
+        if (soutenances[data.id].getProf1().login != null){debug("c'est une reconnection");}
+        soutenances[data.id].setProf1(data.login, socket);
+
+    } else {
+        if (soutenances[data.id].getProf2().login != null){debug("c'est une reconnection");}
+        soutenances[data.id].setProf2(data.login, socket);
+    }
+}
+
+
 function tryEmit(socket,name,data) {
+    console.log(name);
     if (socket != null){
         if (data) socket.emit(name,data);
         else socket.emit(name);
     }
+}
+
+function tryEmitToAll(idsout,name,data) {
+    console.log("TO ALL: "+name);
+    if (soutenances[idsout].getProf1().socket != null){
+        if (data) soutenances[idsout].getProf1().socket.emit(name,data);
+        else soutenances[idsout].getProf1().socket.emit(name);
+    }
+    if (soutenances[idsout].getProf2().socket != null){
+        if (data) soutenances[idsout].getProf2().socket.emit(name,data);
+        else soutenances[idsout].getProf2().socket.emit(name);
+    }
+}
+
+function debug(text) {
+    if (DEBUG) console.log(text);
 }
 
 http.listen(3000, function(){

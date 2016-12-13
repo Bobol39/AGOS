@@ -4,9 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <link href="<?php echo base_url();?>assets/css/gsdk.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/gestion_salles.css" rel="stylesheet">
-<script>
-    var baseurl = '<?php echo base_url();?>';
-</script>
+
 
 <div class="col-lg-10 col-md-10 text-center" id="container_admin">
     <table id="table_salles">

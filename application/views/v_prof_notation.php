@@ -93,13 +93,6 @@
 
 <script>
     $(function() {
-        var socketio = io.connect('http://127.0.0.1:3000/');
-        var login = prompt("Login?")
-        socketio.emit('notation',{id: "<?=$soutenance[0]['id'];?>", login: login});
-        socketio.on("waiting", function () {
-            start_loading();
-        }).on("stopWaiting", function () {
-            stop_loading();
-        });
+        runSocketIo("<?=$soutenance[0]['id'];?>","<?=$login;?>", <?=$tuteur;?>)
     });
 </script>

@@ -19,10 +19,12 @@
             foreach ($soutenances_tuteur as $sout){
             ?>
             <div class="container_soutenance col-lg-3 col-md-3">
-                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"]; ?>"
+                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$login; ?>">
                     <button class="btn btn-success btn-fill button_soutenance"><?php echo $sout["titre"]; ?></button>
                 </a>
+                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$sout["professeur2"];  ?>">acces en tanque que <?php echo $sout["professeur2"];  ?></a>
             </div>
+
         <?php } ?>
         </div>
         <div class="row"><h4>Soutenances dont vous êtes le témoin :</h4>
@@ -31,7 +33,7 @@
             foreach ($soutenances_temoin as $sout){
                 ?>
                 <div class="container_soutenance col-lg-3 col-md-3">
-                    <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"]; ?>"
+                    <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$login;  ?>">
                         <button class="btn btn-info btn-fill button_soutenance"><?php echo $sout["titre"]; ?></button>
                     </a>
                 </div>

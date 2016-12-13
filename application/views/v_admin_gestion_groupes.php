@@ -6,9 +6,7 @@
  * Time: 16:23
  */
 ?>
-<script>
-    var baseurl = '<?php echo base_url();?>';
-</script>
+
 
 <link href="<?php echo base_url();?>assets/css/gestion_groupes.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/datepicker.css" rel="stylesheet">

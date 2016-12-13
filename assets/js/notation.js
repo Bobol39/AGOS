@@ -137,3 +137,23 @@ function cacherFiche() {
         e.stopPropagation();
     })
 })();
+
+function runSocketIo(id,login,tuteur) {
+    var socketio = io.connect('http://127.0.0.1:3000/');
+    socketio.emit('notation',{id: id, login: login, tuteur: tuteur});
+
+
+    socketio.on("waiting", function () {
+        start_loading();
+    }).on("stopWaiting", function () {
+        stop_loading();
+    }).on("redirectFusion", function () {
+        stop_loading();
+        window.location.replace(baseurl+"index.php/C_prof/showFusion/"+$("#idgroup").val());
+    });
+
+    $("#button_next").click(function () {
+        socketio.emit('clientReadyForFusion');
+        start_loading();
+    });
+}

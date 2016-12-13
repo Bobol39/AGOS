@@ -18,6 +18,9 @@
     <script src="<?=base_url();?>assets/js/jquery-ui.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?=base_url();?>assets/js/bootstrap.min.js"> </script>
     <script type="text/javascript" src="<?=base_url();?>assets/js/global.js"> </script>
+    <script>
+        var baseurl = '<?php echo base_url();?>';
+    </script>
 
     <div id="notification">
         <div>

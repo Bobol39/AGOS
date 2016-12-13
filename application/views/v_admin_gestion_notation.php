@@ -7,9 +7,6 @@
  */
 ?>
 
-<script>
-    var baseurl = '<?php echo base_url();?>';
-</script>
 
 
 <link href="<?php echo base_url();?>assets/css/gestion_notation.css" rel="stylesheet">

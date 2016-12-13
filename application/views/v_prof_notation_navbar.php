@@ -27,6 +27,6 @@
         </div>
     </div>
     <div class="col-lg-2 col-md-2" id="block_next">
-        <a href="<?php echo base_url("index.php/C_fusion")?>"><button class="btn btn-success btn-fill" id="button_next">Next</button></a>
+        <button class="btn btn-success btn-fill" id="button_next">Terminé</button>
     </div>
 </div>

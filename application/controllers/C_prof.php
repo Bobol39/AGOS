@@ -31,16 +31,21 @@ class C_prof extends CI_Controller
     }
 
     public function index(){
-        $login = "jfcouchot";
+        $login = "cguyeux";
         $data["soutenances_tuteur"] = $this->m_prof->getSoutenancesByTutor($login);
         $data["soutenances_temoin"] = $this->m_prof->getSoutenancesByAssistant($login);
+        $data["login"] = $login;
+
         $this->load->view('v_header');
         $this->load->view('v_prof_choix_soutenance',$data);
     }
 
-    public function showNotation($id_soutenance){
+    public function showNotation($id_soutenance,$login){
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
+        $data["soutenance"]["nbrCritere"] = count($data["critere"]);
+        $data["login"] = $login;
+        $data["tuteur"] = ($data["soutenance"][0]["professeur1"] == $login) ? 1 : 0;
 
         $this->load->view('v_header');
         $this->load->view('v_prof_notation_navbar',$data);

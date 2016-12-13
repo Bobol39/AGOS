@@ -3,9 +3,6 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markitup.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markupeditor.css" />
 
-<script>
-    var baseurl = '<?php echo base_url();?>';
-</script>
 
 <div class="col-lg-12 col-md-12" id="container_eleve">
     <div class="col-lg-12 col-md-12" id="container_titre">
