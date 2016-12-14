@@ -69,18 +69,23 @@
 #tablecolonnes tr th{
     height: 100%;
     text-align: center;
-    width: 23%;
+    width: 16%;
 }
 #tablecolonnes tr th:last-child{
     width: 8%;
 }
 
-#tablecolonnes tr th:nth-child(odd){
-    background-color: white;
-}
+/*#tablecolonnes tr th:nth-child(odd){*/
+    /*background-color: white;*/
+/*}*/
 
-#tablecolonnes tr th:nth-child(even){
-    background-color: lightgray;
+/*#tablecolonnes tr th:nth-child(even){*/
+    /*background-color: lightgray;*/
+/*}*/
+
+#tablecolonnes tr th {
+    background: white;
+    border: 1px solid lightgrey;
 }
 
 .linetitleblock {
@@ -169,5 +174,9 @@
 }
 .option_text{
     display: none;
+}
+
+.blockslider{
+    width: 91%!important;
 }
 

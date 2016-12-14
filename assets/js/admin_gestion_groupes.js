@@ -6,7 +6,7 @@ $(function() {
                 <button class="btn btn-success btn-fill button_groupe">Nouveau Groupe</button>\
                 <input type="hidden" class="group_promo" value="default">\
                 <input type="hidden" class="group_criteres" value="default">\
-                <input type="hidden" class="group_duree" value="40">\
+                <input type="hidden" class="group_duree" value="25">\
                 <input type="hidden" class="group_id" value="0">\
             </div>';
 

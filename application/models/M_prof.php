@@ -3,11 +3,12 @@
 class M_prof extends CI_Model
 {
     public function getInfoSoutenance($id){ //id soutenance
-        $this->db->select('*');
+        $this->db->select('soutenance.*,planning.duree,planning.delai_alerte');
         $this->db->from('soutenance');
+        $this->db->join('planning','planning.id=soutenance.id_planning');
         $this->db->where('soutenance.id',$id);
         $query = $this->db->get();
-        $row = $query->result_array();
+        $row = $query->fetch_array();
         return $row;
     }
 

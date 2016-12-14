@@ -3,7 +3,7 @@
 class M_log extends CI_Model
 {
 
-    public function checkSave($id){
+    public function checkSave($id){ //return true si l'id n'est pas save dans la base
         $this->db->select("etudiant.id,professeur.id");
         $this->db->from("etudiant,professeur");
         $this->db->where("etudiant.id",$id);
