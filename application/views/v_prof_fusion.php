@@ -22,31 +22,14 @@
             </table>
         </div>
         <div style="position: absolute; width: 98%; height: 93%; padding-top: 30px">
-            <div class="col-lg-12 col-md-12 lineblock" >
+            <?php for ($i=0;$i<sizeof($critere);$i++){ ?>
+                <div class="col-lg-12 col-md-12 lineblock" >
 
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider1" class="slider-info"></div>
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider2" class="slider-info"></div>
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider3" class="slider-info"></div>
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider4" class="slider-info"></div>
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider5" class="slider-info"></div>
-            </div>
-            <div class="col-lg-12 col-md-12 lineblock" >
-                    <div id="slider6" class="slider-info"></div>
-            </div>
-
+                </div>
+                <div class="col-lg-12 col-md-12 lineblock" >
+                    <div id="slider<?php echo $i; ?>" class="slider-info"></div>
+                </div>
+            <?php } ?>
         </div>
 
     </div>

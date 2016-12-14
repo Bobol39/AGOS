@@ -54,23 +54,6 @@ $(function() {
         });
         $(this).addClass("btn-fill");
     });
-
-    $( ".slider-info" ).slider({
-        min: 0,
-        max: 100,
-        values: [ 25, 50, 75],
-        animate: true,
-        disabled: true,
-        stop: function( event, ui ) {
-            selectButton(ui, $(this))
-        },
-        create: function( event, ui ) {
-            ui.values = $(this).slider('values');
-            $(this).find("span:nth-child(2)").removeClass("ui-state-default");
-            //selectButton(ui, $(this));
-        },
-    }).removeClass("ui-state-disabled");
-
 });
 
 function runSocketIo(id) {
@@ -78,9 +61,22 @@ function runSocketIo(id) {
     socketio.emit('fusion',id);
 
     socketio.on('getNotes',function(data){
-        console.log("ok it work");
-        Object.keys(data).forEach(function(e){
-           console.log(data[e]);
+        $( ".slider-info" ).each(function(index){
+            $(this).slider({
+                min: 0,
+                max: 100,
+                values: [ data.p1[index],50, data.p2[index]],
+                animate: true,
+                disabled: true,
+                stop: function( event, ui ) {
+                    selectButton(ui, $(this))
+                },
+                create: function( event, ui ) {
+                    ui.values = $(this).slider('values');
+                    $(this).find("span:nth-child(2)").removeClass("ui-state-default");
+                    //selectButton(ui, $(this));
+                },
+            }).removeClass("ui-state-disabled");
         });
     });
 }

@@ -46,6 +46,16 @@ function cacherFiche() {
     });
 }
 
+function getNotes(){
+    console.log("getnotes");
+
+    var notes = [];
+    $(".ui-slider").each(function () {
+        notes.push($(this).slider("option","value"));
+    });
+    return notes;
+}
+
 (function() {
     $("#button_next").hide();
     $("#notification").click(function () {
@@ -158,7 +168,7 @@ function runSocketIo(id,login,tuteur) {
     });
 
     $("#button_next").click(function () {
-        socketio.emit('clientReadyForFusion');
+        socketio.emit('clientReadyForFusion', getNotes());
         start_loading();
     });
 }

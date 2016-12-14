@@ -55,10 +55,18 @@ io.on('connection', function(socket){
 
         })
 
-        socket.on("clientReadyForFusion", function () {
+        socket.on("clientReadyForFusion", function (notes) {
             debug("Client "+data.login+" signale qu'il est pret pour la fusion");
-            if (data.tuteur) soutenances[data.id].getProf1().readyForFusion = true;
-            else {soutenances[data.id].getProf2().readyForFusion = true;}
+            debug("Notes reçues :");
+            notes.forEach(function (e) {debug("   "+e);})
+            if (data.tuteur){
+                soutenances[data.id].getProf1().readyForFusion = true;
+                soutenances[data.id].getProf1().notes = notes;
+            }
+            else {
+                soutenances[data.id].getProf2().readyForFusion = true;
+                soutenances[data.id].getProf2().notes = notes;
+            }
             if (soutenances[data.id].bothReadyForFusion()){
                 debug("Tout le monde est prêt pour la fusion et arrête d'attendre");
                 tryEmitToAll(data.id,"redirectFusion");
@@ -71,7 +79,7 @@ io.on('connection', function(socket){
     socket.on('fusion',function(idsout){
         debug("Un client a charger la fusion et fusion demande les notes");
         var data = {p1: soutenances[idsout].getProf1().notes, p2: soutenances[idsout].getProf2().notes};
-       socket.emit('getNotes',data);
+        socket.emit('getNotes',data);
     });
 });
 
