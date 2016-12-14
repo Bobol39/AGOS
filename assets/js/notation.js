@@ -70,16 +70,6 @@ function cacherFiche() {
         }
     });
 
-    $("#button_debut").click(function(){
-        if ($(this).text()=="Début"){
-            $(this).removeClass("btn-success").addClass("btn-danger").text("Stop");
-            chronoStart();
-        } else {
-            $(this).addClass("btn-success").removeClass("btn-danger").text("Début");
-            chronoStop();
-        }
-    });
-
     $(".ct-green").change(function () {
         if (!this.checked){
             $(this).parents(".lineblock").find(".slider-info").slider('disable');
@@ -147,9 +137,24 @@ function runSocketIo(id,login,tuteur) {
         start_loading();
     }).on("stopWaiting", function () {
         stop_loading();
+    }).on("startChrono", function () {
+        stop_loading();
+        $("#button_debut").removeClass("btn-success").addClass("btn-danger").text("Stop");
+        chronoStart();
+    }).on("stopChrono", function () {
+        $("#button_debut").addClass("btn-success").removeClass("btn-danger").text("Début");
+        chronoStop();
     }).on("redirectFusion", function () {
         stop_loading();
         window.location.replace(baseurl+"index.php/C_prof/showFusion/"+$("#idgroup").val());
+    });
+
+    $("#button_debut").click(function(){
+        if ($(this).text()=="Début"){
+            socketio.emit("startChrono");
+        } else {
+            socketio.emit("stopChrono");
+        }
     });
 
     $("#button_next").click(function () {

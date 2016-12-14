@@ -39,6 +39,22 @@ io.on('connection', function(socket){
             else soutenances[data.id].getProf2().socket = null;
         })
 
+        socket.on("startChrono", function () {
+            debug("Client "+data.login+" demande le lancement du chrono");
+            if (data.tuteur){
+                debug("Il est bien tuteur: tous les clients demarrent le compteur");
+                tryEmitToAll(data.id, "startChrono")
+            }  else {debug("Il n'est pas tuteur, le chrono n'est pas lancé")}
+
+        }).on("stopChrono", function () {
+            debug("Client "+data.login+" demande à stopper le chrono");
+            if (data.tuteur){
+                debug("Il est bien tuteur: tous les clients stoppent le compteur");
+                tryEmitToAll(data.id, "stopChrono")
+            }  else {debug("Il n'est pas tuteur, le chrono n'est pas stoppé")}
+
+        })
+
         socket.on("clientReadyForFusion", function () {
             debug("Client "+data.login+" signale qu'il est pret pour la fusion");
             if (data.tuteur) soutenances[data.id].getProf1().readyForFusion = true;

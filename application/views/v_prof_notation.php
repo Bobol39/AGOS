@@ -3,6 +3,7 @@
 
 <script src="<?=base_url();?>node/node_modules/socket.io-client/dist/socket.io.js"></script>
 
+<?php echo "var duree = ${$soutenance[0]['duree']}";?>
 
 <div id="fiche_layer">
     <div id="fiche_viewer">
