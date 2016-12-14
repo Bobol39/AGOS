@@ -142,3 +142,10 @@
 <script type="text/javascript" src="<?=base_url();?>assets/js/fusion.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>
+<script src="<?=base_url();?>node/node_modules/socket.io-client/dist/socket.io.js"></script>
+
+<script>
+    $(function() {
+        runSocketIo("<?=$soutenance->id;?>");
+    });
+</script>

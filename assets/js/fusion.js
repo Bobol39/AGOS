@@ -72,3 +72,15 @@ $(function() {
     }).removeClass("ui-state-disabled");
 
 });
+
+function runSocketIo(id) {
+    var socketio = io.connect('http://127.0.0.1:3000/');
+    socketio.emit('fusion',id);
+
+    socketio.on('getNotes',function(data){
+        console.log("ok it work");
+        Object.keys(data).forEach(function(e){
+           console.log(data[e]);
+        });
+    });
+}

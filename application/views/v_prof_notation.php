@@ -7,6 +7,8 @@
 <?php
     echo "var duree = ".$soutenance->duree.";";
     echo "var delay_alert = ".$soutenance->delai_alerte.";";
+    echo "var id_soutenance = ".$soutenance->id.";";
+    echo "var login = ".$login.";";
 ?>
 </script>
 

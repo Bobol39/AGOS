@@ -146,7 +146,7 @@ function runSocketIo(id,login,tuteur) {
         chronoStop();
     }).on("redirectFusion", function () {
         stop_loading();
-        window.location.replace(baseurl+"index.php/C_prof/showFusion/");
+        window.location.replace(baseurl+"index.php/C_prof/showFusion/" + id_soutenance + "/" + login);
     });
 
     $("#button_debut").click(function(){

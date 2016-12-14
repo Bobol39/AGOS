@@ -67,6 +67,12 @@ io.on('connection', function(socket){
             }
         })
     });
+
+    socket.on('fusion',function(idsout){
+        debug("Un client a charger la fusion et fusion demande les notes");
+        var data = {p1: soutenances[idsout].getProf1().notes, p2: soutenances[idsout].getProf2().notes};
+       socket.emit('getNotes',data);
+    });
 });
 
 function creerProf(data, socket) {
