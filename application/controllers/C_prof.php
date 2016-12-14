@@ -43,9 +43,9 @@ class C_prof extends CI_Controller
     public function showNotation($id_soutenance,$login){
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
-        $data["soutenance"]["nbrCritere"] = count($data["critere"]);
+        $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $login;
-        $data["tuteur"] = ($data["soutenance"][0]["professeur1"] == $login) ? 1 : 0;
+        $data["tuteur"] = ($data["soutenance"]->professeur1 == $login) ? 1 : 0;
 
         $this->load->view('v_header');
         $this->load->view('v_prof_notation_navbar',$data);

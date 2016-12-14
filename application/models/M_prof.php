@@ -8,8 +8,7 @@ class M_prof extends CI_Model
         $this->db->join('planning','planning.id=soutenance.id_planning');
         $this->db->where('soutenance.id',$id);
         $query = $this->db->get();
-        $row = $query->fetch_array();
-        return $row;
+        return $query->row();
     }
 
     public function getCritereFromSoutenance($id){ //id soutenance

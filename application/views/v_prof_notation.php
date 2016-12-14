@@ -3,7 +3,12 @@
 
 <script src="<?=base_url();?>node/node_modules/socket.io-client/dist/socket.io.js"></script>
 
-<?php echo "var duree = ${$soutenance[0]['duree']}";?>
+<script>
+<?php
+    echo "var duree = ".$soutenance->duree.";";
+    echo "var delay_alert = ".$soutenance->delai_alerte.";";
+?>
+</script>
 
 <div id="fiche_layer">
     <div id="fiche_viewer">
@@ -11,7 +16,7 @@
             <span>Resumé de la soutenance</span>
         </div>
         <div id="fiche_body">
-            <?= $soutenance[0]['resume']?>
+            <?= $soutenance->resume ?>
         </div>
 
     </div>
@@ -94,6 +99,6 @@
 
 <script>
     $(function() {
-        runSocketIo("<?=$soutenance[0]['id'];?>","<?=$login;?>", <?=$tuteur;?>)
+        runSocketIo("<?=$soutenance->id;?>","<?=$login;?>", <?=$tuteur;?>)
     });
 </script>
