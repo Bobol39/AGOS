@@ -53,6 +53,8 @@
 #block_notation{
     height: 60%;
     padding: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #block_notation div {

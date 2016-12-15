@@ -3,6 +3,9 @@
     background-color: #EAEAEA;
     padding: 0px;
 }
+#block_moyennes {
+    overflow-y: auto;
+}
 
 #block_sliders, #block_moyennes{
     height: 50%;
@@ -24,7 +27,7 @@
 #tablecolonnes tr th{
     height: 100%;
     text-align: center;
-    width: 25%;
+    width: 20%;
 }
 
 

@@ -17,15 +17,13 @@
                     <th valign="top">Insuffisant (I)</th>
                     <th valign="top">Superficiel (S)</th>
                     <th valign="top">Moyen (M)</th>
-                    <th valign="top">Maîtrisé (T)</th>
+                    <th valign="top">Bon (B)</th>
+                    <th valign="top">Excellent (E)</th>
                 </tr>
             </table>
         </div>
-        <div style="position: absolute; width: 98%; height: 93%; padding-top: 30px">
+        <div style="position: absolute; width: 98%; height: 93%; padding-top: 30px; overflow-y: auto;">
             <?php for ($i=0;$i<sizeof($critere);$i++){ ?>
-                <div class="col-lg-12 col-md-12 lineblock" >
-
-                </div>
                 <div class="col-lg-12 col-md-12 lineblock" >
                     <div id="slider<?php echo $i; ?>" class="slider-info"></div>
                 </div>
@@ -42,68 +40,20 @@
         </div>
     </div>
     <div class="col-lg-10 col-md-10" id="block_moyennes">
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line1">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
-
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line2">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
-
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line3">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
-
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line4">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
-
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line5">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
-
-        <div class="col-lg-6 titleline text-center">
-            <span>Sujet</span>
-        </div>
-        <div class="col-lg-6 container_buttons_moyennes line6">
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-            <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-        </div>
+        <?php   foreach($critere as $value){ ?>
+            <div class="col-lg-6 titleline text-center">
+                <span><?= $value["titre"] ?></span>
+            </div>
+            <div class="col-lg-6 container_buttons_moyennes line1">
+                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+            </div>
+        <?php } ?>
 
         <div class="col-lg-6 titleline text-center" style=" margin-top: 30px;">
-            <span>Sujet</span>
+            <span>Bonus</span>
         </div>
         <div class="col-lg-6 container_buttons_moyennes">
             <div class="col-lg-3 block_button"><button class="btn btn-success ">T</button></div>
