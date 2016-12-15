@@ -21,6 +21,7 @@ function Soutenance() {
 
 }
 
+
 method.bothReadyForFusion = function(){
     if (this.prof1.readyForFusion && this.prof2.readyForFusion) return true;
     return false;
