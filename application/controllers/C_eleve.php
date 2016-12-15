@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_eleve extends CI_Controller
+class C_eleve extends MY_LoginControl
 {
 
+    protected $access = "admin,student";// --> Accesible aux ETUDIANTS
     /**
      * Index Page for this controller.
      *
@@ -19,6 +20,7 @@ class C_eleve extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
 
 
     function __construct()

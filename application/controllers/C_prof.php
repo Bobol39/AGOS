@@ -1,8 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_prof extends CI_Controller
+class C_prof extends MY_LoginControl
 {
+
+    protected $access = "admin,teacher";// --> Accesible aux ADMIN ET PROF
 
     /**
      * Index Page for this controller.
