@@ -57,8 +57,10 @@ io.on('connection', function(socket){
 
         socket.on("clientReadyForFusion", function (notes) {
             debug("Client "+data.login+" signale qu'il est pret pour la fusion");
-            debug("Notes reçues :");
-            notes.forEach(function (e) {debug("   "+e);})
+            debug("Notes reçues:\n" +
+                "sliders: "+notes.sliders +
+                "\n buttons: "+notes.buttons);
+
             if (data.tuteur){
                 soutenances[data.id].getProf1().readyForFusion = true;
                 soutenances[data.id].getProf1().notes = notes;
@@ -76,10 +78,47 @@ io.on('connection', function(socket){
         })
     });
 
-    socket.on('fusion',function(idsout){
-        debug("Un client a charger la fusion et fusion demande les notes");
-        var data = {p1: soutenances[idsout].getProf1().notes, p2: soutenances[idsout].getProf2().notes};
-        socket.emit('getNotes',data);
+    socket.on('fusion',function(data){
+        if (data.tuteur) soutenances[data.idsout].getProf1().socket = socket;
+        else soutenances[data.idsout].getProf2().socket = socket;
+        debug("Un client a chargé la fusion et demande les notes");
+        var notes = {p1: soutenances[data.idsout].getProf1().notes, p2: soutenances[data.idsout].getProf2().notes};
+        socket.emit('getNotes',notes);
+
+        socket.on('deliberer', function (notesFinales) {
+            if (data.tuteur){
+                console.log("Le tuteur "+soutenances[data.idsout].getProf1().login+" veut deliberer");
+                soutenances[data.idsout].getProf1().notesFinales = notesFinales;
+            }
+            else {
+                console.log("Le non-tuteur "+soutenances[data.idsout].getProf2().login+" veut deliberer");
+                soutenances[data.idsout].getProf2().notesFinales = notesFinales;
+            }
+
+            console.log("sout: " +soutenances[data.idsout].getProf1());
+            console.log("prof1: " +soutenances[data.idsout].getProf1());
+            console.log("notes1: " +soutenances[data.idsout].getProf1().notesFinales);
+
+            if (!(soutenances[data.idsout].getProf1().notesFinales) || !(soutenances[data.idsout].getProf2().notesFinales)) {
+                console.log("En attente de l'autre professeur");
+                socket.emit("deliberationWaiting");
+            } else {
+                console.log("Les deux profs ont délibéré");
+                if (JSON.stringify(soutenances[data.idsout].getProf1().notesFinales) == JSON.stringify(soutenances[data.idsout].getProf2().notesFinales)){
+                    console.log("Les notes sont les mêmes, c'est fini");
+                    soutenances[data.idsout].getProf1().socket.emit("deliberationFinished");
+                    soutenances[data.idsout].getProf2().socket.emit("deliberationFinished");
+                } else {
+                    console.log("Les notes sont differentes, c'est reparti");
+                    soutenances[data.idsout].getProf1().notesFinales = null;
+                    soutenances[data.idsout].getProf2().notesFinales = null;
+                    soutenances[data.idsout].getProf1().socket.emit("deliberationNotEqual");
+                    soutenances[data.idsout].getProf2().socket.emit("deliberationNotEqual");
+                }
+            }
+        })
+
+
     });
 });
 

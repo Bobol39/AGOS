@@ -21,25 +21,9 @@ function startTime() {
     }, 5000);
 }
 
-function selectButton(ui, slider) {
-    var selectedIndex = slider.parent().has(".slider-info").index();
-    if (selectedIndex>4) selectedIndex--;
-    $(".line"+selectedIndex).find("button").removeClass("btn-fill");
-    slider.slider('values',1,(ui.values[0] + (ui.values[2]))/2);
 
-    if ((ui.values[0] + (ui.values[2]))/2 < 25){
-        slider.find("span:nth-child(2)").css("background","#D9534F");
-        $(".line"+selectedIndex).find(".btn-danger").addClass("btn-fill");
-    } else if ((ui.values[0] + (ui.values[2]))/2 <50){
-        slider.find("span:nth-child(2)").css("background","#F0AD4E");
-        $(".line"+selectedIndex).find(".btn-warning").addClass("btn-fill");
-    } else if ((ui.values[0] + (ui.values[2]))/2 <75){
-        slider.find("span:nth-child(2)").css("background","#2C93FF");
-        $(".line"+selectedIndex).find(".btn-info").addClass("btn-fill");
-    } else {
-        slider.find("span:nth-child(2)").css("background","#5CB85C");
-        $(".line"+selectedIndex).find(".btn-success").addClass("btn-fill");
-    }
+function roundHalf(x) {
+    return Math.round(x*2)/2
 }
 
 
@@ -48,29 +32,34 @@ function selectButton(ui, slider) {
 $(function() {
     startTime();
 
-    $(".block_button button").click(function(){
-        $(this).parent().siblings().each(function(){
-            $(this).find("button").removeClass("btn-fill");
-        });
-        $(this).addClass("btn-fill");
+    $(".button_bareme").click(function(){
+        $(this).addClass("btn-fill btn-primary").removeClass("btn-default btn-info btn-success").siblings().each(function () {
+            $(this).addClass("btn-default").removeClass("btn-info btn-success btn-fill btn-primary")
+        })
+
+        var note = 0;
+        $(".button_bareme").each(function () {
+            if ($(this).hasClass("btn-fill")){
+                note += parseFloat($(this).text());
+            }
+        })
+        $("#block_button_note_finale button span:nth-child(2)").text(note);
     });
 });
 
-function runSocketIo(id) {
+function runSocketIo(id, tuteur) {
     var socketio = io.connect('http://127.0.0.1:3000/');
-    socketio.emit('fusion',id);
+    start_loading()
+    socketio.emit('fusion',{idsout: id, tuteur: tuteur});
 
     socketio.on('getNotes',function(data){
         $( ".slider-info" ).each(function(index){
             $(this).slider({
                 min: 0,
                 max: 100,
-                values: [ data.p1[index],50, data.p2[index]],
+                values: [ data.p1.sliders[index],50, data.p2.sliders[index]],
                 animate: true,
                 disabled: true,
-                stop: function( event, ui ) {
-                    selectButton(ui, $(this))
-                },
                 create: function( event, ui ) {
                     ui.values = $(this).slider('values');
                     $(this).find("span:nth-child(2)").removeClass("ui-state-default");
@@ -78,5 +67,52 @@ function runSocketIo(id) {
                 },
             }).removeClass("ui-state-disabled");
         });
+
+        var np1, np2, valToSelect, color;
+        $(".container_buttons_moyennes").each(function (index) {
+            np1 = parseFloat(data.p1.buttons[index]);
+            np2 = parseFloat(data.p2.buttons[index]);
+            if (np1 == np2) {
+                valToSelect = np1;
+                color = "success"
+            } else {
+                if (np1 > np2) valToSelect = (np1 - np2)/2 + np2;
+                else valToSelect = (np2 - np1)/2 + np1;
+                color = "info";
+            }
+            valToSelect = roundHalf(valToSelect);
+
+            console.log("valToSelect: "+valToSelect+", car np1="+np1+" et np2="+np2+", donc color="+color);
+            $(this).find("button").each(function () {
+                if ($(this).text() == valToSelect){
+                    $(this).removeClass("btn-default").addClass("btn-"+color+" btn-fill");
+                }
+            })
+        });
+
+        $("#block_button_deliberer").click(function () {
+            var val = [];
+            $(".button_bareme").each(function () {
+                if ($(this).hasClass("btn-fill")) val.push($(this).text())
+            });
+            socketio.emit('deliberer', val);
+            start_loading();
+        })
+
+        stop_loading();
+    });
+
+    socketio.on("deliberationWaiting", function () {
+        start_loading();
+    });
+
+    socketio.on("deliberationFinished", function () {
+        if (tuteur){alert("FINI");}
+        stop_loading();
+    });
+
+    socketio.on("deliberationNotEqual", function () {
+        stop_loading();
+        showNotification("Probleme de deliberation","Vos notes finales ne sont pas en accord avec celles de l'autre professeur","warning");
     });
 }

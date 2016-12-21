@@ -20,7 +20,7 @@ function chronoStart(){
         if ((min == duree - delay_alert) && (sec==0)){showNotification("Temps écoulé,"+(duree - delay_alert)+" minutes se sont écoulées, il reste "+delay_alert+"mn pour terminer la présentation","warning")}
         if (min >= duree - delay_alert){
             $("#button_debut").fadeTo(500,0.5,function () {
-                $(this).fadeTo(500,1)
+                $(this).fadeTo(500,1);
             })
         }
     },1000)
@@ -46,14 +46,45 @@ function cacherFiche() {
     });
 }
 
-function getNotes(){
-    console.log("getnotes");
+function afficherAjuster() {
+    var valSlider, valButton,bareme;
+    $(".ui-slider").each(function (index) {
+        valSlider = $(this).slider("option","value");
+        bareme = $(".bareme_choose:nth-of-type("+(index+1)+")").find("button").last().text();
+        valButton = roundHalf(bareme*(valSlider/100));
+        console.log(valButton);
+        $(".bareme_choose:nth-of-type("+(index+1)+")").find("button").each(function () {
+            if ($(this).text() == valButton){
+                $(this).click();
+            }
+        })
+    })
 
-    var notes = [];
-    $(".ui-slider").each(function () {
-        notes.push($(this).slider("option","value"));
+    $("#ajuster_layer").fadeIn(100, function () {
+        $("#block_ajuster").animate({"height":"70%"},300);
+    })
+}
+
+function cacherAjuster() {
+    $("#block_ajuster").animate({"height":"10%"},300, function () {
+        $("#ajuster_layer").fadeOut(100);
     });
-    return notes;
+}
+
+function getNotes(){
+    var slidValues = [], butValues = [];
+    $(".ui-slider").each(function () {
+        slidValues.push($(this).slider("option","value"));
+    });
+    $(".button_bareme").each(function () {
+        if ($(this).hasClass("btn-fill")) butValues.push($(this).text());
+    });
+
+    return {sliders: slidValues, buttons: butValues};
+}
+
+function roundHalf(x) {
+    return Math.round(x*2)/2
 }
 
 (function() {
@@ -135,6 +166,18 @@ function getNotes(){
     });
     $("#fiche_viewer").click(function (e) {
         e.stopPropagation();
+    });
+
+    $("#ajuster_layer").click(function () {
+        cacherAjuster();
+    });
+
+    $("#block_ajuster").click(function (e) {
+        e.stopPropagation();
+    });
+
+    $(".button_bareme").click(function () {
+        $(this).addClass("btn-fill").siblings(".button_bareme").removeClass("btn-fill");
     })
 })();
 
@@ -168,7 +211,12 @@ function runSocketIo(id,login,tuteur) {
     });
 
     $("#button_next").click(function () {
+        afficherAjuster();
+    });
+
+    $("#validerBareme").click(function () {
+        console.log(getNotes());
         socketio.emit('clientReadyForFusion', getNotes());
         start_loading();
-    });
+    })
 }

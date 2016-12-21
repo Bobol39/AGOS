@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_eleve extends MY_LoginControl
+class C_eleve extends CI_Controller
 {
 
     protected $access = "admin,student";// --> Accesible aux ETUDIANTS

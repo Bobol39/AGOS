@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_index extends MY_LoginControl {
+class C_index extends CI_Controller {
 
 	protected $access = "admin,student,teacher"; // --> Accesible à tout le monde
 	/**

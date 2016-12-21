@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_prof extends MY_LoginControl
+class C_prof extends CI_Controller
 {
 
     protected $access = "admin,teacher";// --> Accesible aux ADMIN ET PROF
@@ -43,14 +43,16 @@ class C_prof extends MY_LoginControl
     }
 
     public function showNotation($id_soutenance,$login){
+
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $login;
         $data["tuteur"] = ($data["soutenance"]->professeur1 == $login) ? 1 : 0;
-
         $this->load->view('v_header');
+
         $this->load->view('v_prof_notation_navbar',$data);
+        $this->load->view('v_prof_notation_ajuster');
         $this->load->view('v_prof_notation');
     }
 

@@ -9,13 +9,15 @@ function Soutenance() {
         login: null,
         socket: null,
         readyForFusion : false,
-        notes : []
+        notes : {},
+        notesFinales: []
     };
     this.prof2 = {
         login: null,
         socket: null,
-        readyForFusion : 0,
-        notes : []
+        readyForFusion : false,
+        notes : {},
+        notesFinales: []
     };
     this.notationTerminee = false;
 

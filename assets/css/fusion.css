@@ -62,16 +62,14 @@
 }
 
 .titleline{
-    margin-top: 2px;
-    height: 12%;
-    background-color: lightgray;
+    margin-top: 10px;
+    height: 30px;
     border-right: none;
 }
 
 
 .container_buttons_moyennes{
-    margin-top: 2px;
-    height: 12%;
+    margin-top: 10px;
     padding: 0;
 }
 

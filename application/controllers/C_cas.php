@@ -21,7 +21,7 @@ class C_cas extends MY_LoginControl
 
     function index(){
         //$this->cas->force_auth();
-        //$this->cas->user();
+        //$this->edddcas->user();
         $this->load->view("v_header");
         $this->load->view("v_admin_navbar");
         $this->load->view("v_admin_leftbar");
