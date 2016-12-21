@@ -39,16 +39,18 @@
             <button class="btn btn-warning btn-fill">Retour à la liste</button>
         </div>
     </div>
+
     <div class="col-lg-10 col-md-10" id="block_moyennes">
+
         <?php   foreach($critere as $value){ ?>
-            <div class="col-lg-6 titleline text-center">
+            <div class="col-lg-2 titleline text-center">
                 <span><?= $value["titre"] ?></span>
             </div>
-            <div class="col-lg-6 container_buttons_moyennes line1">
-                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
-                <div class="col-lg-3 block_button"><button class="btn btn-info ">T</button></div>
+
+            <div class="col-lg-10 container_buttons_moyennes line1">
+                <?php for($i = 0; $i <= $value["bareme"]; $i += 0.5) { ?>
+                    <div class="col-lg-1 block_button"><button class="btn btn-info "><?= $i ?></button></div>
+                <?php } ?>
             </div>
         <?php } ?>
 

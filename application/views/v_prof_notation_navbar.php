@@ -5,10 +5,7 @@
     <div class="col-lg-1 col-md-1 button_navbar_notation">
         <span>AGOS</span>
     </div>
-    <div class="col-lg-1 col-md-1 button_navbar_notation" id="button_bilan">
-        <span>Bilan</span>
-    </div>
-    <div class="col-lg-1 col-md-1 button_navbar_notation" id="button_fiche">
+    <div class="col-lg-2 col-md-2 button_navbar_notation" id="button_fiche">
         <span>Résumé</span>
     </div>
     <div class="col-lg-4 col-lg-offset-1 col-md-4 col-md-offset-1" id="block_titre_soutenance">
