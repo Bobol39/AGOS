@@ -40,4 +40,14 @@ class M_prof extends CI_Model
         $row = $query->result_array();
         return $row;
     }
+
+    public function saveCommentaire($id_soutenance,$id_prof,$text,$img_name){
+        $data = array(
+            'id_soutenance' => $id_soutenance,
+            'id_professeur' => $id_prof,
+            'text_note' => $text,
+            'img_note' => $img_name
+        );
+        $this->db->insert('interface_prof_soutenance',$data);
+    }
 }

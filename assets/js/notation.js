@@ -87,6 +87,24 @@ function roundHalf(x) {
     return Math.round(x*2)/2
 }
 
+function saveCommentaire(callback){
+    var text = $("textarea").val();
+    var canvas = document.getElementById("colors_sketch");
+    var img = canvas.toDataURL("image/png");
+    $.ajax({
+        type: "POST",
+        url: baseurl    + "index.php/C_prof/saveCommentaire",
+        data: {
+            id_soutenance: id_soutenance,
+            login: login,
+            text: text,
+            img: img
+        }
+    }).done(function() {
+         callback();
+    });
+}
+
 (function() {
     $("#button_next").hide();
     $("#notification").click(function () {
@@ -199,7 +217,9 @@ function runSocketIo(id,login,tuteur) {
         chronoStop();
     }).on("redirectFusion", function () {
         stop_loading();
-        window.location.replace(baseurl+"index.php/C_prof/showFusion/" + id_soutenance + "/" + login);
+        saveCommentaire(function () {
+            window.location.replace(baseurl+"index.php/C_prof/showFusion/" + id_soutenance + "/" + login);
+        });
     });
 
     $("#button_debut").click(function(){

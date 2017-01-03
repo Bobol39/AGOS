@@ -70,4 +70,25 @@ class C_prof extends CI_Controller
         $this->load->view('v_prof_fusion',$data);
     }
 
+    public function saveCommentaire(){
+        $data["id_soutenance"]= $this->input->post('id_soutenance');
+        $data["login_prof"]= $this->input->post('login');
+        $data["text"]= $this->input->post('text');
+        $img= $this->input->post('img');
+
+        //définir le chemin du dossier AGOS en fonction de sa propre installation
+        define('UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].  '/LP'  .'/AGOS/assets/img/img_canvas/');
+
+        $img = str_replace('data:image/png;base64,', '', $img);
+        $img = str_replace(' ', '+', $img);
+        $data_img = base64_decode($img);
+        $name = $data["id_soutenance"].$data["login_prof"];
+        $file = UPLOAD_DIR .$name.'.png';
+        $success = file_put_contents($file, $data_img);
+        print $success ? $file : 'Unable to save the file.';
+
+
+        $this->m_prof->saveCommentaire($data["id_soutenance"],$data["login_prof"],$data["text"],$name);
+    }
+
 }

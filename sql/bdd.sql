@@ -81,7 +81,7 @@ CREATE TABLE `groupe_notation` (
 CREATE TABLE `interface_prof_soutenance` (
   `id` int(11) NOT NULL,
   `id_soutenance` int(11) NOT NULL,
-  `id_professeur` int(11) NOT NULL,
+  `id_professeur` varchar(25) NOT NULL,
   `text_note` text NOT NULL,
   `img_note` varchar(25) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -94,6 +94,7 @@ CREATE TABLE `interface_prof_soutenance` (
 
 CREATE TABLE `note_critere_soutenance` (
   `id` int(11) NOT NULL,
+  `id_soutenance` int(11) NOT NULL,
   `id_critere` int(11) NOT NULL,
   `note` float NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
