@@ -9,6 +9,12 @@
 <link href="<?=base_url();?>assets/css/fusion.css" rel="stylesheet">
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
 
+<script>
+    var id_soutenance = <?=$soutenance->id;?>;
+    var critere = <?php echo json_encode($critere); ?>;
+</script>
+
+
 <div class="col-lg-12 col-md-12" id="container_fusion">
     <div class="col-lg-10 col-md-10" id="block_sliders">
         <div style="width: 98%; height: 93%; position:absolute">

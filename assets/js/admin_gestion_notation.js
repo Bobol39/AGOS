@@ -63,13 +63,19 @@ function saveGroupCritere(){
         $("#input_titre").css("border","red 2px solid");
         return;
     }
+    var tot = 0;
     $(".bareme").each(function(){
+        tot = tot + parseInt($(this).val());
         if ($(this).val() == ""){
             $(this).css('border','red 2px solid');
             test = true;
         }
     });
     if (test){
+        return;
+    }
+    if (tot != 20){
+        showNotification("Attention","Le barème total doit être de 20.",'warning');
         return;
     }
 
@@ -146,13 +152,19 @@ function modifGroupCritere(){
     var test = false;
     $(".bareme").css("border","1px solid #DDDDDD");
 
+    var tot = 0;
     $(".bareme").each(function(){
+        tot= tot + parseInt($(this).val());
         if ($(this).val() == ""){
             $(this).css('border','red 2px solid');
             test = true;
         }
     });
     if (test){
+        return;
+    }
+    if (tot != 20){
+        showNotification("Attention","Le barème total doit être de 20.",'warning');
         return;
     }
 

@@ -15,7 +15,7 @@
 <div class="col-lg-10 col-md-10" id="container_admin">
     <div id="container_groupe_notation" class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
         <div class="row">
-            <h2>Créer un groupe de notation</h2>
+            <h2>Créer un groupe de notation  (20 pts)</h2>
             <form>
                 <div class="col-lg-2 col-lg-offset-4">
                     <label class="radio ct-green">

@@ -12,7 +12,7 @@ class M_prof extends CI_Model
     }
 
     public function getCritereFromSoutenance($id){ //id soutenance
-        $this->db->select('critere.titre , critere_groupe_notation_jonction.bareme');
+        $this->db->select('critere.titre , critere_groupe_notation_jonction.bareme, critere.id');
         $this->db->from('critere');
         $this->db->join('critere_groupe_notation_jonction','critere.id=critere_groupe_notation_jonction.id_critere');
         $this->db->join('planning','critere_groupe_notation_jonction.id_groupe_notation=planning.id_groupe_notation');
@@ -49,5 +49,20 @@ class M_prof extends CI_Model
             'img_note' => $img_name
         );
         $this->db->insert('interface_prof_soutenance',$data);
+    }
+
+    public function saveNote($data){
+        $final = array();
+        $i = 0;
+        foreach ($data["critere"] as $value){
+            $temp = array(
+                'id_soutenance' => $data["id_soutenance"],
+                'id_critere' => $value->id,
+                'note' => $data["note"][$i]
+            );
+            array_push($final,$temp);
+            $i++;
+        }
+        $this->db->insert_batch('note_critere_soutenance', $final);
     }
 }

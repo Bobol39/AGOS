@@ -106,13 +106,32 @@ function runSocketIo(id, tuteur) {
         start_loading();
     });
 
-    socketio.on("deliberationFinished", function () {
-        if (tuteur){alert("FINI");}
+    socketio.on("deliberationFinished", function (note) {
+        if(tuteur) {
+            sauvergardeNote(note);
+        }
         stop_loading();
     });
 
     socketio.on("deliberationNotEqual", function () {
         stop_loading();
         showNotification("Probleme de deliberation","Vos notes finales ne sont pas en accord avec celles de l'autre professeur","warning");
+    });
+}
+
+function sauvergardeNote(note){
+    console.log("id_soutenance : " + id_soutenance);
+    console.log(note);
+    console.log(critere);
+
+    $.ajax({
+        type: "POST",
+        url: baseurl    + "index.php/C_prof/saveNote",
+        data: {
+            id_soutenance: id_soutenance,
+            note: JSON.stringify(note),
+            critere: JSON.stringify(critere)
+        }
+    }).done(function() {
     });
 }
