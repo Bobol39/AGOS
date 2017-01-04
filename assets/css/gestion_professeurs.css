@@ -36,6 +36,7 @@
 #table_prof input {
     height: 100%;
     border: none;
+    text-align: center;
 }
 
 #valider{

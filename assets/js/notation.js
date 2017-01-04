@@ -48,14 +48,18 @@ function cacherFiche() {
 
 function afficherAjuster() {
     var valSlider, valButton,bareme;
+
+
     $(".ui-slider").each(function (index) {
         valSlider = $(this).slider("option","value");
         bareme = $(".bareme_choose:nth-of-type("+(index+1)+")").find("button").last().text();
-        valButton = roundHalf(bareme*(valSlider/100));
+        valButton = parseInt((valSlider/20));
         console.log(valButton);
         $(".bareme_choose:nth-of-type("+(index+1)+")").find("button").each(function () {
-            if ($(this).text() == valButton){
+            console.log($(this).val());
+            if ($(this).val() == valButton){
                 $(this).click();
+                $(this).addClass('selected');
             }
         })
     })
@@ -72,12 +76,24 @@ function cacherAjuster() {
 }
 
 function getNotes(){
+    $(".button_bareme").each(function (index) {
+        if ($(this).hasClass("btn-fill") && !$(this).hasClass("selected")){
+            var crit = parseInt(index/5)+1;
+            $("#slider"+crit).slider( "value", ($(this).val() * 20 ) +10);
+        }
+    });
+
     var slidValues = [], butValues = [];
-    $(".ui-slider").each(function () {
+    $(".ui-slider").each(function(){
         slidValues.push($(this).slider("option","value"));
     });
-    $(".button_bareme").each(function () {
-        if ($(this).hasClass("btn-fill")) butValues.push($(this).text());
+
+    var valNote,bareme,valSlider;
+    $(".ui-slider").each(function(index){
+        valSlider = $(this).slider("option","value");
+        bareme = $(".bareme_choose:nth-of-type("+(index+1)+")").attr("id").replace ( /[^\d.]/g,'');
+        valNote = roundHalf(bareme*(valSlider/100));
+        butValues.push(valNote);
     });
 
     return {sliders: slidValues, buttons: butValues};
@@ -235,7 +251,6 @@ function runSocketIo(id,login,tuteur) {
     });
 
     $("#validerBareme").click(function () {
-        console.log(getNotes());
         socketio.emit('clientReadyForFusion', getNotes());
         start_loading();
     })

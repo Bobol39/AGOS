@@ -49,8 +49,7 @@ INSERT INTO `agos`.`promotion` (`id`, `nom`) VALUES
   (2, 's2'),
   (3, 's3'),
   (4, 's4'),
-  (5, 's5'),
-  (6, 'LP TeProW');
+  (5, 'LP TeProW');
 
 INSERT INTO `agos`.`critere` (`id`, `titre`) VALUES
   (1, 'crit1'),
@@ -69,12 +68,9 @@ INSERT INTO `agos`.`critere_groupe_notation_jonction` (`id`, `id_critere`, `id_g
   (3, 2,1, 1.0);
 
 INSERT INTO `agos`.`etudiant` (`id`, `nom`, `prenom`,`id_promotion`) VALUES
-  ('ajossic', 'Jossic', 'Alfred',6),
-  ('cbolard', 'Bolard', 'Clement',6),
-  ('ihajali', 'Ilyes', 'Haj-Ali-G',6),
-  ('pnom1', 'Nom1', 'Prenom1',5),
-  ('pnom2', 'Nom2', 'Prenom2',5),
-  ('pnom3', 'Nom3', 'Prenom3',5),
+  ('ajossic', 'Jossic', 'Alfred',5),
+  ('cbolard', 'Bolard', 'Clement',5),
+  ('ihajali', 'Ilyes', 'Haj-Ali-G',5),
   ('pnom4', 'Nom4', 'Prenom4',4),
   ('pnom5', 'Nom5', 'Prenom5',4),
   ('pnom6', 'Nom6', 'Prenom6',4),

@@ -15,10 +15,12 @@
         <div id="body_ajuster" class="text-center">
             <?php foreach ($critere as $c){ ?>
             <h3><?= $c["titre"] ?></h3>
-                <div class="bareme_choose">
-                <?php for ($i = 0; $i<= $c["bareme"]; $i += 0.5) { ?>
-                    <button class="btn btn-info btn-sm button_bareme"><?=$i;?></button>
-                <?php } ?>
+                <div class="bareme_choose" id="<?= "bareme".$c["bareme"] ?>">
+                    <button class="btn btn-info btn-sm button_bareme" value="0">Ins.</button>
+                    <button class="btn btn-info btn-sm button_bareme" value="1">Sup.</button>
+                    <button class="btn btn-info btn-sm button_bareme" value="2">Moy.</button>
+                    <button class="btn btn-info btn-sm button_bareme" value="3">Bon</button>
+                    <button class="btn btn-info btn-sm button_bareme" value="4">Exc.</button>
                 </div>
             <?php } ?>
 

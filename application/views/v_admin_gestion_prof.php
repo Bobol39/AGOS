@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <td><?= $value['nom'] ?></td>
                     <td><?= $value['prenom'] ?></td>
-                    <td><input type='text' id='<?= $value['id']?>' class='input_abre' value='<?= $value['abreviation']?>'></td>
+                    <td><input type='text' id='<?= $value['id']?>' class='input_abre' value='<?= strtoupper($value['abreviation'])?>'></td>
                 </tr>
             <?php }?>
         </tbody>
