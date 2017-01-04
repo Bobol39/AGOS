@@ -7,25 +7,23 @@ TRUNCATE `agos`.`critere_groupe_notation_jonction`;
 TRUNCATE `agos`.`planning`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
-('jccharr', 'Charr', 'Jean-Claude', 'jccharr'),
-('jfcouchot', 'Couchot', 'Jean-François', 'jfcouchot'),
-('icouturier', 'Couturier', 'Ingrid', 'icouturier'),
-('rcouturier', 'Couturier', 'Raphaël', 'rcouturier'),
-('kdeschinkel', 'Deschinkel', 'Karine', 'kdeschinkel'),
-('sdomas', 'Domas', 'Stéphane', 'sdomas'),
-('fmiloud', 'Fouzi', 'miloud', 'fmiloud'),
-('agiersch', 'Giersch', 'Arnaud', 'agiersch'),
-('cguyeux', 'Guyeux', 'Christophe', 'cguyeux'),
-('mhakem', 'Hakem', 'Mourad', 'mhakem'),
-('pcheam', 'Heam', 'Pierre-Cyrille', 'pcheam'),
-('pjacquin', 'Jacquin', 'Patrick', 'pjacquin'),
-('dlaiymani', 'Laiymani', 'David', 'dlaiymani'),
-('amakhoul', 'Makhoul', 'Abdallah', 'amakhoul'),
-('amillet', 'Millet', 'Alain', 'amillet'),
-('cpaterlini', 'Paterlini', 'Corinne', 'cpaterlini'),
-('gperrot', 'Perrot', 'Gilles', 'gperrot'),
-('tsahler', 'Sahler', 'Thierry', 'tsahler'),
-('smichel', 'Salomon', 'Michel', 'smichel');
+('jccharr', 'Charr', 'Jean-Claude', 'jcc'),
+('jfcouchot', 'Couchot', 'Jean-François', 'jfc'),
+('icouturier', 'Couturier', 'Ingrid', 'ico'),
+('rcouturier', 'Couturier', 'Raphaël', 'rco'),
+('kdeschinkel', 'Deschinkel', 'Karine', 'kde'),
+('sdomas', 'Domas', 'Stéphane', 'sdo'),
+('fmiloud', 'Fouzi', 'miloud', 'mfo'),
+('agiersch', 'Giersch', 'Arnaud', 'agi'),
+('cguyeux', 'Guyeux', 'Christophe', 'cgu'),
+('mhakem', 'Hakem', 'Mourad', 'mha'),
+('pcheam', 'Heam', 'Pierre-Cyrille', 'pch'),
+('dlaiymani', 'Laiymani', 'David', 'dla'),
+('amakhoul', 'Makhoul', 'Abdallah', 'ama'),
+('amillet', 'Millet', 'Alain', 'ami'),
+('cpaterlini', 'Paterlini', 'Corinne', 'cpa'),
+('gperrot', 'Perrot', 'Gilles', 'gpe'),
+('smichel', 'Salomon', 'Michel', 'msa');
 
 INSERT INTO `agos`.`salle` (`id`, `nom`) VALUES
 ('208', '208'),
