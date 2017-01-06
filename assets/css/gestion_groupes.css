@@ -12,15 +12,7 @@
     height: 60%;
     background-color: whitesmoke;
     padding: 0;
-    overflow-y: scroll;
-}
-
-
-#container_affichage_groupes{
-    height: 60%;
-    background-color: whitesmoke;
-    padding: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #container_affichage_groupes table {

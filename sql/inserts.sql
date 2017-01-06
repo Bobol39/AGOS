@@ -52,25 +52,30 @@ INSERT INTO `agos`.`promotion` (`id`, `nom`) VALUES
   (5, 'LP TeProW');
 
 INSERT INTO `agos`.`critere` (`id`, `titre`) VALUES
-  (1, 'crit1'),
-  (2, 'crit2'),
-  (3, 'crit3');
+  (1, 'Mise en avant des principales fonctionnalités'),
+  (2, 'Demonstration des fonctionnalités'),
+  (3, 'Forme');
 
 
 INSERT INTO `agos`.`groupe_notation` (`id`, `titre`) VALUES
-  (1, 'group1'),
-  (2, 'group2'),
-  (3, 'group3');
+  (1, 'Critères 1ere année'),
+  (2, 'Critères 2nd année'),
+  (3, 'Critères TeProW');
 
 INSERT INTO `agos`.`critere_groupe_notation_jonction` (`id`, `id_critere`, `id_groupe_notation`, `bareme`) VALUES
-  (1, 1, 1, 0),
-  (2, 2,1, 2.0),
-  (3, 2,1, 1.0);
+  (1, 1, 3, 10),
+  (2, 2,3, 5),
+  (3, 3,3, 5);
 
 INSERT INTO `agos`.`etudiant` (`id`, `nom`, `prenom`,`id_promotion`) VALUES
   ('ajossic', 'Jossic', 'Alfred',5),
   ('cbolard', 'Bolard', 'Clement',5),
-  ('ihajali', 'Ilyes', 'Haj-Ali-G',5),
+  ('ihajali', 'Ilyes', 'Haj Ali',5),
+  ('mmenegain', 'Mathieu', 'Menegain',5),
+  ('jduguet', 'Jerôme', 'Duguet',5),
+  ('pvirlois', 'Peter', 'Virlois',5),
+  ('tlehmann', 'Thomas', 'Lehmann',5),
+  ('cdegrelle', 'Cedric', 'Degrelle',5),
   ('pnom4', 'Nom4', 'Prenom4',4),
   ('pnom5', 'Nom5', 'Prenom5',4),
   ('pnom6', 'Nom6', 'Prenom6',4),

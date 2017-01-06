@@ -34,9 +34,20 @@ class C_eleve extends CI_Controller
 
 
     function index(){
+        $id_etudiant = "ajossic";
+        $data = $this->m_eleve->getAllSoutenance($id_etudiant);
+
         $this->load->view("v_header");
         $this->load->view("v_eleve_navbar");
-        $this->load->view("v_eleve_index");
+        foreach ($data as $sout){
+            if (($sout["titre"] == "")||($sout["resume"] == "")){
+                $this->load->view("v_eleve_index");
+                return;
+            }
+        }
+        $notes["notes"] = $this->m_eleve->getAllNotes($id_etudiant);
+        $this->load->view("v_eleve_notes", $notes);
+
     }
 
 

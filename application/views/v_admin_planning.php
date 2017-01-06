@@ -39,13 +39,22 @@ $js_array = json_encode($salle)
         </div>
         <div class="col-lg-1 col-md-1" id="container_controls_planning">
             <div  class="col-lg-12 col-md-12 container_controls">
-                <button class="btn btn-info" id="addline">+creneau</button>
+                <button class="btn btn-info" id="addline">
+                    <span class="glyphicon glyphicon-plus"></span><br />
+                    <span>Creneau</span>
+                </button>
             </div>
             <div  class="col-lg-12 col-md-12 container_controls">
-                <button class="btn btn-info" id="addcolumn">+salle</button>
+                <button class="btn btn-info" id="addcolumn">
+                    <span class="glyphicon glyphicon-plus"></span><br />
+                    <span>Salle</span>
+                </button>
             </div>
             <div  class="col-lg-12 col-md-12 container_controls">
-                <button class="btn btn-info" id="removeday">-jour</button>
+                <button class="btn btn-info" id="removeday">
+                    <span class="glyphicon glyphicon-minus"></span><br />
+                    <span>Jour</span>
+                </button>
             </div>
             <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-success" id="savePlanning">SAVE</button>

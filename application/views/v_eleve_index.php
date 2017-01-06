@@ -3,7 +3,6 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markitup.css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>assets/css/markupeditor.css" />
 
-
 <div class="col-lg-12 col-md-12" id="container_eleve">
     <div class="col-lg-12 col-md-12" id="container_titre">
         <h3>Titre de la soutenance</h3>

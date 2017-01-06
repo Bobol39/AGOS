@@ -7,7 +7,7 @@
 -- Version du serveur :  5.7.10
 -- Version de PHP :  5.6.17
 
-DROP TABLE IF EXISTS critere, critere_groupe_notation_jonction, etudiant, groupe_notation, planning, professeur, promotion, salle, soutenance, interface_prof_soutenance, note_critere_soutenance;
+DROP TABLE IF EXISTS critere, critere_groupe_notation_jonction, etudiant, groupe_notation, planning, professeur, promotion, salle, soutenance, interface_prof_soutenance, note_critere_soutenance,;
 
 
 

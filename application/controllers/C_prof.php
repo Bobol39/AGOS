@@ -66,8 +66,8 @@ class C_prof extends CI_Controller
 
 
         $this->load->view('v_header');
-        $this->load->view('v_prof_fusion_navbar');
-        $this->load->view('v_prof_fusion',$data);
+        $this->load->view('v_prof_fusion_navbar',$data);
+        $this->load->view('v_prof_fusion');
     }
 
     public function saveCommentaire(){
