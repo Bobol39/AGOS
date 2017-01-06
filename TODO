@@ -8,4 +8,10 @@
 
 bug meme horaire meme si jour différent
 
+ griser bouton planning quand non sauvergardé
+ quand on crée un groupe vérif si nom pas déja utilisé
+
+ vue planning :
+ quand on supprime tout les jours déja crée avant on voit un nouveau jour avec 0000000
+
 
