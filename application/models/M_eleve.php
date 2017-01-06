@@ -17,14 +17,23 @@ class M_eleve extends CI_Model
         return $row;
     }
 
-    //SELECT `id_soutenance`, `id_critere`, `note`
-    // FROM `note_critere_soutenance`
-    // JOIN `soutenance` ON `id_soutenance`= `soutenance`.`id` WHERE `soutenance`.`id_etudiant` = "ajossic"
+//SELECT `id_soutenance`, `note_critere_soutenance`.`id_critere`,critere.titre, `note`,`bareme`
+//FROM `note_critere_soutenance`
+//JOIN `soutenance` ON `id_soutenance`= `soutenance`.`id`
+//JOIN `planning` ON soutenance.id_planning = planning.id
+//JOIN critere_groupe_notation_jonction ON planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation
+//JOIN critere ON `note_critere_soutenance`.`id_critere` = critere.id
+//WHERE `soutenance`.`id_etudiant` = "ajossic"
+//AND critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere
     public function getALlNotes($id_etudiant){
-        $this->db->select('id_soutenance,id_critere,note');
+        $this->db->select('id_soutenance,note_critere_soutenance.id_critere,critere.titre,note,bareme');
         $this->db->from('note_critere_soutenance');
         $this->db->join('soutenance','id_soutenance= soutenance.id');
+        $this->db->join('planning','soutenance.id_planning = planning.id');
+        $this->db->join('critere_groupe_notation_jonction','planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
+        $this->db->join('critere','note_critere_soutenance.id_critere = critere.id');
         $this->db->where('soutenance.id_etudiant',$id_etudiant);
+        $this->db->where('critere_groupe_notation_jonction.id_critere','note_critere_soutenance.id_critere');
         $query = $this->db->get();
         $row = $query->result_array();
         return $row;
