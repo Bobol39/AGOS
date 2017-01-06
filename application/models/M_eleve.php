@@ -26,7 +26,7 @@ class M_eleve extends CI_Model
 //WHERE `soutenance`.`id_etudiant` = "ajossic"
 //AND critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere
     public function getALlNotes($id_etudiant){
-        $this->db->select('id_soutenance,note_critere_soutenance.id_critere,critere.titre,note,bareme');
+        $this->db->select('id_soutenance,soutenance.titre,note_critere_soutenance.id_critere,critere.titre,note,bareme');
         $this->db->from('note_critere_soutenance');
         $this->db->join('soutenance','id_soutenance= soutenance.id');
         $this->db->join('planning','soutenance.id_planning = planning.id');
