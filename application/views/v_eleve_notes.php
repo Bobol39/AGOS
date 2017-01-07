@@ -10,15 +10,17 @@ class Soutenance {
     var $id;
     var $notes;
 
-    function Soutenance($id, $crit)
+
+    function Soutenance($id, $titre, $crit)
     {
         $this->id = $id;
         $this->notes = [$crit];
+        $this->titre = $titre;
     }
 
-    function add_note($nom, $note, $bareme)
+    function add_note($id,$nom, $note, $bareme)
     {
-        array_push($this->notes, new Critere($nom,$note,$bareme));
+        array_push($this->notes, new Critere($id,$nom,$note,$bareme));
     }
 
     function getNote(){
@@ -32,11 +34,13 @@ class Soutenance {
 }
 
 class Critere {
+    var $id;
     var $nom;
     var $note;
     var $bareme;
 
-    function  Critere($nom,$note,$bareme){
+    function  Critere($id,$nom,$note,$bareme){
+        $this->id = $id;
         $this->nom = $nom;
         $this->note = $note;
         $this->bareme = $bareme;
@@ -70,11 +74,11 @@ foreach ($notes as $n){
     foreach ($soutenances as $s){
         if ($s->id == $n["id_soutenance"]){
             $found = true;
-            $s->add_note($n["id_critere"], $n["note"], 1);
+            $s->add_note($n["id_critere"],$n["titre_critere"], $n["note"], 1);
         }
     }
     if (!$found){
-        array_push($soutenances, new Soutenance($n["id_soutenance"], new Critere($n["id_critere"], $n["note"], 1)));
+        array_push($soutenances, new Soutenance($n["id_soutenance"], $n["titre"], new Critere($n["id_critere"],$n["titre_critere"], $n["note"], 1)));
     }
 }
 
@@ -84,7 +88,7 @@ foreach ($soutenances as $s){
         $occurence = 0;
         $foundCrit = false;
         foreach ($criteres as $crit){
-            if ($crit->nom == $n->nom){
+            if ($crit->id == $n->id){
                 $foundCrit = true;
             }
         }
@@ -94,6 +98,27 @@ foreach ($soutenances as $s){
     }
 }
 ?>
+
+
+<div id="soutenance_layer">
+    <div id="soutenance_viewer">
+        <div id="soutenance_header" class="text-center">
+            <span>Resumé de la soutenance</span>
+        </div>
+        <div id="soutenance_body">
+            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                <div class="c100 p50">
+                <span>50</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <div class="col-lg-12 col-md-12" id="container_eleve">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="container_moyennes">
@@ -132,30 +157,21 @@ foreach ($soutenances as $s){
         <?php foreach ($soutenances as $s){ ?>
             <div class="col-lg-6">
                 <div class="block_soutenance col-lg-10 col-lg-offset-1">
-
+                    <div class="col-lg-10">
+                        <span class="titre_soutenance"><?= $s->titre?></span>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="c100 p5 small">
+                            <span>20</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php } ?>
-        <div class="col-lg-6">
-            <div class="block_soutenance col-lg-10 col-lg-offset-1">
-
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="block_soutenance col-lg-10 col-lg-offset-1">
-
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="block_soutenance col-lg-10 col-lg-offset-1">
-
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="block_soutenance col-lg-10 col-lg-offset-1">
-
-            </div>
-        </div>
 
     </div>
 

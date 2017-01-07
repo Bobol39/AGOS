@@ -14,4 +14,6 @@ bug meme horaire meme si jour différent
  vue planning :
  quand on supprime tout les jours déja crée avant on voit un nouveau jour avec 0000000
 
+ Quand on ecrit un résumé et titre, celà ecrase tous les résumés de l'eleve;
+
 
