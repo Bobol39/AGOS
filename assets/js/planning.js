@@ -233,7 +233,7 @@ function validerPlanning(data) {
             }
         }
         data.forEach(function (soutCompare) {
-            if ((sout!=soutCompare) && ((soutCompare.horaire == sout.horaire) && (soutCompare.id_salle == sout.id_salle))){
+            if ((sout!=soutCompare) && ((soutCompare.horaire == sout.horaire) && (soutCompare.id_salle == sout.id_salle) && (sout.date == soutCompare.date))){
                 showNotification("Conflit", "Deux soutenances ont la même date ET la même horaire", "warning");
                 valid = false;
             }

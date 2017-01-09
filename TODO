@@ -1,12 +1,12 @@
--> Bug chekbox vue notation, sur chrome, les chekbox ne s'affichent pas
+-> Bug chekbox vue notation, sur chrome, les chekbox ne s'affichent pas [FAIT]
 
 -> Vue FUSION :
-    - ajouter bouton pr voir résumé
+    - ajouter bouton pr voir résumé [FAIT]
     - ajouter bouton  pour voir ses notes perso (prof) soit image soit texte ou les deux
     - 1 couleur par prof pour les sliders
     - Finir la vue
 
-bug meme horaire meme si jour différent
+bug meme horaire meme si jour différent [FAIT]
 
  griser bouton planning quand non sauvergardé
  quand on crée un groupe vérif si nom pas déja utilisé

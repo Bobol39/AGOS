@@ -32,6 +32,17 @@ function roundHalf(x) {
 $(function() {
     startTime();
 
+    $("#button_fiche").click(function () {
+        afficherFiche();
+    });
+
+    $("#fiche_layer").click(function () {
+        cacherFiche();
+    });
+    $("#fiche_viewer").click(function (e) {
+        e.stopPropagation();
+    });
+
     $(".button_bareme").click(function(){
         $(this).addClass("btn-fill btn-primary").removeClass("btn-default btn-info btn-success").siblings().each(function () {
             $(this).addClass("btn-default").removeClass("btn-info btn-success btn-fill btn-primary")
@@ -133,5 +144,17 @@ function sauvergardeNote(note){
             critere: JSON.stringify(critere)
         }
     }).done(function() {
+    });
+}
+
+function afficherFiche() {
+    $("#fiche_layer").fadeIn(100, function () {
+        $("#fiche_viewer").animate({"height":"70%"},300);
+    })
+}
+
+function cacherFiche() {
+    $("#fiche_viewer").animate({"height":"10%"},300, function () {
+        $("#fiche_layer").fadeOut(100);
     });
 }

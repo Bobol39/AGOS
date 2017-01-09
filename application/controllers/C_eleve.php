@@ -46,7 +46,7 @@ class C_eleve extends CI_Controller
             }
         }
         $notes["notes"] = $this->m_eleve->getAllNotes($id_etudiant);
-        var_dump($notes["notes"]); die();
+        //var_dump($notes["notes"]); die();
         $this->load->view("v_eleve_notes", $notes);
 
     }

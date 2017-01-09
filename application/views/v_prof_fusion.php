@@ -14,6 +14,18 @@
     var critere = <?php echo json_encode($critere); ?>;
 </script>
 
+<div id="fiche_layer">
+    <div id="fiche_viewer">
+        <div id="fiche_header" class="text-center">
+            <span>Resumé de la soutenance</span>
+        </div>
+        <div id="fiche_body">
+            <?= $soutenance->resume ?>
+        </div>
+
+    </div>
+</div>
+
 
 <div class="col-lg-12 col-md-12" id="container_fusion">
     <div class="col-lg-10 col-md-10" id="block_sliders">

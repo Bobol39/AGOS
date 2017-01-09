@@ -50,13 +50,14 @@ class Critere {
         $moy = 0; $oc = 0;
         foreach ($soutenances as $s){
             foreach ($s->notes as $n){
-                if ($n->nom == $this->nom){
-                    $moy+= $n->note;
+                if ($n->id == $this->id){
+                    $moy+= $n->note*(20/$n->bareme);
                     $oc++;
                 }
             }
         }
-        return $moy/$oc;
+        $moy = $moy/$oc;
+        return round($moy * 2) / 2;
     }
 }
 ?>
@@ -74,11 +75,11 @@ foreach ($notes as $n){
     foreach ($soutenances as $s){
         if ($s->id == $n["id_soutenance"]){
             $found = true;
-            $s->add_note($n["id_critere"],$n["titre_critere"], $n["note"], 1);
+            $s->add_note($n["id_critere"],$n["titre_critere"], $n["note"], $n["bareme"]);
         }
     }
     if (!$found){
-        array_push($soutenances, new Soutenance($n["id_soutenance"], $n["titre"], new Critere($n["id_critere"],$n["titre_critere"], $n["note"], 1)));
+        array_push($soutenances, new Soutenance($n["id_soutenance"], $n["titre"], new Critere($n["id_critere"],$n["titre_critere"], $n["note"], $n["bareme"])));
     }
 }
 
@@ -97,6 +98,7 @@ foreach ($soutenances as $s){
         }
     }
 }
+
 ?>
 
 
@@ -105,18 +107,37 @@ foreach ($soutenances as $s){
         <div id="soutenance_header" class="text-center">
             <span>Resumé de la soutenance</span>
         </div>
-        <div id="soutenance_body">
-            <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-                <div class="c100 p50">
-                <span>50</span>
-                <div class="slice">
-                    <div class="bar"></div>
-                    <div class="fill"></div>
+        <div id="soutenance_body" class="text-center">
+            <div class="row">
+                <h3>Note globale</h3><br>
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                    <div class="c100 p50">
+                        <span>50</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <h3>Note détaillée</h3><br>
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="block_note_detaillee">
+                    <div class="block_moyCrit">
+                        <div class="col-lg-10"><span>Crit</span></div>
+                        <div class="col-lg-2">
+                            <div class="c100 p50 small">
+                                <span>20</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -148,7 +169,15 @@ foreach ($soutenances as $s){
             <?php foreach ($criteres as $c){ ?>
                 <div class="block_moyCrit">
                     <div class="col-lg-10"><span><?= $c->nom ?></span></div>
-                    <div class="col-lg-2"><span><?= $c->getMoyenne($soutenances); ?></span></div>
+                    <div class="col-lg-2">
+                        <div class="c100 p<?= intval($c->getMoyenne($soutenances)*5); ?> small">
+                            <span><?= $c->getMoyenne($soutenances); ?>/20</span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             <?php } ?>
         </div>
@@ -161,8 +190,9 @@ foreach ($soutenances as $s){
                         <span class="titre_soutenance"><?= $s->titre?></span>
                     </div>
                     <div class="col-lg-2">
-                        <div class="c100 p5 small">
-                            <span>20</span>
+                        <div class="c100 p<?php echo intval($s->getNote()*5)." ";
+                        if ($s->getNote() < 10) echo "orange"; else if ($s->getNote() >= 15) echo "green"?> small">
+                            <span><?= $s->getNote(); ?>/20</span>
                             <div class="slice">
                                 <div class="bar"></div>
                                 <div class="fill"></div>
