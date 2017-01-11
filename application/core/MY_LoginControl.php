@@ -23,9 +23,8 @@ class MY_LoginControl extends CI_Controller  {
         $this->login_check();//--> A partir d'ici l'utilisateur est authenfié
         //  if la session existe ne pas recup les infos ldap et le mettre en session TODO
         $this->ldap_init();//----> Recupération des info utilisateur depuis le LDAP + mise en session des info recupérées
-        if($this->session->role == false) {
-            $this->put_user_in_session();
-        }
+        $this->put_user_in_session();
+
 
         //TOUT UTILISATEUR CONNECTE EST CONSIDERER COMME UN ( Admin / Student / Teacher )
         //$this->session->set_userdata('role', 'Admin');//----> Dev only, not for production
@@ -35,6 +34,7 @@ class MY_LoginControl extends CI_Controller  {
         if (! $this->permission_check()) {
             die("<h4>Access denied</h4>");
         }
+
     }
 
     public function put_user_in_session(){
@@ -118,19 +118,19 @@ class MY_LoginControl extends CI_Controller  {
         $result=ldap_list($connect, $baseDn, $filter, $justthese) or die("No search data found.");
         $info = ldap_get_entries($connect, $result);
 
-        //echo "Trouvé ".$info["count"];
-//        for ($i=0; $i < $info["count"]; $i++) {
-//            //Affichage des info utilisateur pour les tests uniquement
-//            echo "Nom".$info[$i]["sn"][0] . '<br />';
-//            echo "Prenom".$info[$i]["givenname"][0] . '<br />';
-//            echo "Type".info[$i]["edupersonprimaryaffiliation"][0];
-//            echo $info[$i]["mail"][0] . '<br />';
-//            //Enregistrement des info utlisateur en session
-//            $this->session->set_userdata('role',info[$i]["edupersonprimaryaffiliation"][0]);
-//            $this->session->set_userdata('nom',info[$i]["sn"][0]);
-//            $this->session->set_userdata('prenom',info[$i]["givenname"][0]);
-//            $this->session->set_userdata('mail',info[$i]["edupersonprimaryaffiliation"][0]);
-//        }
+/*        echo "Trouvé ".$info["count"];
+        for ($i=0; $i < $info["count"]; $i++) {
+            //Affichage des info utilisateur pour les tests uniquement
+            echo "Nom".$info[$i]["sn"][0] . '<br />';
+            echo "Prenom".$info[$i]["givenname"][0] . '<br />';
+            echo "Type".info[$i]["edupersonprimaryaffiliation"][0];
+            echo $info[$i]["mail"][0] . '<br />';
+            //Enregistrement des info utlisateur en session
+            $this->session->set_userdata('role',info[$i]["edupersonprimaryaffiliation"][0]);
+            $this->session->set_userdata('nom',info[$i]["sn"][0]);
+            $this->session->set_userdata('prenom',info[$i]["givenname"][0]);
+            $this->session->set_userdata('mail',info[$i]["edupersonprimaryaffiliation"][0]);
+        }*/
 
 
 
@@ -145,7 +145,7 @@ class MY_LoginControl extends CI_Controller  {
 
 
         $access = is_array($this->access) ? $this->access : explode(",", $this->access);
-        echo "Mon role: ".$this->session->userdata("role")." Rôles de la page: ".$this->access;
+        //echo "Mon role: ".$this->session->userdata("role")." Rôles de la page: ".$this->access;
 
         //check if user's access is in the allowed userlist of this page
         if (in_array($this->session->userdata("role"), array_map("trim", $access)) ) {
@@ -222,6 +222,7 @@ class MY_LoginControl extends CI_Controller  {
     }
 
     public function ldap_init (){
+
         // Initialisation des variables
         $ldaphost = "ldap://ldap.univ-fcomte.fr";  // votre serveur LDAP
         $ldapport = 903;
