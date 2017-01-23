@@ -69,14 +69,6 @@
             </div>
         <?php } ?>
 
-        <div class="col-lg-4 titleline text-center" style=" margin-top: 30px;">
-            <span>Bonus</span>
-        </div>
-        <div class="col-lg-8 container_buttons_moyennes">
-                <button class="btn btn-success btn-fill ">0</button>
-                <button class="btn btn-default ">1</button>
-                <button class="btn btn-default ">2</button>
-        </div>
     </div>
     <div class="col-lg-2 col-md-2" id="block_note_finale">
         <div class="col-lg-8 col-lg-offset-2 " id="block_button_note_finale">

@@ -44,8 +44,8 @@ $(function() {
     });
 
     $(".button_bareme").click(function(){
-        $(this).addClass("btn-fill btn-primary").removeClass("btn-default btn-info btn-success").siblings().each(function () {
-            $(this).addClass("btn-default").removeClass("btn-info btn-success btn-fill btn-primary")
+        $(this).addClass("btn-fill btn-primary").removeClass("btn-default btn-warning btn-success").siblings().each(function () {
+            $(this).addClass("btn-default").removeClass("btn-warning btn-success btn-fill btn-primary")
         })
 
         var note = 0;
@@ -89,7 +89,7 @@ function runSocketIo(id, tuteur) {
             } else {
                 if (np1 > np2) valToSelect = (np1 - np2)/2 + np2;
                 else valToSelect = (np2 - np1)/2 + np1;
-                color = "info";
+                color = "warning";
             }
             valToSelect = roundHalf(valToSelect);
 
