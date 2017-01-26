@@ -56,7 +56,7 @@
 
 #block_ajuster{
     height: 10%;
-    width: 40%;
+    width: 60%;
     position: absolute;
     top:0;
     bottom: 0;
@@ -230,5 +230,9 @@
 
 .blockslider{
     width: 91%!important;
+}
+
+#body_ajuster h3 {
+    margin-left: 50px;
 }
 

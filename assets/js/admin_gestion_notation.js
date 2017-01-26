@@ -84,6 +84,7 @@ function saveGroupCritere(){
         array.push(temp);
     });
     start_loading();
+
     jQuery.ajax({
         type: "POST",
         url: baseurl    + "index.php/c_admin/createGroupCritere",
