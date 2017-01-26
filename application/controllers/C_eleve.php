@@ -34,18 +34,17 @@ class C_eleve extends CI_Controller
 
 
     function index(){
-        $id_etudiant = "ajossic";
-        $data = $this->m_eleve->getAllSoutenance($id_etudiant);
+        $data = $this->m_eleve->getAllSoutenanceForCurrentEleve();
 
         $this->load->view("v_header");
         $this->load->view("v_eleve_navbar");
         foreach ($data as $sout){
             if (($sout["titre"] == "")||($sout["resume"] == "")){
-                $this->load->view("v_eleve_index");
+                $this->load->view("v_eleve_index", $sout);
                 return;
             }
         }
-        $notes["notes"] = $this->m_eleve->getAllNotes($id_etudiant);
+        $notes["notes"] = $this->m_eleve->getAllNotes();
         //var_dump($notes["notes"]); die();
         $this->load->view("v_eleve_notes", $notes);
 
@@ -55,8 +54,49 @@ class C_eleve extends CI_Controller
     function saveResume(){
         $data["titre"] = $this->input->post('titre');
         $data["resume"] = $this->input->post('resume');
-        $this->m_eleve->saveResume($data, $this->input->post('id_etudiant'));
+        $id = $this->m_eleve->getAllSoutenanceForCurrentEleve()[0]["id"];
+        echo $this->m_eleve->saveResume($data, $id);
+    }
+
+    function getInfoSoutHTML(){
+        $info = $this->m_eleve->getInfoSout(1);
+        $note=0;
+        foreach ($info as $c){
+            $note+=$c['note'];
+        }
+
+        echo '<div class="row">
+                <h3>Note globale</h3><br>
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                    <div class="c100 p'.intval(($note*5)).'">
+                        <span>'.$note.'/20</span>
+                        <div class="slice">
+                            <div class="bar"></div>
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3>Note détaillée</h3><br>
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="block_note_detaillee">';
+
+        foreach ($info as $c){
+            echo '<div class="block_moyCrit">
+                        <div class="col-lg-10"><span>'.$c['titre_critere'].'</span></div>
+                        <div class="col-lg-2">
+                            <div class="c100 p'.intval(($c['note']*(100/$c['bareme']))).' small">
+                                <span>'.$c['note'].'/'.$c['bareme'].'</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
+
+        echo '</div></div>';
     }
 
 }
-?>

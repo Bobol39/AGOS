@@ -152,7 +152,11 @@ foreach ($soutenances as $s){
                 $moy+=$sout->getNote();
                 $nbr++;
             }
-            $moy =  round($moy/$nbr, 1);
+            if ($nbr == 0){
+                $moy = "";
+            } else {
+                $moy =  round($moy/$nbr, 1);
+            }
             ?>
             <div class="c100 p<?php echo intval($moy*5)." ";
             if (intval($moy) < 10) echo "orange"; else if (intval($moy) >= 15) echo "green"?>">
@@ -166,7 +170,12 @@ foreach ($soutenances as $s){
             </div>
         </div>
         <div id="block_moyPerCrit" class="col-lg-6">
-            <?php foreach ($criteres as $c){ ?>
+                <?php
+                if (sizeof($criteres) == 0){
+                    echo "<h4 class='nothingtoshow'>Vous n'avez aucun critère noté pour le moment</h4>";
+                }
+                foreach ($criteres as $c){
+                ?>
                 <div class="block_moyCrit">
                     <div class="col-lg-10"><span><?= $c->nom ?></span></div>
                     <div class="col-lg-2">
@@ -183,7 +192,12 @@ foreach ($soutenances as $s){
         </div>
     </div>
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="container_soutenances">
-        <?php foreach ($soutenances as $s){ ?>
+        <?php
+        if (sizeof($soutenances) == 0){
+            echo "<h4 class='nothingtoshow'>Vous n'avez aucune soutenance notée pour le moment</h4>";
+        }
+        foreach ($soutenances as $s){
+            ?>
             <div class="col-lg-6">
                 <div class="block_soutenance col-lg-10 col-lg-offset-1">
                     <div class="col-lg-10">
@@ -199,7 +213,14 @@ foreach ($soutenances as $s){
                             </div>
                         </div>
                     </div>
-                </div>
+                    <?php foreach ($s->notes as $n){ ?>
+                        <div class="infosout">
+                            <input type="hidden" class="criterevalue criterenom" value="<?= $n->nom ?>">
+                            <input type="hidden" class="criterevalue criterenote" value="<?= $n->note ?>">
+                            <input type="hidden" class="criterevalue criterebareme" value="<?= $n->bareme ?>">
+                        </div>
+                    <?php } ?>
+                    </div>
             </div>
         <?php } ?>
 

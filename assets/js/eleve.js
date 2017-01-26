@@ -32,16 +32,23 @@ $(function() {
         } else  if ($("#input_titre").val() == ""){
             showNotification("Champ(s) vide(s)","Vous devez entrer le titre de votre soutenance","warning")
         } else {
-            var id = prompt("Login de l'etudiant? (provisoire)");
             jQuery.ajax({
                 type: "POST",
                 url: baseurl    + "index.php/c_eleve/saveResume",
-                data: {id_etudiant: id,titre: $("#input_titre").val(), resume: $("#markup_editor").val()}
-            }).done(function () {
-                showNotification("Sauvegardé","Le titre et le résumé de votre soutenance ont bien été sauvegardés","success")
+                data: {titre: $("#input_titre").val(), resume: $("#markup_editor").val()}
+            }).done(function (data) {
+                if (data == 1){
+                    showNotification("Informations sauvegardées","Vous allez être redirigé.","success")
+                    setTimeout(function () {
+                        location.reload();
+                    }, 200);
+                } else {
+                    showNotification("Non sauvegardé","Le titre et le résumé de votre soutenance n'ont pas pu être sauvegardés","warning")
+
+                }
             });
         }
-    })
+    });
 
     $('#markup_editor').markItUp(mySettings);
 });

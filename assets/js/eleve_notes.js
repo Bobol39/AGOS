@@ -3,8 +3,7 @@
  */
 $(function () {
     $(".block_soutenance").click(function () {
-        $("#soutenance_header")
-        afficherSoutenance();
+        afficherSoutenance($(this).find(".infosout"));
     });
 
     $("#soutenance_layer").click(function () {
@@ -17,7 +16,13 @@ $(function () {
 
 function afficherSoutenance() {
     $("#soutenance_layer").fadeIn(100, function () {
-        $("#soutenance_viewer").animate({"height":"70%"},300);
+        jQuery.ajax({
+            type: "POST",
+            url: baseurl    + "index.php/c_eleve/getInfoSoutHTML",
+        }).done(function (data) {
+            $("#soutenance_body").html(data);
+            $("#soutenance_viewer").animate({"height":"70%"},300);
+        });
     })
 }
 function cacherSoutenance() {

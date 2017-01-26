@@ -40,20 +40,22 @@ class C_index extends CI_Controller {
 
 	public function form_valid_connexion(){
 		$login = $this->input->post('login');
+		$role = $this->input->post('role');
 
 
         $this->session->set_userdata('nom','Damiens');
         $this->session->set_userdata('prenom','François');
         $this->session->set_userdata('mail','fd@at.com');
         $this->session->set_userdata('etapeDiplome','Lp conception d\'applications multi-tiers 3ème année IUT90');
+        $this->session->set_userdata('login',$login);
 
-		if ($login == "prof") {
+        if ($role == "prof") {
             $this->session->set_userdata('role','teacher');
             Redirect("c_prof");
-		}else if ($login == "admin") {
+		}else if ($role == "admin") {
             $this->session->set_userdata('role','admin');
             Redirect("c_admin");
-		}else if($login =="eleve"){
+		}else if($role =="eleve"){
             $this->session->set_userdata('role','student');
             Redirect("c_eleve");
 		}

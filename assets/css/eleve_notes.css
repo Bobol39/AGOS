@@ -103,6 +103,7 @@
     max-height: calc(100vh - 450px);
     margin-top: 40px;
     overflow-y: auto;
+    background-color: whitesmoke;
 }
 
 
@@ -121,4 +122,9 @@
 .c100.small{
     font-size: 50px;
     margin-top: 10px;
+}
+
+.nothingtoshow{
+    color: grey;
+    font-style: italic;
 }
