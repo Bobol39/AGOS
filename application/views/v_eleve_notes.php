@@ -213,14 +213,8 @@ foreach ($soutenances as $s){
                             </div>
                         </div>
                     </div>
-                    <?php foreach ($s->notes as $n){ ?>
-                        <div class="infosout">
-                            <input type="hidden" class="criterevalue criterenom" value="<?= $n->nom ?>">
-                            <input type="hidden" class="criterevalue criterenote" value="<?= $n->note ?>">
-                            <input type="hidden" class="criterevalue criterebareme" value="<?= $n->bareme ?>">
-                        </div>
-                    <?php } ?>
-                    </div>
+                    <input type="hidden" class="soutid" value="<?= $s->id ?>">
+                </div>
             </div>
         <?php } ?>
 

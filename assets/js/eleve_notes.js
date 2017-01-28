@@ -3,7 +3,7 @@
  */
 $(function () {
     $(".block_soutenance").click(function () {
-        afficherSoutenance($(this).find(".infosout"));
+        afficherSoutenance($(this).find(".soutid").val());
     });
 
     $("#soutenance_layer").click(function () {
@@ -14,11 +14,12 @@ $(function () {
     });
 })
 
-function afficherSoutenance() {
+function afficherSoutenance(id) {
     $("#soutenance_layer").fadeIn(100, function () {
         jQuery.ajax({
             type: "POST",
             url: baseurl    + "index.php/c_eleve/getInfoSoutHTML",
+            data: {id: id}
         }).done(function (data) {
             $("#soutenance_body").html(data);
             $("#soutenance_viewer").animate({"height":"70%"},300);

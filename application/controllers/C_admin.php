@@ -104,6 +104,13 @@ class C_admin extends CI_Controller
         $this->load->view("v_admin_gestion_notation",$data);
     }
 
+    function editionChoixGroupe(){
+        $this->load->view("v_header");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
+        $this->load->view("v_admin_edition_choixgroupe");
+    }
+
     function saveCritere(){
         $data["titre"]= $this->input->post('titre');
         $this->m_admin->saveCritere($data["titre"]);

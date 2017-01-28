@@ -59,7 +59,7 @@ class C_eleve extends CI_Controller
     }
 
     function getInfoSoutHTML(){
-        $info = $this->m_eleve->getInfoSout(1);
+        $info = $this->m_eleve->getInfoSout($this->input->post('id'));
         $note=0;
         foreach ($info as $c){
             $note+=$c['note'];
