@@ -1,0 +1,27 @@
+#container_admin{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+}
+
+#container_select{
+    height: 15%;
+    background-color: red;
+    line-height: 100px;
+}
+#container_table{
+    height: 40%;
+}
+
+#tablemodif tbody tr:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#container_edition{
+    background-color: yellow;
+    height: 35%;
+}
+
+#tablemodif{
+    width: 100%;
+}

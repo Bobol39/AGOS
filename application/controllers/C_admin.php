@@ -44,6 +44,15 @@ class C_admin extends CI_Controller
         $this->load->view("v_admin_gestion_prof",$data);
     }
 
+    function editionNotes(){
+        $data["groupes"] = $this->m_admin->getAllGroupSoutenance();
+
+        $this->load->view("v_header");
+        $this->load->view("v_admin_navbar");
+        $this->load->view("v_admin_leftbar");
+        $this->load->view("v_admin_edition_notes",$data);
+    }
+
     function showPlanning($idgroup){
         $data["salle"] = $this->m_admin->getSalle();
         $data["prof"] = $this->m_admin->getAllProf();
@@ -76,6 +85,15 @@ class C_admin extends CI_Controller
     function supprSalle(){
         $data["id"] = $this->input->post('id');
         $this->m_admin->supprSalle($data['id']);
+    }
+
+    function getSoutenancesToEdit(){
+        $id = $this->input->post('id');
+        $result = $this->m_admin->getSoutenancesByPlanning($id);
+        foreach ($result as $r){
+            $r->notes = $this->m_admin->getNotesSoutenance($r->id);
+        }
+        echo json_encode($result);
     }
 
     function createSalle(){

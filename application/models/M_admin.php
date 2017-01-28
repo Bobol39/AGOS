@@ -174,4 +174,18 @@ class M_admin extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function getNotesSoutenance($idsout){
+        $this->db->select('critere.titre, critere_groupe_notation_jonction.bareme, note_critere_soutenance.note');
+        $this->db->from('critere');
+        $this->db->join('critere_groupe_notation_jonction', 'critere_groupe_notation_jonction.id_critere = critere.id');
+        $this->db->join('planning', 'planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
+        $this->db->join('soutenance', 'soutenance.id_planning = planning.id');
+        $this->db->join('note_critere_soutenance', 'note_critere_soutenance.id_soutenance = soutenance.id');
+        $this->db->where('soutenance.id',$idsout);
+        $this->db->order_by("horaire", "asc");
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
