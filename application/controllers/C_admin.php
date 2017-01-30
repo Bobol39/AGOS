@@ -188,5 +188,64 @@ class C_admin extends CI_Controller
             $this->m_admin->saveSoutenance($sout);
         }
     }
+
+    function generatePDF(){
+
+        $id= $this->uri->segment(3);
+        $data = $this->m_admin->getSoutenancesByPlanningForPDF($id);
+
+
+
+        $date = array();
+        $prof = array();
+        foreach ($data as $soutenance){
+            if (!in_array($soutenance->date, $date)){
+                array_push($date,$soutenance->date);
+            }
+            if (!in_array($soutenance->prof1,$prof)){
+                $prof[$soutenance->prof1] = array();
+                array_push($prof[$soutenance->prof1],$soutenance->prof1);
+                array_push($prof[$soutenance->prof1],$soutenance->prof1_nom);
+                array_push($prof[$soutenance->prof1],$soutenance->prof1_prenom);
+            }
+            if (!in_array($soutenance->prof2,$prof)){
+                $prof[$soutenance->prof2] = array();
+                array_push($prof[$soutenance->prof2],$soutenance->prof2);
+                array_push($prof[$soutenance->prof2],$soutenance->prof2_nom);
+                array_push($prof[$soutenance->prof2],$soutenance->prof2_prenom);
+            }
+        }
+        asort($prof);
+
+
+        $horaire = array();
+        foreach ($data as $soutenance){
+            if (!in_array($soutenance->horaire, $horaire)){
+                array_push($horaire,$soutenance->horaire);
+            }
+        }
+
+        $salle_horaire = array();
+        for($i = 0 ; $i<count($horaire); $i++ ){
+            $salle_horaire[$horaire[$i]] = array();
+            foreach ($data as $soutenance){
+                if ($soutenance->horaire == $horaire[$i]){
+                    if (!in_array($soutenance->id_salle,$salle_horaire[$horaire[$i]])){
+                        array_push($salle_horaire[$horaire[$i]],$soutenance->id_salle);
+                    }
+                }
+            }
+            asort($salle_horaire[$horaire[$i]]);
+        }
+
+        $all_data["data"] = $data;
+        $all_data["date"] = $date;
+        $all_data["horaire"] = $horaire;
+        $all_data["salle_horaire"] = $salle_horaire;
+        $all_data["prof"] = $prof;
+
+        $this->load->view("v_admin_generatePDF",$all_data);
+
+    }
 }
 ?>

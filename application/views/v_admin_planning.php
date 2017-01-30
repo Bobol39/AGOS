@@ -59,6 +59,9 @@ $js_array = json_encode($salle)
             <div  class="col-lg-12 col-md-12 container_controls">
                 <button class="btn btn-success" id="savePlanning">SAVE</button>
             </div>
+            <div class="col-lg-12 col-md-12 container_controls">
+                <a href="<?php echo base_url("index.php/C_Admin/generatePDF/".$idgroup)?>""><button class="btn btn-success">PDF</button></a>
+            </div>
             <input id="idgroup" type="hidden" value="<?php echo $idgroup?>">
         </div>
         <div class="col-lg-11 col-md-11" id="container_modif_soutenances">

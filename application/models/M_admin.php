@@ -169,6 +169,19 @@ class M_admin extends CI_Model
         $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
         $this->db->from('soutenance');
         $this->db->where('id_planning',$idgroup);
+        $this->db->order_by("horaire", "desc");
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getSoutenancesByPlanningForPDF($idgroup){
+        $this->db->select('id_salle,date,id_etudiant,p1.abreviation as prof1,p1.nom as prof1_nom,p1.prenom as prof1_prenom,p2.abreviation as prof2,p2.nom as prof2_nom,p2.prenom as prof2_prenom,DATE_FORMAT(horaire, "%k:%i") as horaire');
+        $this->db->from('soutenance');
+        $this->db->join('professeur p1','soutenance.professeur1 = p1.id ','left');
+        $this->db->join('professeur p2','soutenance.professeur2 = p2.id ','left');
+        $this->db->where('id_planning',$idgroup);
+        $this->db->order_by("date", "asc");
         $this->db->order_by("horaire", "asc");
 
         $query = $this->db->get();
