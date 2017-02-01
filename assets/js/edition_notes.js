@@ -31,37 +31,6 @@ $(function () {
             });
         }
     });
-
-    $("#btnValider").click(function () {
-
-        if (checkBeforeSave()){
-            var data = {idsout:"", crits:[]};
-            var note, id;
-            data["idsout"] = $("#inputIdSout").val();
-
-            $("#tableEditNote tbody tr").each(function () {
-                id = $(this).find(".critId").val()
-                note = $(this).find(".inputNote").val();
-
-                data["crits"].push({id: id, note: note})
-            });
-            jQuery.ajax({
-                type: "POST",
-                url: baseurl    + "index.php/c_admin/saveNote/",
-                data: data
-            }).done( function(data){
-                if (data == "true"){
-                    $("#tableEditNote tbody").html("");
-                    $("#btnValider").hide();
-                    showNotification("Critères sauvegardés", "Les criteres de la soutenance ont bien été modifiés","success");
-                } else {
-                    showNotification("Une erreure est survenue", "Les criteres de la soutenance n'ont PAS pu être modifiés","warning");
-
-                }
-                ligneSelected.find("td").last().text(data['crits']);
-            });
-        }
-    })
 })
 
 function calcNote(notes) {
@@ -82,6 +51,39 @@ function editNotes(sout) {
             $("#btnValider").fadeIn();
         });
         $("#tableEditNote tbody").append(line);
+    })
+    $("#btnValider").off("click").click(function () {
+        if (checkBeforeSave()){
+            var data = {idsout:"", crits:[]};
+            var note, id;
+            data["idsout"] = $("#inputIdSout").val();
+
+            $("#tableEditNote tbody tr").each(function () {
+                id = $(this).find(".critId").val()
+                note = $(this).find(".inputNote").val();
+
+                data["crits"].push({id: id, note: note})
+            });
+            jQuery.ajax({
+                type: "POST",
+                url: baseurl    + "index.php/c_admin/saveNote/",
+                data: data
+            }).done( function(data){
+                if (data == "true"){
+                    $("#btnValider").hide();
+                    sout.notes.forEach(function (crit, index) {
+                        console.log($(".inputNote").eq(index).val());;
+                        crit.note = $(".inputNote").eq(index).val();
+                    });
+                    ligneSelected.find("td").last().text(calcNote(sout.notes)+"/20");
+                    $("#tableEditNote tbody").html("");
+                    showNotification("Critères sauvegardés", "Les criteres de la soutenance ont bien été modifiés","success");
+                } else {
+                    showNotification("Une erreure est survenue", "Les criteres de la soutenance n'ont PAS pu être modifiés","warning");
+
+                }
+            });
+        }
     })
 }
 
