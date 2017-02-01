@@ -12,9 +12,12 @@
     height: 40%;
 }
 
-#tablemodif tbody tr:hover{
-    background-color: lightgray;
+#tableShow tbody tr{
     cursor: pointer;
+}
+
+#tableShow tbody tr:hover{
+    background-color: lightgray;
 }
 
 #container_edition{
@@ -22,6 +25,16 @@
     height: 35%;
 }
 
-#tablemodif{
+#tableShow{
     width: 100%;
+}
+
+#tableEditNote{
+    width: 100%;
+}
+
+#btnValider{
+    float: right;
+    margin-top: 10px;
+    display: none;
 }

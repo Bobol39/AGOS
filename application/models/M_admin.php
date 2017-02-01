@@ -27,6 +27,13 @@ class M_admin extends CI_Model
         $this->db->update_batch('professeur', $final, 'id');
     }
 
+    public function editNote($data){
+        $this->db->where('id_soutenance',$data["id_soutenance"]);
+        $this->db->where('id_critere',$data["id_critere"]);
+        $this->db->update('note_critere_soutenance',$data);
+        return $this->db->affected_rows();
+    }
+
     public function getSalle(){
         $this->db->select('*');
         $this->db->from('salle');
@@ -188,17 +195,18 @@ class M_admin extends CI_Model
         return $query->result();
     }
 
-    public function getNotesSoutenance($idsout){
-        $this->db->select('critere.titre, critere_groupe_notation_jonction.bareme, note_critere_soutenance.note');
-        $this->db->from('critere');
-        $this->db->join('critere_groupe_notation_jonction', 'critere_groupe_notation_jonction.id_critere = critere.id');
-        $this->db->join('planning', 'planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
-        $this->db->join('soutenance', 'soutenance.id_planning = planning.id');
-        $this->db->join('note_critere_soutenance', 'note_critere_soutenance.id_soutenance = soutenance.id');
-        $this->db->where('soutenance.id',$idsout);
-        $this->db->order_by("horaire", "asc");
-
+    public function getInfoSout($idsout){
+        $this->db->select('critere.id,critere.titre as titre_critere,note,bareme');
+        $this->db->from('note_critere_soutenance');
+        $this->db->join('soutenance','id_soutenance = soutenance.id');
+        $this->db->join('planning','soutenance.id_planning = planning.id');
+        $this->db->join('critere_groupe_notation_jonction','planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
+        $this->db->join('critere','note_critere_soutenance.id_critere = critere.id');
+        $this->db->where('critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere');
+        $this->db->where('soutenance.id = '.$idsout);
         $query = $this->db->get();
-        return $query->result();
+        $row = $query->result_array();
+        //die($this->db->last_query());
+        return $row;
     }
 }

@@ -22,7 +22,7 @@
         </select>
     </div>
     <div id="container_table" class="col-lg-12 col-md-12">
-        <table id="tablemodif">
+        <table id="tableShow">
             <thead>
                 <tr>
                     <th>Titre</th>
@@ -39,6 +39,20 @@
         </table>
     </div>
     <div id="container_edition" class="col-lg-12 col-md-12">
+        <table id="tableEditNote">
+            <thead>
+                <tr>
+                    <th>Critère</th>
+                    <th>Note</th>
+                    <th>Bareme</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <input type="hidden" id="inputIdSout" value="">
+        <button id="btnValider" class="btn btn-fill btn-success">Sauvegarder</button>
     </div>
 </div>
 

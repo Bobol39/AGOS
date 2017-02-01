@@ -91,7 +91,7 @@ class C_admin extends CI_Controller
         $id = $this->input->post('id');
         $result = $this->m_admin->getSoutenancesByPlanning($id);
         foreach ($result as $r){
-            $r->notes = $this->m_admin->getNotesSoutenance($r->id);
+            $r->notes = $this->m_admin->getInfoSout($r->id);
         }
         echo json_encode($result);
     }
@@ -134,6 +134,10 @@ class C_admin extends CI_Controller
         $this->m_admin->saveCritere($data["titre"]);
     }
 
+    function saveNotes(){
+
+    }
+
     function createGroupCritere(){
         $data["titre"]= $this->input->post('titre');
         $data["array"] = $this->input->post('array');
@@ -147,6 +151,18 @@ class C_admin extends CI_Controller
         $id = $this->input->post('id');
         $crit = $this->m_admin->getCritereFromGroup($id);
         echo json_encode($crit);
+    }
+
+    public function saveNote(){
+        $data["id_soutenance"] = $this->input->post("idsout");
+        $affected_rows = 0;
+        foreach ($this->input->post("crits") as $c){
+            $data["note"] = $c["note"];
+            $data["id_critere"] = $c["id"];
+            $affected_rows += $this->m_admin->editNote($data);
+        }
+        if ($affected_rows == 0) echo "false";
+        else echo "true";
     }
 
     function modifCritereFromGroup(){

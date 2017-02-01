@@ -95,7 +95,6 @@ class C_prof extends CI_Controller
         $data["id_soutenance"] = $this->input->post("id_soutenance");
         $data["note"] = json_decode($this->input->post("note"));
         $data["critere"] = json_decode($this->input->post("critere"));
-
         $this->m_prof->saveNote($data);
     }
 
