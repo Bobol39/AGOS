@@ -1,3 +1,4 @@
+
 <script src="<?=base_url();?>assets/js/jquery-3.1.1.min.js"  crossorigin="anonymous"></script>
 <script src="<?php echo base_url();?>jsPDF/dist/jspdf.debug.js"></script>
 <script src="<?php echo base_url();?>jsPDF/html2canvas.js"></script>
@@ -121,8 +122,10 @@
 var pdf = new jsPDF('p', 'pt', 'letter');
 pdf.addHTML($('#toPDF')[0], function () {
     pdf.save('Planning.pdf');
+    window.location.href = "<?php echo base_url() ?>index.php/C_admin";
 });
 </script>
 
 
 </body>
+
