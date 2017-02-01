@@ -25,8 +25,10 @@ bug meme horaire meme si jour différent [FAIT]
 
 
 
-Le bouton gestion Prof dans la navbar : le mot "professeur"  se décale sur l'autre lien
+Le bouton gestio n Prof dans la navbar : le mot "professeur"  se décale sur l'autre lien
 
 Planning -> quand on choisi une salle l'enlever dans les autres listes (pareil pour les prof et les élèves)
+
+--> checkbox admin dans la vue des prof coté admin + dans la table prof un boolean
 
 
