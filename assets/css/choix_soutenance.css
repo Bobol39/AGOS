@@ -34,11 +34,6 @@
     padding: 0;
 }
 
-.button_soutenance div {
-    padding: 0;
-
-}
-
 .titresout, .sallesout, .heuresout, .dureesout{
     line-height: 40px;
 }

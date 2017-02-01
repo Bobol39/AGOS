@@ -218,7 +218,7 @@ function runSocketIo(id,login,tuteur) {
     }).on("redirectFusion", function () {
         stop_loading();
         saveCommentaire(function () {
-            window.location.replace(baseurl+"index.php/C_prof/showFusion/" + id_soutenance + "/" + login);
+            window.location.replace(baseurl+"index.php/C_prof/showFusion/" + id_soutenance);
         });
     });
 

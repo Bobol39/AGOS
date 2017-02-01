@@ -41,6 +41,7 @@ class C_eleve extends CI_Controller
         foreach ($data as $sout){
             if (($sout["titre"] == "")||($sout["resume"] == "")){
                 $this->load->view("v_eleve_index", $sout);
+                $this->load->view("v_eleve_index", $sout);
                 return;
             }
         }
@@ -53,7 +54,7 @@ class C_eleve extends CI_Controller
 
     function saveResume(){
         $data["titre"] = $this->input->post('titre');
-        $data["resume"] = $this->input->post('resume');
+        $data["resume"] = str_replace(array("<script>", "</script>"), array("&ltscript&gt", "&lt/script&gt"), $this->input->post('resume'));
         $id = $this->m_eleve->getAllSoutenanceForCurrentEleve()[0]["id"];
         echo $this->m_eleve->saveResume($data, $id);
     }

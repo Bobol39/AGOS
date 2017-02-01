@@ -180,16 +180,17 @@ class C_admin extends CI_Controller
         $critere = $this->input->post('critere');
         $id = $this->input->post('id');
 
-        if ($id != 0){
-            $this->m_admin->deleteGroupSoutenance($id);
-        }
+        $newid = $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere);
 
-        $this->m_admin->saveGroupSoutenance($duree,$titre,$promo,$critere);
+        if ($id != 0){
+            $this->m_admin->deleteGroupSoutenance($id, false);
+            $this->m_admin->updateSoutenancesPlanning($id,$newid);
+        }
     }
 
     function deleteGroupSoutenance(){
         $id = $this->input->post('id');
-        $this->m_admin->deleteGroupSoutenance($id);
+        $this->m_admin->deleteGroupSoutenance($id, true);
     }
 
 

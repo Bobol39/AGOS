@@ -33,7 +33,7 @@ class C_prof extends CI_Controller
     }
 
     public function index(){
-        $login = "jfcouchot";
+        $login = $this->session->uid;
         $data["soutenances_tuteur"] = $this->m_prof->getSoutenancesByTutor($login);
         $data["soutenances_temoin"] = $this->m_prof->getSoutenancesByAssistant($login);
         $data["login"] = $login;
@@ -42,13 +42,13 @@ class C_prof extends CI_Controller
         $this->load->view('v_prof_choix_soutenance',$data);
     }
 
-    public function showNotation($id_soutenance,$login){
+    public function showNotation($id_soutenance){
 
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
-        $data["login"] = $login;
-        $data["tuteur"] = ($data["soutenance"]->professeur1 == $login) ? 1 : 0;
+        $data["login"] = $this->session->uid;
+        $data["tuteur"] = ($data["soutenance"]->professeur1 == $this->session->uid) ? 1 : 0;
         $this->load->view('v_header');
 
         $this->load->view('v_prof_notation_navbar',$data);
@@ -56,12 +56,12 @@ class C_prof extends CI_Controller
         $this->load->view('v_prof_notation');
     }
 
-    public function showFusion($id_soutenance,$login){
+    public function showFusion($id_soutenance){
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
-        $data["login"] = $login;
-        $data["tuteur"] = ($data["soutenance"]->professeur1 == $login) ? 1 : 0;
+        $data["login"] = $this->session->uid;;
+        $data["tuteur"] = ($data["soutenance"]->professeur1 == $this->session->uid) ? 1 : 0;
 
 
 

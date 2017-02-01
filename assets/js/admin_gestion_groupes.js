@@ -106,6 +106,6 @@ function deleteGroup(){
         data: {id: id}
     }).done( function(){
         stop_loading();
-        location.reload();
+        //location.reload();
     });
 }

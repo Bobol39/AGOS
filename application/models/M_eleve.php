@@ -5,7 +5,7 @@ class M_eleve extends CI_Model
     public function saveResume($data, $id)
     {
         $this->db->where('id', $id);
-        $this->db->where('id_etudiant', $this->session->userdata('login'));
+        $this->db->where('id_etudiant', $this->session->uid);
         $this->db->update('soutenance', $data);
         return $this->db->affected_rows();
     }
@@ -13,7 +13,7 @@ class M_eleve extends CI_Model
     public function getAllSoutenanceForCurrentEleve(){
         $this->db->select('*');
         $this->db->from('soutenance');
-        $this->db->where('soutenance.id_etudiant',$this->session->userdata('login'));
+        $this->db->where('soutenance.id_etudiant',$this->session->uid);
         $query = $this->db->get();
         $row = $query->result_array();
         return $row;
@@ -34,7 +34,7 @@ class M_eleve extends CI_Model
         $this->db->join('planning','soutenance.id_planning = planning.id');
         $this->db->join('critere_groupe_notation_jonction','planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
         $this->db->join('critere','note_critere_soutenance.id_critere = critere.id');
-        $this->db->where('soutenance.id_etudiant',$this->session->userdata('login'));
+        $this->db->where('soutenance.id_etudiant',$this->session->uid);
         $this->db->where('critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere');
         $query = $this->db->get();
         $row = $query->result_array();
@@ -49,7 +49,7 @@ class M_eleve extends CI_Model
         $this->db->join('planning','soutenance.id_planning = planning.id');
         $this->db->join('critere_groupe_notation_jonction','planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
         $this->db->join('critere','note_critere_soutenance.id_critere = critere.id');
-        $this->db->where('soutenance.id_etudiant',$this->session->userdata('login'));
+        $this->db->where('soutenance.id_etudiant',$this->session->uid);
         $this->db->where('critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere');
         $this->db->where('soutenance.id = '.$idsout);
         $query = $this->db->get();

@@ -47,7 +47,7 @@ class C_index extends CI_Controller {
         $this->session->set_userdata('prenom','François');
         $this->session->set_userdata('mail','fd@at.com');
         $this->session->set_userdata('etapeDiplome','Lp conception d\'applications multi-tiers 3ème année IUT90');
-        $this->session->set_userdata('login',$login);
+        $this->session->set_userdata('uid',$login);
 
         if ($role == "prof") {
             $this->session->set_userdata('role','teacher');

@@ -138,11 +138,25 @@ class M_admin extends CI_Model
             'id_groupe_notation' => $critere
         );
         $this->db->insert('planning',$data);
+        return $this->db->insert_id();
     }
 
-    public function deleteGroupSoutenance($id){
+    function updateSoutenancesPlanning($oldId, $newId){
+        $data = array(
+            'id_planning' => $newId
+        );
+
+        $this->db->where('id_planning', $oldId);
+        $this->db->update('soutenance', $data);
+    }
+
+    public function deleteGroupSoutenance($id, $deleteSoutenancesToo){
         $this->db->where('id',$id);
         $this->db->delete('planning');
+
+        if ($deleteSoutenancesToo){
+            $this->deleteSoutenances($id);
+        }
     }
 
     public function getAllGroupSoutenance(){
@@ -159,7 +173,15 @@ class M_admin extends CI_Model
     }
 
     public function deleteSoutenances($idplanning){
+        $sout = $this->getSoutenancesByPlanning($idplanning);
         $this->db->delete('soutenance', array('id_planning' => $idplanning));
+
+        foreach ($sout as $s){
+            $this->db->delete('interface_prof_soutenance', array('id_soutenance' => $s->id));
+            $this->db->delete('note_critere_soutenance', array('id_soutenance' => $s->id));
+            die($this->db->last_query());
+
+        }
     }
 
     public function getEtudiantsByGroup($idgroup){
