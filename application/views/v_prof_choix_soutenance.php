@@ -19,10 +19,25 @@
             foreach ($soutenances_tuteur as $sout){
             ?>
             <div class="container_soutenance col-lg-3 col-md-3">
-                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$login; ?>">
-                    <button class="btn btn-success btn-fill button_soutenance"><?php echo $sout["titre"]; ?></button>
+                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"]?>">
+                    <div class="btn btn-success btn-fill button_soutenance">
+                        <div class="col-lg-12 col-md-12 text-center" style="height: 50%;">
+                            <span class="titresout"><?= $sout["titre"]; ?></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                            <span class="glyphicon glyphicon-map-marker"></span>
+                            <span class="sallesout"><?= $sout["id_salle"]; ?></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            <span class="dureesout"><?= $sout["duree"];?>mn</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                            <span class="glyphicon glyphicon-time"></span>
+                            <span class="heuresout"><?= date( 'G:i', strtotime($sout["horaire"])); ?></span>
+                        </div>
+                    </div>
                 </a>
-                <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$sout["professeur2"];  ?>">acces en tanque que <?php echo $sout["professeur2"];  ?></a>
             </div>
 
         <?php } ?>
@@ -33,8 +48,24 @@
             foreach ($soutenances_temoin as $sout){
                 ?>
                 <div class="container_soutenance col-lg-3 col-md-3">
-                    <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"].'/'.$login;  ?>">
-                        <button class="btn btn-info btn-fill button_soutenance"><?php echo $sout["titre"]; ?></button>
+                    <a href="<?php echo base_url()?>/index.php/C_prof/showNotation/<?php echo $sout["id"]?>">
+                        <div class="btn btn-info btn-fill button_soutenance">
+                            <div class="col-lg-12 col-md-12 text-center" style="height: 50%;">
+                                <span class="titresout"><?= $sout["titre"]; ?></span>
+                            </div>
+                            <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                                <span class="glyphicon glyphicon-map-marker"></span>
+                                <span class="sallesout"><?= $sout["id_salle"]; ?></span>
+                            </div>
+                            <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="dureesout"><?= $sout["duree"];?>mn</span>
+                            </div>
+                            <div class="col-lg-4 col-md-4 text-center" style="height: 50%;">
+                                <span class="glyphicon glyphicon-time"></span>
+                                <span class="heuresout"><?= date( 'G:i', strtotime($sout["horaire"])); ?></span>
+                            </div>
+                        </div>
                     </a>
                 </div>
             <?php } ?>

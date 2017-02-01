@@ -80,7 +80,6 @@ function editNotes(sout) {
                     showNotification("Critères sauvegardés", "Les criteres de la soutenance ont bien été modifiés","success");
                 } else {
                     showNotification("Une erreure est survenue", "Les criteres de la soutenance n'ont PAS pu être modifiés","warning");
-
                 }
             });
         }

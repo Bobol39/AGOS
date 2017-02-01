@@ -33,7 +33,7 @@ class C_prof extends CI_Controller
     }
 
     public function index(){
-        $login = "cguyeux";
+        $login = "jfcouchot";
         $data["soutenances_tuteur"] = $this->m_prof->getSoutenancesByTutor($login);
         $data["soutenances_temoin"] = $this->m_prof->getSoutenancesByAssistant($login);
         $data["login"] = $login;

@@ -24,18 +24,22 @@ class M_prof extends CI_Model
     }
 
     public function getSoutenancesByTutor($id_tutor){
-        $this->db->select('*');
+        $this->db->select('soutenance.*, planning.duree');
         $this->db->from('soutenance');
+        $this->db->join('planning', 'soutenance.id_planning = planning.id');
         $this->db->where('soutenance.professeur1',$id_tutor);
+        $this->db->where('soutenance.date', date('Y-m-d'));
         $query = $this->db->get();
         $row = $query->result_array();
         return $row;
     }
 
     public function getSoutenancesByAssistant($id_tutor){
-        $this->db->select('*');
+        $this->db->select('soutenance.*, planning.duree');
         $this->db->from('soutenance');
+        $this->db->join('planning', 'soutenance.id_planning = planning.id');
         $this->db->where('soutenance.professeur2',$id_tutor);
+        $this->db->where('soutenance.date', date('Y-m-d'));
         $query = $this->db->get();
         $row = $query->result_array();
         return $row;
