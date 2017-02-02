@@ -74,7 +74,7 @@
     </div>
     <div class="col-lg-12 col-md-12" id="block_textarea">
         <div class="tools">
-            <button id="switchtextdraw" class="switchtext"></button>
+            <button id="switchtextdraw" class="switchdraw"></button>
             <a class="option_draw" href="#colors_sketch" data-color="black" data-size="3" ><button style="background-image: url('<?=base_url();?>assets/img/marker.png')"></button></a>
             <a class="option_draw" href="#colors_sketch" data-color="white" data-size="20" ><button style="background-image: url('<?=base_url();?>assets/img/eraser.png')"></button></a>
             <a class="option_draw" href="#colors_sketch" data-size="3" ><button style="background-image: url('<?=base_url();?>assets/img/dot_small.png')"></button></a>

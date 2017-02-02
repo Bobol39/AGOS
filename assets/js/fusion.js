@@ -120,6 +120,7 @@ function runSocketIo(id, tuteur) {
     socketio.on("deliberationFinished", function (note) {
         if(tuteur) {
             sauvergardeNote(note);
+            socketio.emit('theend');
         }
         stop_loading();
     });

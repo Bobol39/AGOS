@@ -96,7 +96,7 @@ class C_prof extends CI_Controller
         $img= $this->input->post('img');
 
         //définir le chemin du dossier AGOS en fonction de sa propre installation
-        define('UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].  '/LP'  .'/AGOS/assets/img/img_canvas/');
+        define('UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].'/AGOS/assets/img/img_canvas/');
 
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
