@@ -70,4 +70,13 @@ class M_prof extends CI_Model
         }
         $this->db->insert_batch('note_critere_soutenance', $final);
     }
+
+    public function checkNote($id_soutenance){
+        $this->db->select('id_soutenance');
+        $this->db->from('note_critere_soutenance');
+        $this->db->where('id_soutenance',$id_soutenance);
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
 }
