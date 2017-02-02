@@ -112,6 +112,8 @@ io.on('connection', function(socket){
                     soutenances[data.idsout].getProf2().socket.emit("deliberationNotEqual");
                 }
             }
+        }).on('theend', function () {
+            delete soutenances[data.idsout];
         })
 
 

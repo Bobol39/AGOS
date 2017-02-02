@@ -31,6 +31,7 @@ class M_prof extends CI_Model
         $this->db->where('soutenance.date', date('Y-m-d'));
         $query = $this->db->get();
         $row = $query->result_array();
+
         return $row;
     }
 

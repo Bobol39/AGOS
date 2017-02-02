@@ -189,17 +189,20 @@
     height: 39%;
     padding: 15px;
 }
+
 #block_textarea textarea{
     border: 1px solid black;
-    display: none;
     width: 100%;
     padding: 5px;
+    height: calc(100% - 30px);
+
 }
 
 #colors_sketch{
     width: calc(100% - 30px);
     height: 90%;
     background-color: white;
+    display: none;
 }
 
 .tools {
