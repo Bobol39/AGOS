@@ -14,21 +14,34 @@
     <div class="col-lg-12 col-md-12" id="logo_admin">
         <img src="<?php echo base_url();?>assets/img/logo_leftbar_admin.png">
     </div>
+    <a href="<?php echo base_url('index.php/c_admin/');?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Sessions</span>
+        </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>">
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/');?>"><span>Sessions</span></a>
+        <span>Professeurs</span>
     </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_admin/gestionSalle');?>">
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>"><span>Professeurs</span></a>
+        <span>Salles</span>
     </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_admin/gestionNotation');?>">
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/gestionSalle');?>"><span>Salles</span></a>
+        <span>Barêmes</span>
     </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_admin/editionNotes');?>">
     <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/gestionNotation');?>"><span>Barêmes</span></a>
-    </div><div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <a href="<?php echo base_url('index.php/c_admin/editionNotes');?>"><span>Edition des notes</span></a>
+        <span>Edition des notes</span>
     </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_prof');?>">
     <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
-        <a href="<?php echo base_url('index.php/c_prof');?>"><span>Accès profeseur</span></a>
+        <span>Accès profeseur</span>
     </div>
+    </a>
 </div>
