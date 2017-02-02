@@ -145,6 +145,7 @@ function sauvergardeNote(note){
             critere: JSON.stringify(critere)
         }
     }).done(function() {
+        window.location.replace(baseurl+"index.php/C_prof/");
     });
 }
 

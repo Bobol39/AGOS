@@ -12,36 +12,36 @@
 
 <div class="col-lg-2 col-md-2" id="leftbar">
     <div class="col-lg-12 col-md-12" id="logo_admin">
-        <img src="<?php echo base_url();?>assets/img/logo_leftbar_admin.png">
+        <img src="<?php echo base_url(); ?>assets/img/logo_leftbar_admin.png">
     </div>
-    <a href="<?php echo base_url('index.php/c_admin/');?>">
+    <a href="<?php echo base_url('index.php/c_admin/'); ?>">
         <div class="col-lg-12 col-md-12 button_leftbar_admin">
             <span>Sessions</span>
         </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_admin/gestionProf');?>">
-    <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Professeurs</span>
-    </div>
+    <a href="<?php echo base_url('index.php/c_admin/gestionProf'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Professeurs</span>
+        </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_admin/gestionSalle');?>">
-    <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Salles</span>
-    </div>
+    <a href="<?php echo base_url('index.php/c_admin/gestionSalle'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Salles</span>
+        </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_admin/gestionNotation');?>">
-    <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Barêmes</span>
-    </div>
+    <a href="<?php echo base_url('index.php/c_admin/gestionNotation'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Barêmes</span>
+        </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_admin/editionNotes');?>">
-    <div class="col-lg-12 col-md-12 button_leftbar_admin">
-        <span>Edition des notes</span>
-    </div>
+    <a href="<?php echo base_url('index.php/c_admin/editionNotes'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Edition des notes</span>
+        </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_prof');?>">
-    <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
-        <span>Accès profeseur</span>
-    </div>
+    <a href="<?php echo base_url('index.php/c_prof'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
+            <span>Accès profeseur</span>
+        </div>
     </a>
 </div>
