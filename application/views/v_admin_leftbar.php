@@ -28,4 +28,7 @@
     </div><div class="col-lg-12 col-md-12 button_leftbar_admin">
         <a href="<?php echo base_url('index.php/c_admin/editionNotes');?>"><span>Edition des notes</span></a>
     </div>
+    <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
+        <a href="<?php echo base_url('index.php/c_prof');?>"><span>Accès profeseur</span></a>
+    </div>
 </div>

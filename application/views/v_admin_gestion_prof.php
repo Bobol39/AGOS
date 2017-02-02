@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th><i class="fa fa-sort" aria-hidden="true"></i>Nom</th>
             <th><i class="fa fa-sort" aria-hidden="true"></i>Prénom</th>
             <th><i class="fa fa-sort" aria-hidden="true"></i>Abréviation</th>
+            <th><i class="fa fa-sort" aria-hidden="true"></i>Admin</th>
         </thead>
 
         <tbody>
@@ -19,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?= $value['nom'] ?></td>
                     <td><?= $value['prenom'] ?></td>
                     <td><input type='text' id='<?= $value['id']?>' class='input_abre' value='<?= strtoupper($value['abreviation'])?>'></td>
+                    <td><input type='checkbox' class='cb_admin' id='<?= "cb".$value['id']?>' <?php if ($value["admin"] == "1") echo "checked";?>></td>
                 </tr>
             <?php }?>
         </tbody>

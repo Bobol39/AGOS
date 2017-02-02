@@ -13,16 +13,15 @@ class M_admin extends CI_Model
     }
 
     public function saveAbreviation($data){
-
         $final = array();
         foreach ($data as $value){
             $temp = array(
                 'id' => array_search($value,$data),
-                'abreviation' => $value
+                'abreviation' => $value["abrev"],
+                'admin' => $value["admin"]
             );
             array_push($final,$temp);
         }
-
 
         $this->db->update_batch('professeur', $final, 'id');
     }

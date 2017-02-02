@@ -8,7 +8,6 @@ TRUNCATE `agos`.`planning`;
 
 INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('jccharr', 'Charr', 'Jean-Claude', 'jcc'),
-('jfcouchot', 'Couchot', 'Jean-François', 'jfc'),
 ('icouturier', 'Couturier', 'Ingrid', 'ico'),
 ('rcouturier', 'Couturier', 'Raphaël', 'rco'),
 ('kdeschinkel', 'Deschinkel', 'Karine', 'kde'),
@@ -24,6 +23,8 @@ INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`) VALUES
 ('cpaterlini', 'Paterlini', 'Corinne', 'cpa'),
 ('gperrot', 'Perrot', 'Gilles', 'gpe'),
 ('smichel', 'Salomon', 'Michel', 'msa');
+
+INSERT INTO `agos`.`professeur` (`id`, `nom`, `prenom`, `abreviation`, `admin`) VALUES ('jfcouchot', 'Couchot', 'Jean-François', 'jfc', 1);
 
 INSERT INTO `agos`.`salle` (`id`, `nom`) VALUES
 ('208', '208'),

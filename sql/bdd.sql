@@ -124,7 +124,8 @@ CREATE TABLE `professeur` (
   `id` varchar(25) NOT NULL,
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
-  `abreviation` varchar(25) NOT NULL
+  `abreviation` varchar(25) NOT NULL,
+  `admin` boolean NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
