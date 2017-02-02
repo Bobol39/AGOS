@@ -35,7 +35,26 @@ class C_prof extends CI_Controller
     public function index(){
         $login = $this->session->uid;
         $data["soutenances_tuteur"] = $this->m_prof->getSoutenancesByTutor($login);
+
+        $i = 0;
+        foreach ($data["soutenances_tuteur"] as $sout_tut){
+            $temp = $this->m_prof->checkNote($sout_tut["id"]);
+            if ($temp != null ){
+                unset($data["soutenances_tuteur"][$i]);
+            }
+            $i++;
+        }
+
         $data["soutenances_temoin"] = $this->m_prof->getSoutenancesByAssistant($login);
+        $i = 0;
+        foreach ($data["soutenances_temoin"] as $sout_te){
+            $temp = $this->m_prof->checkNote($sout_te["id"]);
+            if ($temp != null ){
+                unset($data["soutenances_temoin"][$i]);
+            }
+            $i++;
+        }
+
         $data["login"] = $login;
 
         $this->load->view('v_header');
