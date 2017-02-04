@@ -237,16 +237,21 @@ class C_admin extends CI_Controller
 
         $horaire = array();
         foreach ($data as $soutenance){
-            if (!in_array($soutenance->horaire, $horaire)){
-                array_push($horaire,$soutenance->horaire);
+            if (!in_array($soutenance->horaire, $horaire) && !in_array("0".$soutenance->horaire, $horaire)){
+                if(strlen($soutenance->horaire)==4){
+                    array_push($horaire,"0".$soutenance->horaire);
+                }else{
+                    array_push($horaire,$soutenance->horaire);
+                }
             }
         }
+        asort($horaire);
 
         $salle_horaire = array();
         for($i = 0 ; $i<count($horaire); $i++ ){
             $salle_horaire[$horaire[$i]] = array();
             foreach ($data as $soutenance){
-                if ($soutenance->horaire == $horaire[$i]){
+                if ($soutenance->horaire == $horaire[$i] || "0".$soutenance->horaire == $horaire[$i]){
                     if (!in_array($soutenance->id_salle,$salle_horaire[$horaire[$i]])){
                         array_push($salle_horaire[$horaire[$i]],$soutenance->id_salle);
                     }

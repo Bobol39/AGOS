@@ -210,7 +210,7 @@ class M_admin extends CI_Model
         $this->db->join('professeur p2','soutenance.professeur2 = p2.id ','left');
         $this->db->where('id_planning',$idgroup);
         $this->db->order_by("date", "asc");
-        $this->db->order_by("horaire", "asc");
+        $this->db->order_by("horaire", "desc");
 
         $query = $this->db->get();
         return $query->result();
