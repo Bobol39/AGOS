@@ -153,10 +153,10 @@
     pdf.addHTML($('#toPDF')[0], function () {
 
         pdf.addPage();
-//        window.location.href = "<?php //echo base_url() ?>//index.php/C_admin";
     });
     pdf.addHTML($('#prof_pdf')[0],function(){
         pdf.save('Planning.pdf');
+        window.location.href = "<?php echo base_url() ?>index.php/C_admin";
     });
 </script>
 
