@@ -41,7 +41,7 @@
     </a>
     <a href="<?php echo base_url('index.php/c_prof'); ?>">
         <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
-            <span>Accès profeseur</span>
+            <span>Espace professeur</span>
         </div>
     </a>
 </div>
