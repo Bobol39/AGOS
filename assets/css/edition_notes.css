@@ -1,4 +1,4 @@
-#container_admin{
+#container_admin, #container_prof{
     height: calc(100vh - 60px);
     background-color: #EAEAEA;
 }
@@ -37,4 +37,8 @@
     float: right;
     margin-top: 10px;
     display: none;
+}
+
+.inputNote{
+    width: 80%;
 }

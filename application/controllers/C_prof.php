@@ -58,6 +58,7 @@ class C_prof extends CI_Controller
         $data["login"] = $login;
 
         $this->load->view('v_header');
+        $this->load->view('v_prof_navbar');
         $this->load->view('v_prof_choix_soutenance',$data);
     }
 
@@ -115,6 +116,48 @@ class C_prof extends CI_Controller
         $data["note"] = json_decode($this->input->post("note"));
         $data["critere"] = json_decode($this->input->post("critere"));
         $this->m_prof->saveNote($data);
+    }
+
+
+    function editionNotes(){
+        if ($this->m_prof->isAdmin($this->session->uid) == 1){
+            $data["groupes"] = $this->m_prof->getAllGroupSoutenance();
+        } else {
+            $data["groupes"] = $this->m_prof->getAllGroupSoutenanceWhereProfInvolved($this->session->uid);
+            die(var_dump($data));
+        }
+
+        $this->load->view("v_header");
+        $this->load->view("v_prof_navbar");
+        $this->load->view("v_prof_edition_notes",$data);
+    }
+
+    function getSoutenancesToEdit(){
+        $id = $this->input->post('id');
+
+        if ($this->m_prof->isAdmin($this->session->uid) == 1){
+            $result = $this->m_prof->getSoutenancesByPlanning($id);
+        } else {
+            $result = $this->m_prof->getSoutenancesByPlanningAndProf($id, $this->session->uid);
+        }
+
+        foreach ($result as $r){
+            $r->notes = $this->m_prof->getInfoSout($r->id);
+        }
+        echo json_encode($result);
+    }
+
+
+    public function editNote(){
+        $data["id_soutenance"] = $this->input->post("idsout");
+        $affected_rows = 0;
+        foreach ($this->input->post("crits") as $c){
+            $data["note"] = $c["note"];
+            $data["id_critere"] = $c["id"];
+            $affected_rows += $this->m_admin->editNote($data);
+        }
+        if ($affected_rows == 0) echo "false";
+        else echo "true";
     }
 
 }

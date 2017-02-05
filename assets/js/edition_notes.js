@@ -12,7 +12,7 @@ $(function () {
             start_loading();
             jQuery.ajax({
                 type: "POST",
-                url: baseurl    + "index.php/c_admin/getSoutenancesToEdit/",
+                url: baseurl    + "index.php/c_prof/getSoutenancesToEdit/",
                 data: {id: val}
             }).done( function(data){
                 data = JSON.parse(data)
@@ -21,8 +21,10 @@ $(function () {
                     if (sout.notes.length != 0){
                         var ligne = $("<tr><td>"+sout.titre+"</td><td>"+sout.id_etudiant+"</td><td>"+sout.date+"</td><td>"+sout.id_salle+"</td><td>"+sout.professeur1+"/"+sout.professeur2+"</td><td>"+calcNote(sout.notes)+"/20</td></tr>")
                             .click(function () {
+                                start_loading();
                                 ligneSelected = $(this);
                                 editNotes(sout);
+                                stop_loading();
                             });
                         $("#tableShow tbody").append(ligne);
                     }
@@ -54,6 +56,7 @@ function editNotes(sout) {
     })
     $("#btnValider").off("click").click(function () {
         if (checkBeforeSave()){
+            start_loading();
             var data = {idsout:"", crits:[]};
             var note, id;
             data["idsout"] = $("#inputIdSout").val();
@@ -66,7 +69,7 @@ function editNotes(sout) {
             });
             jQuery.ajax({
                 type: "POST",
-                url: baseurl    + "index.php/c_admin/saveNote/",
+                url: baseurl    + "index.php/c_prof/editNote/",
                 data: data
             }).done( function(data){
                 if (data == "true"){
@@ -81,6 +84,7 @@ function editNotes(sout) {
                 } else {
                     showNotification("Une erreure est survenue", "Les criteres de la soutenance n'ont PAS pu être modifiés","warning");
                 }
+                stop_loading();
             });
         }
     })

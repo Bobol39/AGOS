@@ -59,7 +59,7 @@ $(function() {
 });
 
 function runSocketIo(id, tuteur) {
-    var socketio = io.connect('http://127.0.0.1:3000/');
+    var socketio = io.connect('http://localhost:3000/');
     start_loading()
     socketio.emit('fusion',{idsout: id, tuteur: tuteur});
 
@@ -121,8 +121,9 @@ function runSocketIo(id, tuteur) {
         if(tuteur) {
             sauvergardeNote(note);
             socketio.emit('theend');
+        } else {
+            window.location.replace(baseurl+"index.php/C_prof/");
         }
-        stop_loading();
     });
 
     socketio.on("deliberationNotEqual", function () {

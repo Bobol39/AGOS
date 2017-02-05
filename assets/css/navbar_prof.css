@@ -1,0 +1,22 @@
+#navbar_notation {
+    background-color: #2C82C9;
+    height: 60px;
+    padding: 0px;
+    border-bottom: 3px solid darkgrey;
+}
+
+.button_navbar_notation{
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.button_navbar_notation:hover{
+    background-color: #2969B0;
+}
+
+.button_navbar_notation span{
+    color: white;
+    line-height: 60px;
+    font-size: 25px;
+    width: 100%;
+}

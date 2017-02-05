@@ -134,9 +134,6 @@ class C_admin extends CI_Controller
         $this->m_admin->saveCritere($data["titre"]);
     }
 
-    function saveNotes(){
-
-    }
 
     function createGroupCritere(){
         $data["titre"]= $this->input->post('titre');

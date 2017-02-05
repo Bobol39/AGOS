@@ -200,7 +200,7 @@ function saveCommentaire(callback){
 })();
 
 function runSocketIo(id,login,tuteur) {
-    var socketio = io.connect('http://127.0.0.1:3000/');
+    var socketio = io.connect('http://localhost:3000/');
     socketio.emit('notation',{id: id, login: login, tuteur: tuteur});
 
 

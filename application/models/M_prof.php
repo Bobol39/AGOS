@@ -79,4 +79,79 @@ class M_prof extends CI_Model
         $row = $query->result_array();
         return $row;
     }
+
+    function getAllGroupSoutenanceWhereProfInvolved($idprof){
+        $this->db->distinct();
+        $this->db->select('planning.*');
+        $this->db->from('planning');
+        $this->db->join('soutenance','soutenance.id_planning = planning.id');
+        $this->db->where("soutenance.professeur1",$idprof);
+        $this->db->or_where("soutenance.professeur2 = '".$idprof."'");
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
+
+    function isAdmin($id){
+        $this->db->select('admin');
+        $this->db->from('professeur');
+        $this->db->where("id", $id);
+        $query = $this->db->get();
+
+        return ($query->row()->admin == "1");
+
+    }
+
+    public function getAllGroupSoutenance(){
+        $this->db->select('*');
+        $this->db->from('planning');
+        $query = $this->db->get();
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function getSoutenancesByPlanning($idgroup){
+        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
+        $this->db->from('soutenance');
+        $this->db->where('id_planning',$idgroup);
+        $this->db->order_by("horaire", "desc");
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getSoutenancesByPlanningAndProf($idgroup, $idprof){
+        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
+        $this->db->from('soutenance');
+        $this->db->where('id_planning',$idgroup);
+        $this->db->where('professeur1',$idprof);
+        $this->db->or_where('professeur2',$idprof);
+        $this->db->order_by("horaire", "desc");
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getInfoSout($idsout){
+        $this->db->select('critere.id,critere.titre as titre_critere,note,bareme');
+        $this->db->from('note_critere_soutenance');
+        $this->db->join('soutenance','id_soutenance = soutenance.id');
+        $this->db->join('planning','soutenance.id_planning = planning.id');
+        $this->db->join('critere_groupe_notation_jonction','planning.id_groupe_notation = critere_groupe_notation_jonction.id_groupe_notation');
+        $this->db->join('critere','note_critere_soutenance.id_critere = critere.id');
+        $this->db->where('critere_groupe_notation_jonction.id_critere = note_critere_soutenance.id_critere');
+        $this->db->where('soutenance.id = '.$idsout);
+        $query = $this->db->get();
+        $row = $query->result_array();
+        //die($this->db->last_query());
+        return $row;
+    }
+
+    public function editNote($data){
+        $this->db->where('id_soutenance',$data["id_soutenance"]);
+        $this->db->where('id_critere',$data["id_critere"]);
+
+        $this->db->update('note_critere_soutenance',$data);
+        return $this->db->affected_rows();
+    }
 }

@@ -178,8 +178,6 @@ class M_admin extends CI_Model
         foreach ($sout as $s){
             $this->db->delete('interface_prof_soutenance', array('id_soutenance' => $s->id));
             $this->db->delete('note_critere_soutenance', array('id_soutenance' => $s->id));
-            die($this->db->last_query());
-
         }
     }
 

@@ -12,7 +12,7 @@
 
 
 
-<div id="container_admin" class="col-lg-10 col-md-10">
+<div id="container_prof" class="col-lg-12 col-md-12">
     <div id="container_select" class="col-lg-12 col-md-12 text-center">
         <select id="selectGroupe">
             <option value="0" selected>--Choisir un groupe--</option>

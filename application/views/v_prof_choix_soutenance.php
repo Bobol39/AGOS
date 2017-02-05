@@ -6,8 +6,10 @@
  * Time: 18:37
  */
 ?>
-<link href="<?=base_url();?>assets/css/choix_soutenance.css" rel="stylesheet">
+
 <link href="<?=base_url();?>assets/css/gsdk.css" rel="stylesheet">
+
+<link href="<?=base_url();?>assets/css/choix_soutenance.css" rel="stylesheet">
 
 <div class="col-lg-12 col-md-12 text-center" id="container_choix_soutenance">
     <h1>Choix de la soutenance</h1>
