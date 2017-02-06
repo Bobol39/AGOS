@@ -19,6 +19,5 @@
 
 Planning -> quand on choisi une salle l'enlever dans les autres listes (pareil pour les prof et les élèves)
          -> bug des fleches pour le calendrier dans ajouter un jour
+         -> affichage des dates en francais
          -> réglé les problèmes d'ordre d'affichage pour les heures (planning-admin) si l'heure n'a qu'un chiffre
-
-
