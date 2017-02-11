@@ -168,7 +168,7 @@ class C_prof extends CI_Controller
             $r->notes = $this->m_prof->getInfoSout($r->id);
         }
 
-        //titre des premières colonnes
+        // titre des premières colonnes
         $data[0] = array('uid etudiant','uid professeur tuteur','uid professeur 2');
 
         $i = 1;
