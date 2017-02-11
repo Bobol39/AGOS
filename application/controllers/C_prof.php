@@ -96,8 +96,7 @@ class C_prof extends CI_Controller
         $data["text"]= $this->input->post('text');
         $img= $this->input->post('img');
 
-        //définir le chemin du dossier AGOS en fonction de sa propre installation
-        define('UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].'/AGOS/assets/img/img_canvas/');
+        define('UPLOAD_DIR',$_SERVER['DOCUMENT_ROOT'].APP_DIR_PATH.'/AGOS/assets/img/img_canvas/');
 
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
@@ -124,7 +123,6 @@ class C_prof extends CI_Controller
             $data["groupes"] = $this->m_prof->getAllGroupSoutenance();
         } else {
             $data["groupes"] = $this->m_prof->getAllGroupSoutenanceWhereProfInvolved($this->session->uid);
-            die(var_dump($data));
         }
 
         $this->load->view("v_header");
@@ -158,6 +156,42 @@ class C_prof extends CI_Controller
         }
         if ($affected_rows == 0) echo "false";
         else echo "true";
+    }
+
+    public function exportNote(){
+        $id_session=$this->input->post('idgroup');
+
+        if ($id_session == '0'){return $this->editionNotes();}
+
+        $result = $this->m_prof->getSoutenancesByPlanning($id_session);
+        foreach ($result as $r){
+            $r->notes = $this->m_prof->getInfoSout($r->id);
+        }
+
+        //titre des premières colonnes
+        $data[0] = array('uid etudiant','uid professeur tuteur','uid professeur 2');
+
+        $i = 1;
+        foreach($result as $soutenance){
+            $data[$i] = array($soutenance->id_etudiant,$soutenance->professeur1,$soutenance->professeur2);
+            foreach ($soutenance->notes as $note){
+                array_push($data[$i],$note['titre_critere']."(".$note['bareme'].")");
+                array_push($data[$i],$note['note']);
+            }
+            $i++;
+        }
+
+        $delimiteur = ";";
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=data.csv');
+        $out = fopen('php://output', 'w');
+        fprintf($out, chr(0xEF).chr(0xBB).chr(0xBF));
+
+        foreach ($data as $val) {
+            fputcsv($out, $val, $delimiteur);
+        }
+
+        fclose($out);
     }
 
 }
