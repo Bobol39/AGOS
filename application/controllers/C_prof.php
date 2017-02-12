@@ -170,13 +170,29 @@ class C_prof extends CI_Controller
 
         // titre des premières colonnes
         $data[0] = array('uid etudiant','uid professeur tuteur','uid professeur 2');
+        $titre_note = false;
+        foreach ($result as $soutenance) {
+            foreach($soutenance->notes as $note){
+                array_push($data[0],$note['titre_critere']."(".$note['bareme'].")");
+                $titre_note = true;
+            }
+            if ($titre_note){
+                array_push($data[0],'Total');
+                break;
+            }
+        }
+
 
         $i = 1;
         foreach($result as $soutenance){
             $data[$i] = array($soutenance->id_etudiant,$soutenance->professeur1,$soutenance->professeur2);
+            $temp = 0;
             foreach ($soutenance->notes as $note){
-                array_push($data[$i],$note['titre_critere']."(".$note['bareme'].")");
+                $temp = $temp + $note['note'];
                 array_push($data[$i],$note['note']);
+            }
+            if ($temp != 0){
+                array_push($data[$i],$temp);
             }
             $i++;
         }
