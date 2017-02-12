@@ -108,12 +108,3 @@ function checkBeforeSave() {
     return valid;
 }
 
-function exportNote(){
-    if ($("#selectGroupe").val() == 0 ) return;
-    $.ajax({
-        type: 'POST',
-        url: baseurl    + "index.php/c_prof/exportNote/",
-        data: {idgroup: $("#selectGroupe").val()}
-    })
-}
-
