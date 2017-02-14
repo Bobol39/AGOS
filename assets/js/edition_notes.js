@@ -9,6 +9,7 @@ $(function () {
         $("#tableShow tbody").html("");
         var val = $(this).find("option:selected").val();
         if (val != 0){
+            $('#button_export').fadeIn();
             start_loading();
             jQuery.ajax({
                 type: "POST",
@@ -32,6 +33,8 @@ $(function () {
                 });
                 stop_loading();
             });
+        }else{
+            $('#button_export').fadeOut();
         }
     });
 })

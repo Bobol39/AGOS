@@ -169,7 +169,7 @@ class C_prof extends CI_Controller
         }
 
         // titre des premières colonnes
-        $data[0] = array('uid etudiant','uid professeur tuteur','uid professeur 2');
+        $data[0] = array('uid etudiant','professeur tuteur','professeur 2');
         $titre_note = false;
         foreach ($result as $soutenance) {
             foreach($soutenance->notes as $note){
@@ -185,7 +185,7 @@ class C_prof extends CI_Controller
 
         $i = 1;
         foreach($result as $soutenance){
-            $data[$i] = array($soutenance->id_etudiant,$soutenance->professeur1,$soutenance->professeur2);
+            $data[$i] = array($soutenance->id_etudiant,$soutenance->prof1,$soutenance->prof2);
             $temp = 0;
             foreach ($soutenance->notes as $note){
                 $temp = $temp + $note['note'];
@@ -196,7 +196,6 @@ class C_prof extends CI_Controller
             }
             $i++;
         }
-
         $delimiteur = ";";
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=data.csv');
