@@ -34,11 +34,6 @@
             <span>Barêmes</span>
         </div>
     </a>
-    <a href="<?php echo base_url('index.php/c_admin/editionNotes'); ?>">
-        <div class="col-lg-12 col-md-12 button_leftbar_admin">
-            <span>Edition des notes</span>
-        </div>
-    </a>
     <a href="<?php echo base_url('index.php/c_prof'); ?>">
         <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
             <span>Espace professeur</span>

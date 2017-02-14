@@ -5,30 +5,19 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
--> Bug chekbox vue notation, sur chrome, les chekbox ne s'affichent pas [FAIT]
 
 -> Vue FUSION :
-    - ajouter bouton pr voir résumé [FAIT]
     - ajouter bouton  pour voir ses notes perso (prof) soit image soit texte ou les deux
     - 1 couleur par prof pour les sliders
     - Finir la vue
 
-bug meme horaire meme si jour différent [FAIT]
 
  griser bouton planning quand non sauvergardé
+
  quand on crée un groupe vérif si nom pas déja utilisé
 
- vue planning :
- quand on supprime tout les jours déja crée avant on voit un nouveau jour avec 0000000
-
- Quand on ecrit un résumé et titre, celà ecrase tous les résumés de l'eleve;
-
-
-
-Le bouton gestio n Prof dans la navbar : le mot "professeur"  se décale sur l'autre lien
 
 Planning -> quand on choisi une salle l'enlever dans les autres listes (pareil pour les prof et les élèves)
-
---> checkbox admin dans la vue des prof coté admin + dans la table prof un boolean
-
-
+         -> bug des fleches pour le calendrier dans ajouter un jour
+         -> affichage des dates en francais
+         -> réglé les problèmes d'ordre d'affichage pour les heures (planning-admin) si l'heure n'a qu'un chiffre

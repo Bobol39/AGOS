@@ -97,9 +97,7 @@ class M_prof extends CI_Model
         $this->db->from('professeur');
         $this->db->where("id", $id);
         $query = $this->db->get();
-
         return ($query->row()->admin == "1");
-
     }
 
     public function getAllGroupSoutenance(){

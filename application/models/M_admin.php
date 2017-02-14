@@ -195,7 +195,8 @@ class M_admin extends CI_Model
         $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire, DATE_FORMAT(date,\'%d-%m-%Y\') as date');
         $this->db->from('soutenance');
         $this->db->where('id_planning',$idgroup);
-        $this->db->order_by("horaire", "desc");
+        $this->db->order_by("horaire", "asc");
+        $this->db->order_by("date", "asc");
 
         $query = $this->db->get();
         return $query->result();

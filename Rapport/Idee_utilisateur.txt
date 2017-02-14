@@ -1,0 +1,5 @@
+RAPPORT UTILISAREUR  (Le rapport le plus simple)
+
+Trois partie qui explique admin / prof / eleve
+
+avec des screens et des flèches et tout bref on montre a quoi sert a faire chaque truc et comment y accéder etc...

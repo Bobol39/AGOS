@@ -14,12 +14,15 @@
 
 <div id="container_prof" class="col-lg-12 col-md-12">
     <div id="container_select" class="col-lg-12 col-md-12 text-center">
-        <select id="selectGroupe">
-            <option value="0" selected>--Choisir un groupe--</option>
-            <?php foreach ($groupes as $g){ ?>
-                <option value="<?= $g["id"] ?>"><?= $g["titre"] ?></option>
-            <?php } ?>
-        </select>
+        <form action="<?= base_url('/index.php/c_prof/exportNote')?>" method="post">
+            <select id="selectGroupe" name="idgroup">
+                <option value="0" selected>--Choisir un groupe--</option>
+                <?php foreach ($groupes as $g){ ?>
+                    <option value="<?= $g["id"] ?>"><?= $g["titre"] ?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" class="btn btn-success" >Exporter les notes de ce groupe</button>
+        </form>
     </div>
     <div id="container_table" class="col-lg-12 col-md-12">
         <table id="tableShow">
@@ -42,11 +45,11 @@
     <div id="container_edition" class="col-lg-12 col-md-12">
         <table id="tableEditNote">
             <thead>
-                <tr>
-                    <th>Critère</th>
-                    <th>Note</th>
-                    <th>Bareme</th>
-                </tr>
+            <tr>
+                <th>Critère</th>
+                <th>Note</th>
+                <th>Bareme</th>
+            </tr>
             </thead>
             <tbody>
 
