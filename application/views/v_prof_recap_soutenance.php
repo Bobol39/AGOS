@@ -41,7 +41,7 @@
                     <div class="col-lg-10"><span><?= $c["titre_critere"] ?></span></div>
                     <div class="col-lg-2">
                         <div class="c100 p<?= intval($c["note"]*5); ?> small">
-                            <span><?= $c["note"]; ?>/20</span>
+                            <span><?= $c["note"]."/".$c["bareme"]; ?></span>
                             <div class="slice">
                                 <div class="bar"></div>
                                 <div class="fill"></div>
