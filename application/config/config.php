@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/AGOS';
+$config['base_url'] = 'http://127.0.0.1/LP/AGOS';
 
 
 /*
@@ -33,7 +33,7 @@ $config['base_url'] = 'http://localhost/AGOS';
 | exemple : C:/wamp64/www/app/AGOS/assets/
 | APP_DIR_PATH : '/app'
 */
-define('APP_DIR_PATH','');
+define('APP_DIR_PATH','/LP');
 
 /*
 |--------------------------------------------------------------------------

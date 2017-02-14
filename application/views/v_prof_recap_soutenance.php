@@ -6,8 +6,10 @@
  * Time: 19:46
  */
 ?>
+
 <link href="<?=base_url();?>assets/css/circle.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/recap_notes.css" rel="stylesheet">
+<script src="<?php echo base_url();?>assets/js/recap_notes.js" rel="stylesheet"></script>
 
 
 
@@ -53,7 +55,19 @@
         </div>
     </div>
 
-</div>
+    <div class="col-lg-12 col-md-12">
+        <span id='lock' class='glyphicon glyphicon-lock ' onclick="lock()"></span>
+    </div>
+    <div id="container_commentaire" class="col-lg-12 col-md-12">
+        <div id="hide"></div>
 
+        <div class="col-lg-5 col-md-5 commentaire" >
+            <?= $commentaire[0]->text_note; ?>
+        </div>
+        <div class="col-lg-7 col-md-7 commentaire" >
+            <img src="<?=base_url();?>assets/img/img_canvas/<?=$commentaire[0]->img_note;?>" >
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>

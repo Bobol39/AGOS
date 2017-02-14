@@ -11,6 +11,8 @@ if (el.width() < el.find("span").width()) {
 }
 
 
+
+
 function chronoStart(){
     timer = setInterval(function(){
         sec++;
@@ -70,6 +72,7 @@ function cacherAjuster() {
         $("#ajuster_layer").fadeOut(100);
     });
 }
+
 
 function getNotes(){
     var slidValues = [], butValues = [];

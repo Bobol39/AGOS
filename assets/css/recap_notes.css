@@ -5,6 +5,26 @@
     text-align: center;
 }
 
+img{
+    width: 100%;
+}
+
+#container_commentaire{
+    margin-top: 5%;
+}
+
+#lock{
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 2%;
+}
+
+#hide{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
 #container_moyennes{
     margin-top: 50px;
 }

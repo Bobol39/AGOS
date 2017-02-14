@@ -154,4 +154,13 @@ class M_prof extends CI_Model
         $this->db->update('note_critere_soutenance',$data);
         return $this->db->affected_rows();
     }
+
+    public function getCommentaire($idsoutenance,$id_prof){
+        $this->db->select('*');
+        $this->db->from('interface_prof_soutenance');
+        $this->db->where('id_soutenance',$idsoutenance);
+        $this->db->where('id_professeur',$id_prof);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
