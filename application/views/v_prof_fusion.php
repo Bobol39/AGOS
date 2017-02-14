@@ -80,7 +80,13 @@
     </div>
 </div>
 
+<script>
+    <?php
+    $file = base_url()."/assets/js/secret/config.js";
 
+    readfile($file);
+    ?>
+</script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/fusion.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>

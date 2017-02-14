@@ -63,14 +63,12 @@ class C_prof extends CI_Controller
     }
 
     public function showNotation($id_soutenance){
-
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $this->session->uid;
         $data["tuteur"] = ($data["soutenance"]->professeur1 == $this->session->uid) ? 1 : 0;
         $this->load->view('v_header');
-
         $this->load->view('v_prof_notation_navbar',$data);
         $this->load->view('v_prof_notation_ajuster');
         $this->load->view('v_prof_notation');
@@ -88,6 +86,15 @@ class C_prof extends CI_Controller
         $this->load->view('v_header');
         $this->load->view('v_prof_fusion_navbar',$data);
         $this->load->view('v_prof_fusion');
+    }
+
+    public function showRecap($idsoutenance){
+        $data["soutenance"] = $this->m_prof->getInfoSoutenance($idsoutenance);
+        $data["notes"] = $this->m_prof->getInfoSout($idsoutenance);
+        //die(var_dump($data));
+        $this->load->view('v_header');
+        $this->load->view('v_prof_navbar');
+        $this->load->view('v_prof_recap_soutenance',$data);
     }
 
     public function saveCommentaire(){

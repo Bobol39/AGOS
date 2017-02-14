@@ -35,6 +35,7 @@
                     <th>Salle</th>
                     <th>Tuteur/Professeur</th>
                     <th>Note</th>
+                    <th>Voir le detail</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +57,12 @@
             </tbody>
         </table>
         <input type="hidden" id="inputIdSout" value="">
-        <button id="btnValider" class="btn btn-fill btn-success">Sauvegarder</button>
+        <div class="col-lg-2 col-lg-offset-8 col-md-2 col-md-offset-8">
+            <button id="btnAnnotations" class="btn btn-fill btn-info">Annotations</button>
+        </div>
+        <div class="col-lg-2 col-md-2 text-center">
+            <button id="btnValider" class="btn btn-fill btn-success">Sauvegarder</button>
+        </div>
     </div>
 </div>
 

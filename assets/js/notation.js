@@ -200,7 +200,7 @@ function saveCommentaire(callback){
 })();
 
 function runSocketIo(id,login,tuteur) {
-    var socketio = io.connect('http://localhost:3000/');
+    var socketio = io.connect(config.server);
     socketio.on('connect_error', function() {
         showNotification("Erreur de connection","SocketIO ne parvient pas à se connecter","warning");
         socketio.disconnect();
