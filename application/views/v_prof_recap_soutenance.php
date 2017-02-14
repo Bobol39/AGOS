@@ -42,7 +42,7 @@
                 <div class="block_moyCrit">
                     <div class="col-lg-10"><span><?= $c["titre_critere"] ?></span></div>
                     <div class="col-lg-2">
-                        <div class="c100 p<?= intval($c["note"]*5); ?> small">
+                        <div class="c100 p<?= intval($c["note"]*(100/$c["bareme"])); ?> small">
                             <span><?= $c["note"]."/".$c["bareme"]; ?></span>
                             <div class="slice">
                                 <div class="bar"></div>
@@ -54,14 +54,13 @@
             <?php } ?>
         </div>
     </div>
+    <div id="container_commentaire" class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <div id="spoiler" class="col-lg-12 col-md-12 text-center">
+            <span class="glyphicon glyphicon-lock"></span>
+            <span>Survolez pour afficher vos notes</span>
+        </div>
 
-    <div class="col-lg-12 col-md-12">
-        <span id='lock' class='glyphicon glyphicon-lock ' onclick="lock()"></span>
-    </div>
-    <div id="container_commentaire" class="col-lg-12 col-md-12">
-        <div id="hide"></div>
-
-        <div class="col-lg-5 col-md-5 commentaire" >
+        <div class="col-lg-5 col-md-5 commentaire" id="textview" >
             <?= $commentaire[0]->text_note; ?>
         </div>
         <div class="col-lg-7 col-md-7 commentaire" >

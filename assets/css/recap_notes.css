@@ -5,12 +5,17 @@
     text-align: center;
 }
 
-img{
+.commentaire img{
     width: 100%;
 }
 
 #container_commentaire{
-    margin-top: 5%;
+    margin-top: 20px;
+    overflow-x: hidden;
+    height: 200px;
+    border: 1px solid #2C82C9;
+    padding: 0;
+    overflow: hidden;
 }
 
 #lock{
@@ -19,14 +24,25 @@ img{
     margin-top: 2%;
 }
 
-#hide{
+#spoiler{
     position: absolute;
     width:100%;
+    height: 200px;
+    line-height: 200px;
+    font-size: 30px;
+    color: whitesmoke;
+    background-color: #2C82C9;
+    z-index: 10;
+}
+#textview{
+    line-break: auto;
+    overflow-y: auto;
     height: 100%;
 }
 
 #container_moyennes{
-    margin-top: 50px;
+    padding-top: 30px;
+    height: 50%;
 }
 
 #block_moyGenerale{
