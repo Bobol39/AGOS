@@ -199,6 +199,7 @@ class C_admin extends CI_Controller
         $this->m_admin->deleteSoutenances($soutenances[0]['id_planning']);
 
         foreach ($soutenances as $sout){
+            $sout["date"] = date("Y-m-d", strtotime($sout["date"]));
             $this->m_admin->saveSoutenance($sout);
         }
     }

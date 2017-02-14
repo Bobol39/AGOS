@@ -60,10 +60,17 @@ $(function() {
 
 function runSocketIo(id, tuteur) {
     var socketio = io.connect('http://localhost:3000/');
+    socketio.on('connect_error', function() {
+        stop_loading();
+        showNotification("Erreur de connection","SocketIO ne parvient pas à se connecter","warning");
+        socketio.disconnect();
+    });
     start_loading()
     socketio.emit('fusion',{idsout: id, tuteur: tuteur});
 
     socketio.on('getNotes',function(data){
+        console.log("DATA:");
+        console.log(data);
         $( ".slider-info" ).each(function(index){
             $(this).slider({
                 min: 0,

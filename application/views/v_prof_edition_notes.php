@@ -27,7 +27,8 @@
                 <tr>
                     <th>Titre</th>
                     <th>Eleve</th>
-                    <th>Date & heure</th>
+                    <th>Date</th>
+                    <th>Heure</th>
                     <th>Salle</th>
                     <th>Tuteur/Professeur</th>
                     <th>Note</th>

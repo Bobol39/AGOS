@@ -124,7 +124,6 @@ class C_prof extends CI_Controller
             $data["groupes"] = $this->m_prof->getAllGroupSoutenance();
         } else {
             $data["groupes"] = $this->m_prof->getAllGroupSoutenanceWhereProfInvolved($this->session->uid);
-            die(var_dump($data));
         }
 
         $this->load->view("v_header");
@@ -154,7 +153,7 @@ class C_prof extends CI_Controller
         foreach ($this->input->post("crits") as $c){
             $data["note"] = $c["note"];
             $data["id_critere"] = $c["id"];
-            $affected_rows += $this->m_admin->editNote($data);
+            $affected_rows += $this->m_prof->editNote($data);
         }
         if ($affected_rows == 0) echo "false";
         else echo "true";

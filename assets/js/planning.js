@@ -55,19 +55,19 @@ $(function() {
         var index = $('#tabs').tabs("option","active");
         var date = $("#tabs").find(".ui-tabs-nav li:eq("+index+")").text();
         if (disableddates.indexOf(date)>-1) disableddates.splice(disableddates.indexOf(date), 1);
-        else alert(date);
         $("#tabs").find(".ui-tabs-nav li:eq("+index+")").remove();
         $("#tabs").tabs("refresh");
 
 
     });
+    $.datepicker.setDefaults($.datepicker.regional['fr']);
     $("#newday_datepicker").datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd-mm-yy',
         beforeShowDay: function (date) {
             var string = $.datepicker.formatDate('yy-mm-dd', date);
             return [disableddates.indexOf(string) == -1];
         }
-    });
+    })
 
     restore();
 
@@ -127,7 +127,8 @@ function ajouterJour() {
    $(".picktime").timepicker({
         'minTime': '8:00',
         'maxTime': '19:30',
-        'timeFormat': "G:i"
+        'timeFormat': "G:i",
+        'step': 15
     });
     bindAjouter();
 }
@@ -153,7 +154,8 @@ function ajouterCreneau() {
     $(".picktime").timepicker({
         'minTime': '8:00',
         'maxTime': '19:30',
-        'timeFormat': "G:i"
+        'timeFormat': "G:i",
+        'step': 15
     });
     $("#tabs .ui-tabs-panel:visible").find(".selectpicker").each(function () {
         $("#tabs .ui-tabs-panel:visible").find("tr").last().append(nouveauAjouter);
@@ -245,7 +247,7 @@ function validerPlanning(data) {
 
 function save_planning() {
     //POUR CHAQUE JOUR
-    var data = [], soutenance, tabnumber,heure, salle;
+    var data = [], soutenance, tabnumber,heure, salle, unformatted, formatted_date;
     $(".tabbed").each(function () {
 
         tabnumber = $(this).attr("id");
@@ -269,6 +271,8 @@ function save_planning() {
                 data.push(soutenance);
             })
         });
+
+        console.log(data);
 
     });
 
@@ -319,7 +323,6 @@ function restore() {
     var nbrSalles;
     //AJOUT DES HORAIRES
     days.forEach(function (day) {
-        console.log("DAY: "+day)
         nbrSalles = $("#tab"+day).find("thead th").length-1;
         horaireFound = [];
         tab.forEach(function (sout) {
@@ -328,7 +331,8 @@ function restore() {
                 $("#tab"+day).find("tbody").append("<tr><th><input class='picktime' value='"+sout.horaire+"'></th></tr>").find(".picktime").timepicker({
                     'minTime': '8:00',
                     'maxTime': '19:30',
-                    'timeFormat': "G:i"
+                    'timeFormat': "G:i",
+                    'step': 15
                 });;
                 for (var i=0; i<nbrSalles;i++){
                     $("#tab"+day).find("tbody tr").last().append(nouveauAjouter);

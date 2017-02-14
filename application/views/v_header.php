@@ -22,7 +22,7 @@
         var baseurl = '<?php echo base_url();?>';
     </script>
 
-    <div id="notification">
+    <div id="notification" style="display: none">
         <div>
             <h4></h4>
 

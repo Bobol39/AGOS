@@ -95,6 +95,7 @@ $js_array = json_encode($salle)
 
 </div>
 
+<script type="text/javascript" src="<?=base_url();?>assets/js/datepicker-fr.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/jquery.timepicker.min.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/planning.js"> </script>

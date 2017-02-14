@@ -201,9 +201,11 @@ function saveCommentaire(callback){
 
 function runSocketIo(id,login,tuteur) {
     var socketio = io.connect('http://localhost:3000/');
+    socketio.on('connect_error', function() {
+        showNotification("Erreur de connection","SocketIO ne parvient pas à se connecter","warning");
+        socketio.disconnect();
+    });
     socketio.emit('notation',{id: id, login: login, tuteur: tuteur});
-
-
     socketio.on("waiting", function () {
         start_loading();
     }).on("stopWaiting", function () {

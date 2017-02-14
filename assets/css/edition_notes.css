@@ -5,7 +5,6 @@
 
 #container_select{
     height: 15%;
-    background-color: red;
     line-height: 100px;
 }
 #container_table{
@@ -21,7 +20,7 @@
 }
 
 #container_edition{
-    background-color: yellow;
+    background-color: whitesmoke;
     height: 35%;
 }
 
