@@ -109,8 +109,10 @@ class M_prof extends CI_Model
     }
 
     public function getSoutenancesByPlanning($idgroup){
-        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire, DATE_FORMAT(date,"%d-%m-%Y") AS date');
+        $this->db->select('soutenance.*,DATE_FORMAT(horaire, "%k:%i") as horaire, DATE_FORMAT(date,"%d-%m-%Y") AS date,p1.abreviation as prof1,p2.abreviation as prof2');
         $this->db->from('soutenance');
+        $this->db->join('professeur p1','soutenance.professeur1 = p1.id ','left');
+        $this->db->join('professeur p2','soutenance.professeur2 = p2.id ','left');
         $this->db->where('id_planning',$idgroup);
         $this->db->order_by("horaire", "desc");
 

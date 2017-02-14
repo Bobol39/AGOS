@@ -13,17 +13,22 @@
 
 
 <div id="container_prof" class="col-lg-12 col-md-12">
-    <div id="container_select" class="col-lg-12 col-md-12 text-center">
-        <form action="<?= base_url('/index.php/c_prof/exportNote')?>" method="post">
+    <form action="<?= base_url('/index.php/c_prof/exportNote')?>" method="post">
+        <div id="container_select" class="col-lg-12 col-md-12 text-center">
+
             <select id="selectGroupe" name="idgroup">
                 <option value="0" selected>--Choisir un groupe--</option>
                 <?php foreach ($groupes as $g){ ?>
                     <option value="<?= $g["id"] ?>"><?= $g["titre"] ?></option>
                 <?php } ?>
             </select>
-            <button type="submit" class="btn btn-success" >Exporter les notes de ce groupe</button>
-        </form>
-    </div>
+
+            <div id='selectGroupeButton' class="col-lg-12 col-md-12 text-center">
+                <button id="button_export" type="submit" class="btn btn-success" style="display: none;">Exporter les notes de ce groupe</button>
+            </div>
+        </div>
+
+    </form>
     <div id="container_table" class="col-lg-12 col-md-12">
         <table id="tableShow">
             <thead>
@@ -57,12 +62,7 @@
             </tbody>
         </table>
         <input type="hidden" id="inputIdSout" value="">
-        <div class="col-lg-2 col-lg-offset-8 col-md-2 col-md-offset-8">
-            <button id="btnAnnotations" class="btn btn-fill btn-info">Annotations</button>
-        </div>
-        <div class="col-lg-2 col-md-2 text-center">
-            <button id="btnValider" class="btn btn-fill btn-success">Sauvegarder</button>
-        </div>
+        <button id="btnValider" class="btn btn-fill btn-success">Sauvegarder</button>
     </div>
 </div>
 
