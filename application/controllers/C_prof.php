@@ -93,7 +93,6 @@ class C_prof extends CI_Controller
         $data["soutenance"] = $this->m_prof->getInfoSoutenance($idsoutenance);
         $data["notes"] = $this->m_prof->getInfoSout($idsoutenance);
         $data["commentaire"] = $this->m_prof->getCommentaire($idsoutenance,$_SESSION['uid']);
-        //die(var_dump($data));
         $this->load->view('v_header');
         $this->load->view('v_prof_navbar');
         $this->load->view('v_prof_recap_soutenance',$data);

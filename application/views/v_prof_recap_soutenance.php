@@ -14,6 +14,11 @@
 
 
 <div id="container_prof" class="col-lg-12 col-md-12">
+    <?php if (count($notes) == 0){ ?>
+        <h2>Cette soutenance n'a pas encore été notée</h2>
+        <h3><i>Si vous venez de finir la notation, veuillez patienter quelques secondes et actualiser.</i></h3>
+    <?php } else { ?>
+
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" id="container_moyennes">
         <div class="col-lg-6 text-center"><h3>Note Finale</h3></div>
         <div class="col-lg-6 text-center"><h3>Note par critère</h3></div>
@@ -67,6 +72,7 @@
             <img src="<?=base_url();?>assets/img/img_canvas/<?=$commentaire[0]->img_note;?>" >
         </div>
     </div>
+    <?php } ?>
 </div>
 
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
