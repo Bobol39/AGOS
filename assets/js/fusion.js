@@ -102,9 +102,9 @@ function runSocketIo(id, tuteur) {
                 valToSelect = np1;
                 color = "success"
             } else {
-                if (np1 > np2) valToSelect = (np1 - np2)/2 + np2;
-                else valToSelect = (np2 - np1)/2 + np1;
-                color = "warning";
+                if (tuteur) valToSelect = np1;
+                else valToSelect = np2;
+                color = "danger";
             }
             valToSelect = roundHalf(valToSelect);
 
