@@ -55,7 +55,8 @@ $(function() {
         var index = $('#tabs').tabs("option","active");
         var date = $("#tabs").find(".ui-tabs-nav li:eq("+index+")").text();
         if (disableddates.indexOf(date)>-1) disableddates.splice(disableddates.indexOf(date), 1);
-        $("#tabs").find(".ui-tabs-nav li:eq("+index+")").remove();
+        $(".ui-tabs-nav li:eq("+index+")").remove();
+        $("#tab"+date).remove();
         $("#tabs").tabs("refresh");
 
 
@@ -284,7 +285,7 @@ function save_planning() {
             data: {soutenances: JSON.stringify(data)}
         }).done( function(result){
             stop_loading();
-            location.reload();
+            //location.reload();
         });
     }
 }
