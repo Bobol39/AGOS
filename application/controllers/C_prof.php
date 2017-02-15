@@ -76,6 +76,7 @@ class C_prof extends CI_Controller
 
     public function showFusion($id_soutenance){
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
+        $data["commentaire"]=$this->m_prof->getCommentaire($id_soutenance,$_SESSION['uid']);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $this->session->uid;;

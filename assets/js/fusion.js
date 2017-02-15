@@ -36,8 +36,16 @@ $(function() {
         afficherFiche();
     });
 
+    $("#button_commentaire").click(function () {
+        afficherFicheCommentaire();
+    });
+
+
     $("#fiche_layer").click(function () {
         cacherFiche();
+    });
+    $("#fiche_layer_commentaire").click(function () {
+        cacherFicheCommentaire();
     });
     $("#fiche_viewer").click(function (e) {
         e.stopPropagation();
@@ -163,8 +171,20 @@ function afficherFiche() {
     })
 }
 
+function afficherFicheCommentaire() {
+    $("#fiche_layer_commentaire").fadeIn(100, function () {
+        $("#fiche_viewer_commentaire").animate({"height":"70%"},300);
+    })
+}
+
 function cacherFiche() {
     $("#fiche_viewer").animate({"height":"10%"},300, function () {
         $("#fiche_layer").fadeOut(100);
+    });
+}
+
+function cacherFicheCommentaire() {
+    $("#fiche_viewer_commentaire").animate({"height":"10%"},300, function () {
+        $("#fiche_layer_commentaire").fadeOut(100);
     });
 }
