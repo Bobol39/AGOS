@@ -136,7 +136,8 @@ CREATE TABLE `professeur` (
 
 CREATE TABLE `promotion` (
   `id` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL
+  `nom` varchar(50) NOT NULL,
+  `nom_ldap` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

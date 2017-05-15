@@ -10,6 +10,49 @@ class M_eleve extends CI_Model
         return $this->db->affected_rows();
     }
 
+    public function insertEtudiant($fname,$lname,$uid,$idPromo){
+
+        $data = array(//set params of new record
+            'id' => $uid,
+            'prenom' => $fname,
+            'nom' => $lname,
+            'id_promotion' => $idPromo,
+        );
+        $this->db->insert('etudiant',$data);
+
+        $insert_id = $this->db->insert_id();
+        return $insert_id;//return the id of new record
+    }
+
+    public function updateEtudiant($fname,$lname,$uid,$idPromo){
+        $data = array(
+
+            'id' => $uid,
+            'nom' => $lname,
+            'prenom' => $fname,
+            'id_promotion' => $idPromo
+        );
+        $this->db->where('id',$uid);
+        $this->db->update('etudiant',$data);
+        return $this->db->affected_rows();
+    }
+
+
+
+    public function checkSave($id){ //return true si l'id n'est pas save dans la base
+        $this->db->select("etudiant.id");
+        $this->db->from("etudiant");
+        $this->db->where("etudiant.id",$id);
+        $query = $this->db->get();
+
+        $row = $query->result_array();
+        if($row == null){
+            return false;
+        }
+
+        return true;
+    }
+
     public function getAllSoutenanceForCurrentEleve(){
         $this->db->select('*');
         $this->db->from('soutenance');

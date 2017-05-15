@@ -1,0 +1,12 @@
+<html>
+<head>
+    <title>
+        <?=$title_for_layout?>
+    </title>
+    <?=$css_for_layout?>
+    <?=$js_for_layout?>
+</head>
+<body>
+<?=$content_for_layout?>
+</body>
+</html>

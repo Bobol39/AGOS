@@ -34,6 +34,16 @@
             <span>Barêmes</span>
         </div>
     </a>
+    <a href="<?php echo base_url('index.php/c_cas/index'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Importer Promotion</span>
+        </div>
+    </a>
+    <a href="<?php echo base_url('index.php/c_cas/update_promo'); ?>">
+        <div class="col-lg-12 col-md-12 button_leftbar_admin">
+            <span>Gestion Promotion</span>
+        </div>
+    </a>
     <a href="<?php echo base_url('index.php/c_prof'); ?>">
         <div class="col-lg-12 col-md-12 button_leftbar_admin" style="margin-top: 30px">
             <span>Espace professeur</span>

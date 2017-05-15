@@ -11,6 +11,8 @@ class MY_LoginControl extends CI_Controller  {
      */
     protected $access = "admin,student,teacher";
 
+    protected $pass = 'yesadolyon00769*';
+
 
     public function __construct()
     {
@@ -23,11 +25,12 @@ class MY_LoginControl extends CI_Controller  {
         $this->login_check();//--> A partir d'ici l'utilisateur est authenfié
         //  if la session existe ne pas recup les infos ldap et le mettre en session TODO
         $this->ldap_init();//----> Recupération des info utilisateur depuis le LDAP + mise en session des info recupérées
-        $this->put_user_in_session();
 
+        if($this->session->user_in_session)
+            $this->put_user_in_session();
 
         //TOUT UTILISATEUR CONNECTE EST CONSIDERER COMME UN ( Admin / Student / Teacher )
-        //$this->session->set_userdata('role', 'Admin');//----> Dev only, not for production
+        $this->session->set_userdata('role', 'Admin');//----> Dev only, not for production
 
 
         //check if user has permission to access this page as defined on the $access
@@ -44,9 +47,7 @@ class MY_LoginControl extends CI_Controller  {
         $this->session->set_userdata('role',$user[0]["edupersonprimaryaffiliation"][0]);
         $this->session->set_userdata('nom',$user[0]["sn"][0]);
         $this->session->set_userdata('prenom',$user[0]["givenname"][0]);
-        $this->session->set_userdata('mail',$user[0]["mail"][0]);
-        $this->session->set_userdata('nEtudiant',$user[0]["supannetuid"][0]);
-        $this->session->set_userdata('etapeDiplome',$user[0]["ufclibelleetape"][0]);
+        $this->session->set_userdata('user_in_session', true);
 
         //echo 'user session '.$this->session->nom;
     }
@@ -82,7 +83,6 @@ class MY_LoginControl extends CI_Controller  {
         $ldaphost = "ldap://ldap.univ-fcomte.fr";  // votre serveur LDAP
         $ldapport = 903;
         $dn = 'uid=ihajali,ou=people,dc=univ-fcomte,dc=fr';
-        $pass = 'yesadolyon00769*';
 
         $connect = ldap_connect($ldaphost,$ldapport);
         if($connect)
@@ -101,7 +101,7 @@ class MY_LoginControl extends CI_Controller  {
             echo '<p>LDAP_OPT_REFERRALS Nok</p>';
 
 
-        $bind = ldap_bind($connect, $dn, $pass);
+        $bind = ldap_bind($connect, $dn, $this->pass);
 
         if($bind)
             echo '<p>bind ok</p>';
@@ -118,19 +118,6 @@ class MY_LoginControl extends CI_Controller  {
         $result=ldap_list($connect, $baseDn, $filter, $justthese) or die("No search data found.");
         $info = ldap_get_entries($connect, $result);
 
-/*        echo "Trouvé ".$info["count"];
-        for ($i=0; $i < $info["count"]; $i++) {
-            //Affichage des info utilisateur pour les tests uniquement
-            echo "Nom".$info[$i]["sn"][0] . '<br />';
-            echo "Prenom".$info[$i]["givenname"][0] . '<br />';
-            echo "Type".info[$i]["edupersonprimaryaffiliation"][0];
-            echo $info[$i]["mail"][0] . '<br />';
-            //Enregistrement des info utlisateur en session
-            $this->session->set_userdata('role',info[$i]["edupersonprimaryaffiliation"][0]);
-            $this->session->set_userdata('nom',info[$i]["sn"][0]);
-            $this->session->set_userdata('prenom',info[$i]["givenname"][0]);
-            $this->session->set_userdata('mail',info[$i]["edupersonprimaryaffiliation"][0]);
-        }*/
 
 
 
@@ -199,16 +186,19 @@ class MY_LoginControl extends CI_Controller  {
         return $user;
     }
 
-    public function get_ldap_results($filter){
+    public function get_ldap_results($filter,$custom_connect){
         //--------------------------> Recherche de l'utlisateur dans le LDAP
-        //Gettinf ldap connection from session
-        $connect = $this->session->connect;
+
+        if(isset($custom_connect))//if use of a custom ldap connexion
+            $connect = $custom_connect;
+        else
+            $connect = $this->session->connect;
 
         //Multple filters exemple:  (&(givenName=Benedikt)(telephoneNumber=1234567890))
         //$filter ="(&(ufclibellesecteurdisciplinaire=Informatique)(ufclibellecomposanteins=IUT de Belfort-Montbéliard))"; --> DUT +LP Resultats 715
         //givenname = prenom, sn=nom, edupersonaffiliation=student ou teacher, mail= mail universitaire
 //        $justthese = array('givenname','sn','edupersonprimaryaffiliation','mail','supannetuid', 'ufclibellediplome', 'ufclibelleetape');
-        $justthese = array('givenname','sn','edupersonprimaryaffiliation','mail','supannetuid', 'ufclibelleetape');
+        $justthese = array('givenname','sn',  'uid','edupersonprimaryaffiliation','mail','supannetuid', 'ufclibelleetape');
         $baseDn = "ou=people,dc=univ-fcomte,dc=fr";
 
         $result=ldap_list($connect, $baseDn, $filter, $justthese) or die("No search data found.");
@@ -227,7 +217,6 @@ class MY_LoginControl extends CI_Controller  {
         $ldaphost = "ldap://ldap.univ-fcomte.fr";  // votre serveur LDAP
         $ldapport = 903;
         $dn = 'uid=ihajali,ou=people,dc=univ-fcomte,dc=fr';
-        $pass = 'yesadolyon00769*';
 
         //if somethinf goes wrong with params return false
         $connect = ldap_connect($ldaphost,$ldapport);
@@ -241,7 +230,7 @@ class MY_LoginControl extends CI_Controller  {
             return false;
 
 
-        $bind = ldap_bind($connect, $dn, $pass);
+        $bind = ldap_bind($connect, $dn, $this->pass);
 
         if(!$bind)
             return false;
@@ -250,6 +239,44 @@ class MY_LoginControl extends CI_Controller  {
         //if everything went well return true
         return true;
 
+    }
+
+    public function import_promo_from_ldap($login, $pass, $filter){//AJAX
+
+        $connect_ok = $this->custom_ldap_connect($login,$pass);//set connection in session
+        if(!$connect_ok)
+            return false;
+        $connect = $this->session->custom_connect;
+        //if everything went well return true
+        $results = $this->get_ldap_results($filter,$connect);
+
+        return $results;
+    }
+
+    public function custom_ldap_connect($login,$pass){
+        // Initialisation des variables
+        $ldaphost = "ldap://ldap.univ-fcomte.fr";  // votre serveur LDAP
+        $ldapport = 903;
+        $dn = 'uid='.$login.',ou=people,dc=univ-fcomte,dc=fr';
+
+
+        //if somethinf goes wrong with params return false
+        $connect = ldap_connect($ldaphost,$ldapport);
+        if(!$connect)
+            return false;
+
+        if (!ldap_set_option($connect, LDAP_OPT_PROTOCOL_VERSION, 3))
+            return false;
+
+        if (!ldap_set_option($connect, LDAP_OPT_REFERRALS, 0) )
+            return false;
+
+
+        if(!@ldap_bind($connect, $dn, $pass))
+            return false;
+
+        $this->session->set_userdata('custom_connect', $connect);//PUT CUSTOM CONNECT IN SESSION
+        return true;
     }
 
 }

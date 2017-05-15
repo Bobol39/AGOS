@@ -45,12 +45,10 @@ INSERT INTO `agos`.`salle` (`id`, `nom`) VALUES
 ('101', '101'),
 ('LP', 'LP');
 
-INSERT INTO `agos`.`promotion` (`id`, `nom`) VALUES
-  (1, 's1'),
-  (2, 's2'),
-  (3, 's3'),
-  (4, 's4'),
-  (5, 'LP TeProW');
+INSERT INTO `agos`.`promotion` (`id`, `nom`, `nom_ldap`) VALUES
+  (1, 'DUT Informatique 1ère année 2016/2017', 'DUT Informatique 1e année' ),
+  (2, 'DUT Informatique 2ème année 2016/2017', 'DUT Informatique 2e année'),
+  (5, 'LP TeProW', 'Lp conception d''applications multi-tiers 3ème année IUT90');
 
 INSERT INTO `agos`.`critere` (`id`, `titre`) VALUES
   (1, 'Mise en avant des principales fonctionnalités'),
