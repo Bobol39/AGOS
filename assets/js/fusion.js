@@ -36,8 +36,16 @@ $(function() {
         afficherFiche();
     });
 
+    $("#button_commentaire").click(function () {
+        afficherFicheCommentaire();
+    });
+
+
     $("#fiche_layer").click(function () {
         cacherFiche();
+    });
+    $("#fiche_layer_commentaire").click(function () {
+        cacherFicheCommentaire();
     });
     $("#fiche_viewer").click(function (e) {
         e.stopPropagation();
@@ -59,11 +67,18 @@ $(function() {
 });
 
 function runSocketIo(id, tuteur) {
-    var socketio = io.connect('http://localhost:3000/');
+    var socketio = io.connect(config.server);
+    socketio.on('connect_error', function() {
+        stop_loading();
+        showNotification("Erreur de connection","SocketIO ne parvient pas à se connecter","warning");
+        socketio.disconnect();
+    });
     start_loading()
     socketio.emit('fusion',{idsout: id, tuteur: tuteur});
 
     socketio.on('getNotes',function(data){
+        console.log("DATA:");
+        console.log(data);
         $( ".slider-info" ).each(function(index){
             $(this).slider({
                 min: 0,
@@ -87,9 +102,9 @@ function runSocketIo(id, tuteur) {
                 valToSelect = np1;
                 color = "success"
             } else {
-                if (np1 > np2) valToSelect = (np1 - np2)/2 + np2;
-                else valToSelect = (np2 - np1)/2 + np1;
-                color = "warning";
+                if (tuteur) valToSelect = np1;
+                else valToSelect = np2;
+                color = "danger";
             }
             valToSelect = roundHalf(valToSelect);
 
@@ -156,8 +171,20 @@ function afficherFiche() {
     })
 }
 
+function afficherFicheCommentaire() {
+    $("#fiche_layer_commentaire").fadeIn(100, function () {
+        $("#fiche_viewer_commentaire").animate({"height":"70%"},300);
+    })
+}
+
 function cacherFiche() {
     $("#fiche_viewer").animate({"height":"10%"},300, function () {
         $("#fiche_layer").fadeOut(100);
+    });
+}
+
+function cacherFicheCommentaire() {
+    $("#fiche_viewer_commentaire").animate({"height":"10%"},300, function () {
+        $("#fiche_layer_commentaire").fadeOut(100);
     });
 }

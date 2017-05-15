@@ -17,7 +17,10 @@
     <div class="col-lg-1 col-md-1 button_navbar_fusion" id="button_fiche">
         <span>Résumé</span>
     </div>
-    <div class="col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2" id="block_titre_soutenance">
+    <div class="col-lg-2 col-md-2 button_navbar_fusion" id="button_commentaire">
+        <span>Commentaire</span>
+    </div>
+    <div class="col-lg-4 col-md-4 " id="block_titre_soutenance">
         <span><?= $soutenance->titre; ?></span>
     </div>
     <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-4 button_navbar_fusion" id="timeblock">

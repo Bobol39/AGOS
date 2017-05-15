@@ -11,6 +11,8 @@ if (el.width() < el.find("span").width()) {
 }
 
 
+
+
 function chronoStart(){
     timer = setInterval(function(){
         sec++;
@@ -70,6 +72,7 @@ function cacherAjuster() {
         $("#ajuster_layer").fadeOut(100);
     });
 }
+
 
 function getNotes(){
     var slidValues = [], butValues = [];
@@ -200,10 +203,12 @@ function saveCommentaire(callback){
 })();
 
 function runSocketIo(id,login,tuteur) {
-    var socketio = io.connect('http://localhost:3000/');
+    var socketio = io.connect(config.server);
+    socketio.on('connect_error', function() {
+        showNotification("Erreur de connection","SocketIO ne parvient pas à se connecter","warning");
+        socketio.disconnect();
+    });
     socketio.emit('notation',{id: id, login: login, tuteur: tuteur});
-
-
     socketio.on("waiting", function () {
         start_loading();
     }).on("stopWaiting", function () {

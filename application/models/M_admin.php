@@ -192,7 +192,7 @@ class M_admin extends CI_Model
     }
 
     public function getSoutenancesByPlanning($idgroup){
-        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire');
+        $this->db->select('*,DATE_FORMAT(horaire, "%k:%i") as horaire, DATE_FORMAT(date,\'%d-%m-%Y\') as date');
         $this->db->from('soutenance');
         $this->db->where('id_planning',$idgroup);
         $this->db->order_by("horaire", "asc");

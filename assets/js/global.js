@@ -8,9 +8,11 @@ function showNotification(title,text, typecolor) {
     notif.find("div").removeClass("notifwarning notifinfo notifsuccess").addClass("notif"+typecolor);
     notif.find("h4").text(title);
     $("#textnotif").text(text);
-    notif.animate({bottom:"5px"},500, function () {
+    notif.show().animate({bottom:"5px"},500, function () {
         setTimeout(function () {
-            notif.animate({bottom: -150},500);
+            notif.animate({bottom: -150},500, function () {
+                notif.hide();
+            });
         },5000)
     })
 }

@@ -32,7 +32,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `critere` (
   `id` int(11) NOT NULL,
-  `titre` varchar(50) NOT NULL
+  `titre` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -166,7 +166,7 @@ CREATE TABLE `soutenance` (
   `id_etudiant` varchar(25) DEFAULT NULL,
   `professeur1` varchar(25) NOT NULL,
   `professeur2` varchar(25) NOT NULL,
-  `titre` varchar(50) DEFAULT NULL,
+  `titre` varchar(50) DEFAULT "Sans Titre",
   `resume` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

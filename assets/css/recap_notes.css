@@ -1,0 +1,114 @@
+#container_prof{
+    height: calc(100vh - 60px);
+    background-color: #EAEAEA;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.commentaire img{
+    width: 100%;
+}
+
+
+
+#container_commentaire{
+    margin-top: 20px;
+    overflow-x: hidden;
+    height: 200px;
+    border: 1px solid #2C82C9;
+    padding: 0;
+    overflow: hidden;
+}
+
+#lock{
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 2%;
+}
+
+#spoiler{
+    position: absolute;
+    width:100%;
+    height: 200px;
+    line-height: 200px;
+    font-size: 30px;
+    color: whitesmoke;
+    background-color: #2C82C9;
+    z-index: 10;
+}
+#textview{
+    line-break: auto;
+    overflow-y: auto;
+    height: 100%;
+}
+
+#container_moyennes{
+    padding-top: 30px;
+    height: 50%;
+}
+
+#block_moyGenerale{
+    padding-top: 40px;
+}
+
+
+#block_moyPerCrit{
+    height: 200px;
+    background-color: whitesmoke;
+    overflow-y: auto;
+}
+
+.block_moyCrit{
+    width: 100%;
+    border-bottom: 2px solid #EAEAEA;
+    line-height: 50px;
+}
+
+.block_moyCrit div:first-child span{
+    float: left;
+    color: grey;
+}
+
+.block_moyCrit div:nth-child(2) span{
+    float: right;
+}
+
+
+
+.c100{
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+
+#container_soutenances{
+    max-height: calc(100vh - 450px);
+    margin-top: 40px;
+    overflow-y: auto;
+    background-color: whitesmoke;
+}
+
+
+.block_soutenance{
+    height: 70px;
+    background-color: whitesmoke;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.block_soutenance>div {
+    height: 100%;
+    line-height: 70px;
+}
+
+.c100.small{
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+.nothingtoshow{
+    color: grey;
+    font-style: italic;
+}

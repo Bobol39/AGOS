@@ -4,6 +4,7 @@
 
 
 $(function() {
+    console.log("dezdz")
     $("#importer").change(function () {
         var file = document.getElementById("import").files[0];
         if (file) {
@@ -27,6 +28,7 @@ $(function() {
     })
 
     $("#confirmer").click(function () {
+        console.log("lol");
         if ($("#markup_editor").val() == ""){
             showNotification("Champ(s) vide(s)","Vous devez entrer un résumé de votre soutenance","warning")
         } else  if ($("#input_titre").val() == ""){
@@ -40,7 +42,7 @@ $(function() {
                 if (data == 1){
                     showNotification("Informations sauvegardées","Vous allez être redirigé.","success")
                     setTimeout(function () {
-                        location.reload();
+                        //location.reload();
                     }, 200);
                 } else {
                     showNotification("Non sauvegardé","Le titre et le résumé de votre soutenance n'ont pas pu être sauvegardés","warning")

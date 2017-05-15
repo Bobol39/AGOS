@@ -26,6 +26,23 @@
     </div>
 </div>
 
+<div id="fiche_layer_commentaire">
+    <div id="fiche_viewer_commentaire">
+        <div id="fiche_header_commentaire" class="text-center">
+            <span>Vos commentaires</span>
+        </div>
+        <div id="fiche_body_commentaire">
+            <div class="commentaire_case">
+                <?= $commentaire[0]->text_note ?>
+            </div>
+            <div class="commentaire_case">
+                <img src="<?=base_url();?>assets/img/img_canvas/<?=$commentaire[0]->img_note;?>" >
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <div class="col-lg-12 col-md-12" id="container_fusion">
     <div class="col-lg-10 col-md-10" id="block_sliders">
@@ -80,7 +97,13 @@
     </div>
 </div>
 
+<script>
+    <?php
+    $file = base_url()."/assets/js/secret/config.js";
 
+    readfile($file);
+    ?>
+</script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/fusion.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/get-shit-done.js"> </script>
 <script type="text/javascript" src="<?=base_url();?>assets/js/gsdk-bootstrapswitch.js"> </script>

@@ -7,8 +7,10 @@ var ligneSelected = null;
 $(function () {
     $("#selectGroupe").change(function () {
         $("#tableShow tbody").html("");
+        $("#tableEditNote tbody").html("");
         var val = $(this).find("option:selected").val();
         if (val != 0){
+            $('#button_export').fadeIn();
             start_loading();
             jQuery.ajax({
                 type: "POST",
@@ -17,9 +19,10 @@ $(function () {
             }).done( function(data){
                 data = JSON.parse(data)
                 console.log(data);
+
                 data.forEach(function (sout) {
                     if (sout.notes.length != 0){
-                        var ligne = $("<tr><td>"+sout.titre+"</td><td>"+sout.id_etudiant+"</td><td>"+sout.date+"</td><td>"+sout.id_salle+"</td><td>"+sout.professeur1+"/"+sout.professeur2+"</td><td>"+calcNote(sout.notes)+"/20</td></tr>")
+                        var ligne = $("<tr><td>"+sout.titre+"</td><td>"+sout.id_etudiant+"</td><td>"+sout.date+"</td><td>"+sout.horaire+"</td><td>"+sout.id_salle+"</td><td>"+sout.professeur1+"/"+sout.professeur2+"</td><td>"+calcNote(sout.notes)+"/20</td><td><a href='"+baseurl+"index.php/c_prof/showRecap/"+sout.id+"'>Details</a></td></tr>")
                             .click(function () {
                                 start_loading();
                                 ligneSelected = $(this);
@@ -27,10 +30,13 @@ $(function () {
                                 stop_loading();
                             });
                         $("#tableShow tbody").append(ligne);
+
                     }
                 });
                 stop_loading();
             });
+        }else{
+            $('#button_export').fadeOut();
         }
     });
 })

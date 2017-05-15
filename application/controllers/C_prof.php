@@ -63,14 +63,12 @@ class C_prof extends CI_Controller
     }
 
     public function showNotation($id_soutenance){
-
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $this->session->uid;
         $data["tuteur"] = ($data["soutenance"]->professeur1 == $this->session->uid) ? 1 : 0;
         $this->load->view('v_header');
-
         $this->load->view('v_prof_notation_navbar',$data);
         $this->load->view('v_prof_notation_ajuster');
         $this->load->view('v_prof_notation');
@@ -78,6 +76,7 @@ class C_prof extends CI_Controller
 
     public function showFusion($id_soutenance){
         $data["soutenance"]=$this->m_prof->getInfoSoutenance($id_soutenance);
+        $data["commentaire"]=$this->m_prof->getCommentaire($id_soutenance,$_SESSION['uid']);
         $data["critere"] = $this->m_prof->getCritereFromSoutenance($id_soutenance);
         $data["soutenance"]->nbrCritere = count($data["critere"]);
         $data["login"] = $this->session->uid;;
@@ -88,6 +87,15 @@ class C_prof extends CI_Controller
         $this->load->view('v_header');
         $this->load->view('v_prof_fusion_navbar',$data);
         $this->load->view('v_prof_fusion');
+    }
+
+    public function showRecap($idsoutenance){
+        $data["soutenance"] = $this->m_prof->getInfoSoutenance($idsoutenance);
+        $data["notes"] = $this->m_prof->getInfoSout($idsoutenance);
+        $data["commentaire"] = $this->m_prof->getCommentaire($idsoutenance,$_SESSION['uid']);
+        $this->load->view('v_header');
+        $this->load->view('v_prof_navbar');
+        $this->load->view('v_prof_recap_soutenance',$data);
     }
 
     public function saveCommentaire(){
@@ -152,7 +160,7 @@ class C_prof extends CI_Controller
         foreach ($this->input->post("crits") as $c){
             $data["note"] = $c["note"];
             $data["id_critere"] = $c["id"];
-            $affected_rows += $this->m_admin->editNote($data);
+            $affected_rows += $this->m_prof->editNote($data);
         }
         if ($affected_rows == 0) echo "false";
         else echo "true";
@@ -169,7 +177,7 @@ class C_prof extends CI_Controller
         }
 
         // titre des premières colonnes
-        $data[0] = array('uid etudiant','uid professeur tuteur','uid professeur 2');
+        $data[0] = array('uid etudiant','professeur tuteur','professeur 2');
         $titre_note = false;
         foreach ($result as $soutenance) {
             foreach($soutenance->notes as $note){
@@ -185,7 +193,7 @@ class C_prof extends CI_Controller
 
         $i = 1;
         foreach($result as $soutenance){
-            $data[$i] = array($soutenance->id_etudiant,$soutenance->professeur1,$soutenance->professeur2);
+            $data[$i] = array($soutenance->id_etudiant,$soutenance->prof1,$soutenance->prof2);
             $temp = 0;
             foreach ($soutenance->notes as $note){
                 $temp = $temp + $note['note'];
@@ -196,7 +204,6 @@ class C_prof extends CI_Controller
             }
             $i++;
         }
-
         $delimiteur = ";";
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=data.csv');
